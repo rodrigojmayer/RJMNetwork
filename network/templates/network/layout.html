@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">  
+        <link rel="shortcut icon" href="#">
+        <script src="{% static 'network/inbox.js' %}"></script>
+    </head>
+    <body>
+        <div  class="cover" onclick="close_cover()"></div >
+            <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" id="network" href="#">Network</a>
+                <div>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"  id="nav-link"href="{% url 'index'%}">  All Posts </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-link" href="{% url 'following' %}">Following</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn" id="new_post">New Post</a>
+                        </li>
+                        <li class="nav-item" >
+                            <select id="select_button_user" class="page_button" name="forma" onchange="location = this.value;" >
+                                <option selected disabled hidden><a>{{ user.username }}</a>
+                                <option  value="/profile/{{ user.id }}">Profile
+                                <option  value="{% url 'logout' %}"><a>Log out</a>
+                            </select>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  id="nav-link"href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                </div>
+            </nav>
+            <div class="body">
+                {% block body %}
+                {% endblock %}
+            </div>
+    </body>
+</html>
