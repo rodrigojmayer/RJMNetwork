@@ -1,0 +1,53 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% block body %}
+    <div id="new_post_view">
+        <h3></h3>
+    </div>
+    <h3> All Posts</h3>
+    <div id="all_posts_view">
+        <div id="page_0">
+            {% if all_posts %}    
+                {% for post in all_posts %} 
+                    <div id="posts_style">
+                        <a id="profile"  href="profile/{{ post.poster.id }}">{{ post.poster }}</a>
+                        <div id="post-description-{{post.id}}" class="description_post"> {{ post.description }} </div>
+                        {% if post.poster.id == user.id %}
+                            <div id="edit" onclick="edit_field('{{ post.id }}')">Edit</div>
+                        {% else %}
+                        {% endif %}
+                        <textarea class="form-control mb-2" id="edit-box-{{post.id}}" name="edit-box" style="display:none;">{{ post.description }}</textarea>
+                        <div id="edit-btns">
+                            <button id="edit-save-btn-{{post.id}}" class="page_button" style="display:none;"  onclick="save_edit('{{ post.id }}')">Save</button>
+                        </div>
+                        <div id="like_complete">
+                            {% if user.id in post.likers_id %}
+                                <button class="yes_button" id="like-btn-{{post.id}}" value="heart_full" onclick="like('{{ post.id }}')">
+                                    <img src="{% static 'network/images/heart_full.jpg' %}" id="heart-img-{{ post.id }}" alt="jacket" width="25" >
+                                </button>
+                            {% else %}
+                                <button class="yes_button" id="like-btn-{{post.id}}" value="heart_empty"  onclick="like('{{ post.id }}')">
+                                    <img src="{% static 'network/images/heart_empty.jpg' %}" id="heart-img-{{ post.id }}" alt="jacket" width="25" >
+                                </button>
+                            {% endif %}
+                            <div id="like-count-{{post.id}}" class="d-inline-block">{{post.number_likes}}</div> likes 
+                        </div>
+                        <div id="post-{{post.date_added}}" class="date_post"> {{ post.date_added }}</div>
+                        <div>{{ post.timestamp }}</div>
+                    </div>
+                {% endfor %}
+                <div id="id_page_buttons">
+                    <button id="selected_button" class="no-button" > 1 </button>
+                    {% if list_total_pages %}
+                        {% for page in list_total_pages %} 
+                            <button class="page_button"  id="not_selected_button" onclick="pages('{{user.id}}', 0, '{{page}}'-1)">{{page}}</button>
+                        {% endfor %}
+                        <button class="page_button" onclick="pages('{{user.id}}', 0, 1)">Next page</button>   
+                    {% endif %}
+                </div>
+            {% else %}
+                    <li>no post</li>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
