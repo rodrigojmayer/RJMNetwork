@@ -1,114 +1,114 @@
 body{
-    font-family:cursive;
-    background-color:  rgb(223, 223, 223);
+    /* font-family:cursive; */
+    /* background-color:  rgb(223, 223, 223); */
 }
 nav{
-    border-style: none none solid none;
+    /* border-style: none none solid none;
     border-width: 2.4px;
-    border-color: rgb(14, 18, 71);
+    border-color: rgb(14, 18, 71); */
 }
 #navbar{
-    font-family:cursive;
+    /* font-family:cursive;
     position:fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 1; */
 }
 #network{
-    font-size: 200%;
+    /* font-size: 200%;
     margin-top: -10px;
     margin-bottom: -10px;
     margin-right: -3px;
-    margin-left: 12%;
+    margin-left: 12%; */
 }
 body{
-    margin-top:65px;
+    /* margin-top:65px; */
 }
 #profile_view{
-    margin-top:55px;
+    /* margin-top:55px; */
 }
 .navbar-brand{
-    margin-left:15%;
+    /* margin-left:15%; */
 }
 .nav-item{
-    margin: 0 70px 0 70px;
+    /* margin: 0 70px 0 70px; */
 }
 #nav-link, #new_post{
-    color:rgb(17, 17, 17);
+    /* color:rgb(17, 17, 17); */
 }
 .body {
-    background-color: rgb(223, 223, 223);
+    /* background-color: rgb(223, 223, 223);
     margin-left: 20%;
     margin-right: 20%;
-    width: 60%;
+    width: 60%; */
 }
 #profile_poster{
-    margin: 5px 0px 0px 0px;
-    position:absolute;
+    /* margin: 5px 0px 0px 0px;
+    position:absolute; */
 }
 #profile_header{
-    margin:30px 0;
-    position:relative;
+    /* margin:30px 0;
+    position:relative; */
 }
 #follow-btn {
-    float: right;
-    margin: 10px 30px 5px 5px;
+    /* float: right;
+    margin: 10px 30px 5px 5px; */
 }
 #posts_style{
-    background-color: white;
+    /* background-color: white;
     border-radius: .4rem;
     border-style: solid;
     border-color: rgb(14, 18, 71);
     border-width: 1px;
     margin:9px 0;
     padding:16px;
-    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2); */
 }
 #edit{
-    width:30px;
-    color: blue;
+    /* width:30px;
+    color: blue; */
 }
 #profile{
-    width:30px;
-    font-weight:bold;
+    /* width:30px;
+    font-weight:bold; */
 }
 #edit:hover,#profile:hover{
-    cursor: pointer;
-    text-decoration:underline;
+    /* cursor: pointer;
+    text-decoration:underline; */
 }
 #edit-btns{
-    display: inline; 
+    /* display: inline;  */
 }
 .no-button {
-    all: unset;
-    cursor: default;
+    /* all: unset;
+    cursor: default; */
 }
 .no-button:focus {
-    all: unset;
-    cursor: default;
+    /* all: unset;
+    cursor: default; */
 }
 .no-button:hover {
-    all: unset;
-    cursor: default;
+    /* all: unset;
+    cursor: default; */
 }
 .yes_button {
-    all: unset;
-    cursor: pointer;
+    /* all: unset;
+    cursor: pointer; */
 }
 .yes_button:focus {
-    all: unset;
-    cursor: pointer;
+    /* all: unset;
+    cursor: pointer; */
 }
 .yes_button:hover {
-    all: unset;
-    cursor: pointer;
+    /* all: unset;
+    cursor: pointer; */
 }
 #id_page_buttons{
-    text-align: center;
-    padding: 20px;
+    /* text-align: center;
+    padding: 20px; */
 }
 #selected_button{
-    backface-visibility: hidden;
+    /* backface-visibility: hidden;
     box-sizing: border-box;
     border-color: rgb(14, 18, 71);
     display: inline-block;
@@ -124,10 +124,10 @@ body{
     transition: transform .2s;
     user-select: none;
     -webkit-user-select: none;
-    touch-action: manipulation;
+    touch-action: manipulation; */
 }
 .page_button {
-  background: #fff;
+  /* background: #fff;
   backface-visibility: hidden;
   border-radius: .4rem;
   border-style: solid;
@@ -150,36 +150,36 @@ body{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.2); */
 }
 .page_button:not(:disabled):hover {
-  transform: scale(1.04);
-  box-shadow: 4px 4px rgba(0,0,0,0);
+  /* transform: scale(1.04);
+  box-shadow: 4px 4px rgba(0,0,0,0); */
 }
 .page_button:not(:disabled):hover:active {
-  transform: scale(1.04) translateY(.125rem);
+  /* transform: scale(1.04) translateY(.125rem); */
 }
 #select_button_user:focus{
-    border-radius: .4rem .4rem 0 0;
+    /* border-radius: .4rem .4rem 0 0;
     transform: scale(1.04);
-    box-shadow: none;
+    box-shadow: none; */
 }
 .page_button:active {
-  outline: 0 solid transparent;
+  /* outline: 0 solid transparent;
   transform: scale(1.04);
-  box-shadow: none;
+  box-shadow: none; */
 }
 .page_button:focus:not(:focus-visible) {
-  outline: 0 solid transparent;
+  /* outline: 0 solid transparent; */
 }
 .page_button:focus:not(:focus-visible):before {
-  border-width: 0 solid transparent;
+  /* border-width: 0 solid transparent; */
 }
 .page_button:not(:disabled):active {
-  transform: scale(1.04);
+  /* transform: scale(1.04); */
 }
 #new_post_view{
-    margin-top: 10%;
+    /* margin-top: 10%;
     background-color: #f8f9fa;
     font-family:cursive;
     position:fixed;
@@ -192,27 +192,189 @@ body{
     border-style: solid;
     border-color: rgb(14, 18, 71);
     border-width: 1px;
-    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2); */
 }
 #send_post{
-    margin-top:15px;
+    /* margin-top:15px; */
 }
 .cover {
-    background-color:rgba(0, 0, 0, 0.452);
+    /* background-color:rgba(0, 0, 0, 0.452);
     width:100%;
     height:100%;
     display:none;
     position:fixed;
     top:0;
     left:0;
-    z-index: 2;
+    z-index: 2; */
 }
 .date_post{
-    margin-left:80%;
+    /* margin-left:80%;
     margin-top:-25px;
     font-size: 95%;
-    color:darkgray;
+    color:darkgray; */
 }
 .description_post{
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
+}
+
+
+/* ***********************  New Style  **************************** */
+
+/**************************CustomProperties**********************/
+:root {
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --white-alpha-color: rgba(255, 255, 255, 0.5);
+    --black-alpha-color: rgba(0, 0, 0, 0.3);
+    --black-alpha-color2: rgba(0, 0, 0, 0.5);
+    --gray-color: #ccc;
+    --gray-dark-color: #555;
+    --gray-light-color: #f3f3f3; 
+    --text-color: #222;
+    
+    --gray-blue: #D5DBE1;
+    --gray-blue-2: #E2E8EE;
+    --gray-light-2: #3d509f;
+    --black-logo: #3D3D3D;
+    --pink-color: #DA2D57;
+    --yellow-color: #AAAD00;
+    --blue-color: #0013C2;
+    --green-color: #2B8800;
+    --orange-color: #FF8A00;
+    --pic-user-logued-color: #00BAAF;
+    --link-color: #1E6876;     
+
+    --font: "Ubuntu", sans-serif;
+
+
+
+    --max-width: 1200px;
+    --header-height: 2rem;
+    --search-height: 1rem;
+}
+  
+  /*****************************Reset*****************************/
+html {
+    box-sizing: border-box;
+    font-family: var(--font);
+    font-size: 32px;
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+box-sizing: inherit;
+}
+
+body {
+margin: 0;
+overflow-x: hidden;
+color: var(--text-color);
+background-color: var(--gray-light-color);
+}
+
+/* #arrow-first-page svg:hover,
+#arrow-prev-page svg:hover,
+#arrow-next-page svg:hover,
+#arrow-last-page svg:hover{
+cursor: pointer;
+} */
+
+a {
+color: var(--link-color);
+text-decoration: none;
+transition: all ease-out;
+}
+
+a:hover {
+opacity: 0.75;
+}
+
+h1 {
+margin: 0;
+font-size: 2.9rem;
+}
+
+h2 {
+margin: 0;
+font-size: 2rem;
+}
+
+h3 {
+margin: 0;
+font-size: 1.5rem;
+}
+
+h4 {
+margin: 0;
+font-size: 1.25rem;
+}
+
+h5 {
+margin: 0;
+font-size: 1rem;
+}
+
+h6 {
+margin: 0;
+font-size: 0.85rem;
+}
+
+img {
+/* max-width: 100%; */
+/* height: 3rem; */
+    /* width: 100%;
+    height: 100%;
+    object-fit: contain; */
+}
+
+p,
+input {
+line-height: 1.6;
+font-size: 1.3rem;
+}
+
+
+.header {
+/* position: sticky; */
+/* position: fixed;
+padding: 0.5rem 1rem; */
+/* padding: 13px 1rem; */
+/* width: 100%;
+height: var(--header-height);
+background-color: var(--first-color);
+color: var(--white-color);
+display: flex;
+justify-content: space-between;
+align-items: center;
+align-content: center; */
+/* border-radius: 0 0 10px 10px; */
+}
+
+.header{
+position: fixed;
+left: 0;
+top: 0;
+/* padding: 0.5rem 1rem; */
+width: 100%;
+height: var(--header-height);
+background-color: var(--gray-blue-2);
+color: var(--white-color);
+display: flex;
+justify-content: center;
+align-items: center;
+/* align-content: center;  */
+}
+
+.navbar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+body{
+    margin: var(--header-height) 0;
 }
