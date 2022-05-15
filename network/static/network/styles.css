@@ -382,7 +382,7 @@ align-items: center;
 
 .new_post_button{
     position: fixed;
-    right: .5rem;
+    right: 1rem;
     bottom: 3rem;
 }
 
