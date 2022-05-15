@@ -380,6 +380,13 @@ align-items: center;
     align-items: center;
 }
 
+.new_post_button{
+    position: fixed;
+    right: .5rem;
+    bottom: 3rem;
+}
+
 body{
     margin: var(--header-height) 0;
+    padding: .5rem;
 }
