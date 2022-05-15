@@ -371,8 +371,13 @@ align-items: center;
     position: fixed;
     left: 0;
     bottom: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--gray-blue);
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 body{
