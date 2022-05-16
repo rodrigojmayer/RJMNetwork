@@ -239,9 +239,19 @@ function myFunction() {
   }
   
   // Close the dropdown if the user clicks outside of it
+  var cont=0;
     window.onclick = function(event) {
         console.log(event.target);
+        
+        // if (cont==1) { 
+        // debugger;
+        // }
+        // cont=1;
+        // setTimeout(alert(event.target),50000);
         // if (!event.target.matches('.dropbtn')) {
+            if (event.target.matches('#open_profile')) {
+alert("peditos");
+            }
         if (!event.target.matches('#dropbtn-profile')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
