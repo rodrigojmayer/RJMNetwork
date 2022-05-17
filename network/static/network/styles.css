@@ -388,6 +388,9 @@ align-items: center;
     border: none;
     cursor: pointer;
   }
+  .dropdown a{
+      cursor: pointer;
+    }
   
   .dropbtn:hover, .dropbtn:focus {
     /* background-color: #2980B9; */

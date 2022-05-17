@@ -249,9 +249,13 @@ function myFunction() {
         // cont=1;
         // setTimeout(alert(event.target),50000);
         // if (!event.target.matches('.dropbtn')) {
-            if (event.target.matches('#open_profile')) {
-alert("peditos");
-            }
+        if (event.target.matches('#open_profile')) {
+            alert("peditos");
+        }
+        else if(event.target.matches('#log_out')){
+            alert("kquita");
+        }
+
         if (!event.target.matches('#dropbtn-profile')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
