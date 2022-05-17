@@ -80,8 +80,8 @@
                     </button>
                     <div id="myDropdown" class="dropdown-content"  onchange="location = this.value;">
                     <!-- <a href="#home">Profile</a> -->
-                        <a id="open_profile" value="/profile/{{ user.id }}">Profile</a>
-                        <a id="log_out" value="{% url 'logout' %}">Log out</a>
+                        <a id="open_profile" href="/profile/{{ user.id }}">Profile</a>
+                        <a id="log_out" href="{% url 'logout' %}">Log out</a>
                     </div>
                 </div>
 
