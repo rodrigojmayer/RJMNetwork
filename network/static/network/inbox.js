@@ -250,7 +250,22 @@ function myFunction() {
         // setTimeout(alert(event.target),50000);
         // if (!event.target.matches('.dropbtn')) {
         if (event.target.matches('#open_profile')) {
+            // console.log(document.querySelector(`#open_profile`));
             alert("peditos");
+
+            // fetch('/profile/1', {
+            //     method: 'POST',
+            //     body: JSON.stringify({
+            //         description: "descrip"
+            //     })
+            // })
+            // .then(response => response.json())
+            // .then(result => {
+            //     load_postbox('all posts', result.user_log);
+            // });
+            // return false;
+
+
         }
         else if(event.target.matches('#log_out')){
             alert("kquita");
