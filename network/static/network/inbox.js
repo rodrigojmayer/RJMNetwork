@@ -1,16 +1,26 @@
 let id_post_global = -1;
+var rs = getComputedStyle(document.querySelector(":root"));
+
+
 document.addEventListener('DOMContentLoaded', function(){
-    if(document.querySelector('#new_post_view'))
+    if(document.querySelector('#new_post_view')){
         document.querySelector('#new_post_view').style.display = 'none';
+    }
     if(document.querySelector('#new_post'))
         document.querySelector('#new_post').addEventListener('click', () => load_postbox('new post',null));
-    if(document.querySelector('#all_posts_view'))
+    if(document.querySelector('#all_posts_view')){
         document.querySelector('#all_posts_view').style.display = 'block';
+        document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--green-color");
+
+    }
 })
 function load_postbox(postbox, user_log){
     if(postbox === 'new post'){
-        if(document.querySelector('#new_post_view'))
+        if(document.querySelector('#new_post_view')){
             document.querySelector('#new_post_view').style.display = 'block';
+            document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+            alert("dalechango");
+        }
         document.querySelector('.cover').style.display="block";
         
         const post = document.createElement('div');
