@@ -272,14 +272,17 @@ def following(request):
 def liked_posts(request):
 
     if request.user.id:
-        follows_filter=[]
-        followers = Followers.objects.filter(follower=request.user.id)
-        for each_followers_filter in followers:
-            print(each_followers_filter.followed.id)
-            follows_filter.append(each_followers_filter.followed.id)
+        likers_filter=[]
+        likers = Likers.objects.filter(liker=request.user.id)
+        for each_likers_filter in likers:
+            # print(each_likers_filter.followed.id)
+            # print(each_likers_filter.post.id)
+            print(each_likers_filter)
+            # likers_filter.append(each_likers_filter.followed.id)
+            likers_filter.append(each_likers_filter.post.id)
         all_posts = NewPost.objects.all()
         all_posts = all_posts.order_by("-date_added")
-        all_posts2=all_posts.filter(poster__in=follows_filter)
+        all_posts2=all_posts.filter(poster__in=likers_filter)
         total_posts=all_posts2.count()
         all_posts2=all_posts2[:10]
         total_pages=math.ceil(total_posts/10)
@@ -300,7 +303,7 @@ def liked_posts(request):
                     likers_id.append(each.id)
                 post.likers_id = likers_id
         return render(request, "network/liked_posts.html",{
-            "follows_filter":follows_filter,
+            "likers_filter":likers_filter,
             "all_posts":all_posts2,
             "list_total_pages":list_total_pages,
         })
