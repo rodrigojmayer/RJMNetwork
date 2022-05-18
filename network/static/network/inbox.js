@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function(){
     if(document.querySelector('#all_posts_view')){
         document.querySelector('#all_posts_view').style.display = 'block';
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--green-color");
+        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
 
     }
     // var url = window.location.href;
@@ -19,7 +21,15 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log(window.location.pathname);
     if(window.location.pathname == "/following"){
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--yellow-color");
+        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+    }
+    else if(window.location.pathname == "/liked_posts"){
+        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--pink-color");
+        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
+        document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+        
+
     }
     // console.log(document.querySelector('#nav-following'))
 })
@@ -29,6 +39,7 @@ function load_postbox(postbox, user_log){
             document.querySelector('#new_post_view').style.display = 'block';
             document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+            document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
             // alert("dalechango");
         }
         document.querySelector('.cover').style.display="block";
