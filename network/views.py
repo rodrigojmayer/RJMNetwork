@@ -269,6 +269,44 @@ def following(request):
     else:
         return render(request, "network/register.html")
 
+def liked_posts(request):
+
+    if request.user.id:
+        follows_filter=[]
+        followers = Followers.objects.filter(follower=request.user.id)
+        for each_followers_filter in followers:
+            print(each_followers_filter.followed.id)
+            follows_filter.append(each_followers_filter.followed.id)
+        all_posts = NewPost.objects.all()
+        all_posts = all_posts.order_by("-date_added")
+        all_posts2=all_posts.filter(poster__in=follows_filter)
+        total_posts=all_posts2.count()
+        all_posts2=all_posts2[:10]
+        total_pages=math.ceil(total_posts/10)
+        list_total_pages = []
+        for i in range(2, total_pages+1):
+            list_total_pages.append(i)
+        all_likers = Likers.objects.all()
+    
+        for post in all_posts2:
+            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
+            post.number_likes=0
+            likers = all_likers.filter(post=post.id)
+            likers_id = []
+            for each_liker in likers:
+                post.likers = each_liker.liker.all()
+                post.number_likes = each_liker.liker.count()
+                for each in each_liker.liker.all():
+                    likers_id.append(each.id)
+                post.likers_id = likers_id
+        return render(request, "network/liked_posts.html",{
+            "follows_filter":follows_filter,
+            "all_posts":all_posts2,
+            "list_total_pages":list_total_pages,
+        })
+    else:
+        return render(request, "network/register.html")
+
 @csrf_exempt
 def pagesposts(request):
 
