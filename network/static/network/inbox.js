@@ -3,16 +3,20 @@ var rs = getComputedStyle(document.querySelector(":root"));
 
 
 document.addEventListener('DOMContentLoaded', function(){
+    document.querySelector("#lookup-form").style.display = "none";
     if(document.querySelector('#new_post_view')){
         document.querySelector('#new_post_view').style.display = 'none';
     }
     if(document.querySelector('#new_post'))
         document.querySelector('#new_post').addEventListener('click', () => load_postbox('new post',null));
+    if(document.querySelector('#nav-search'))
+        document.querySelector('#nav-search').addEventListener('click', () => load_postbox('search bar',null));
     if(document.querySelector('#all_posts_view')){
         document.querySelector('#all_posts_view').style.display = 'block';
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--green-color");
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
+        // document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
 
     }
     // var url = window.location.href;
@@ -23,11 +27,13 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--yellow-color");
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+        // document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
     else if(window.location.pathname == "/liked_posts"){
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--pink-color");
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+        // document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
         
 
     }
@@ -40,6 +46,7 @@ function load_postbox(postbox, user_log){
             document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+            document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
             // alert("dalechango");
         }
         document.querySelector('.cover').style.display="block";
@@ -65,6 +72,14 @@ function load_postbox(postbox, user_log){
             });
             return false;
        };
+    }
+    if(postbox === 'search bar'){
+        document.querySelector("#lookup-form").style.display = "block";
+        document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
+        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
+        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+        document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+
     }
     if(postbox === 'all posts'){
         window.location.pathname="";
