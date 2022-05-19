@@ -179,7 +179,7 @@ body{
   /* transform: scale(1.04); */
 }
 #new_post_view{
-    /* margin-top: 10%;
+    margin-top: 10%;
     background-color: #f8f9fa;
     font-family:cursive;
     position:fixed;
@@ -192,7 +192,7 @@ body{
     border-style: solid;
     border-color: rgb(14, 18, 71);
     border-width: 1px;
-    box-shadow: 4px 4px rgba(0, 0, 0, 0.2); */
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
 }
 #send_post{
     /* margin-top:15px; */
