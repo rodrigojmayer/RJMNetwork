@@ -42,7 +42,11 @@ document.addEventListener('DOMContentLoaded', function(){
 function load_postbox(postbox, user_log){
     if(postbox === 'new post'){
         if(document.querySelector('#new_post_view')){
-            document.querySelector('#new_post_view').style.display = 'block';
+            if(document.querySelector('#new_post_view').style.display === 'block'){
+                document.querySelector('#new_post_view').style.display = 'none';
+            }
+            else
+                document.querySelector('#new_post_view').style.display = 'block';
             document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
@@ -74,7 +78,11 @@ function load_postbox(postbox, user_log){
        };
     }
     if(postbox === 'search bar'){
-        document.querySelector("#lookup-form").style.display = "block";
+        // if(document.querySelector('#lookup-form').style.display === 'block'){
+            // document.querySelector('#lookup-form').style.display = 'none';
+        // }
+        // else
+        document.querySelector('#lookup-form').style.display = 'block';
         document.querySelector(".search-text").focus();
         document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
@@ -227,6 +235,7 @@ function pages(user_log, prev_page, next_page){
                 post.id=("posts_style");
                 post_string = `  <!--div id="post-${data_post.pk}"> ${ data_post.pk } </div-->
                                     <a id="profile"  href="/profile/${ data_post.fields.poster }">${ user_post[0].fields.username }</a>
+                                    <div id="post-${ fecha }" class="date_post"> ${ fecha }</div>
                                     <div id="post-description-${ data_post.pk }"> ${ data_post.fields.description } </div>`;
                 if( data_post.fields.poster == user_log  ){
                     post_string += `<div id="edit" onclick="edit_field('${ data_post.pk }')">Edit</div>`;
@@ -245,8 +254,7 @@ function pages(user_log, prev_page, next_page){
                 post_string += `<button class="yes_button" id="like-btn-${data_post.pk}" value="${like_icon}" onclick="like(${data_post.pk})">
                                     <img id="heart-img-${data_post.pk}" src="/static/network/images/${like_icon}.jpg" alt="like_image" width="25" >
                                 </button>   
-                                <div id="like-count-${data_post.pk}" class="d-inline-block">${result.all_likers_id[cont_posts].length} </div> likes
-                                <div id="post-${ fecha }" class="date_post"> ${ fecha }</div>`;
+                                <div id="like-count-${data_post.pk}" class="d-inline-block">${result.all_likers_id[cont_posts].length} </div> likes`;
                 post.innerHTML = post_string;
                 document.querySelector(`#page_${next_page}`).append(post);
             }

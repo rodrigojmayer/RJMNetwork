@@ -14,6 +14,7 @@
                 {% for post in all_posts %} 
                     <div class="border border-secondary rounded p-3 mt-2" id="posts_style">
                         <a id="profile"  href="profile/{{ post.poster.id }}">{{ post.poster }}</a>
+                        <div id="post-{{post.date_added}}" class="date_post"> {{ post.date_added }}</div>
                         <div id="post-description-{{post.id}}" class="description_post"> {{ post.description }} </div>
                         {% if post.poster.id == user.id %}
                             <div id="edit" onclick="edit_field('{{ post.id }}')">Edit</div>
@@ -33,7 +34,6 @@
                             </button>
                         {% endif %}
                         <div id="like-count-{{post.id}}" class="d-inline-block">{{post.number_likes}} </div> likes
-                        <div id="post-{{post.date_added}}" class="date_post"> {{ post.date_added }}</div>
                         
                         <div>{{ post.timestamp }}</div>
                     </div>
