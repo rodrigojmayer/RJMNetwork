@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // console.log(url.pathname);
     // console.log(window.location.pathname);
     var pathArray = window.location.pathname.split('/');
-    console.log(pathArray[1]);
+    // console.log(pathArray[1]);
     if(pathArray[1] == "following"){
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--yellow-color");
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
