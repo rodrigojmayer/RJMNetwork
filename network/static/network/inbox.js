@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(document.querySelector('#nav-search'))
         document.querySelector('#nav-search').addEventListener('click', () => load_postbox('search bar',null));
     if(document.querySelector('#all_posts_view')){
+        // alert("entrando");
         document.querySelector('#all_posts_view').style.display = 'block';
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--green-color");
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
@@ -22,20 +23,25 @@ document.addEventListener('DOMContentLoaded', function(){
     // var url = window.location.href;
     // var c = url.searchParams.get("c");
     // console.log(url.pathname);
-    console.log(window.location.pathname);
-    if(window.location.pathname == "/following"){
+    // console.log(window.location.pathname);
+    var pathArray = window.location.pathname.split('/');
+    console.log(pathArray[1]);
+    if(pathArray[1] == "following"){
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--yellow-color");
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
         // document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
-    else if(window.location.pathname == "/liked_posts"){
+    else if(pathArray[1] == "liked_posts"){
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--pink-color");
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
         // document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
-        
-
+    }
+    else if(pathArray[1] == "profile"){
+        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-color");
+        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+        document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
     // console.log(document.querySelector('#nav-following'))
 })
