@@ -109,13 +109,16 @@ body{
 #like_complete{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .yes_button{
+    all: unset;
+    height: 40px;
     margin-right: 8px;
+    cursor: pointer;
 }
 
-/* letter-spacing: 2px; */
 
 .d-inline-block{
     margin-right: 4px;
@@ -155,18 +158,6 @@ body{
 .no-button:hover {
     /* all: unset;
     cursor: default; */
-}
-.yes_button {
-    /* all: unset;
-    cursor: pointer; */
-}
-.yes_button:focus {
-    /* all: unset;
-    cursor: pointer; */
-}
-.yes_button:hover {
-    /* all: unset;
-    cursor: pointer; */
 }
 #id_page_buttons{
     /* text-align: center;
