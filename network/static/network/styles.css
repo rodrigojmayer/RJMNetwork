@@ -94,6 +94,8 @@ body{
 #posts-flex-order-child2{
 
     width: 93%;
+    display: flex;
+    flex-direction: column;
 }
 
 #posts-first-line{
@@ -105,6 +107,39 @@ body{
 
 
 }
+
+#profile{
+    /* width:30px; */
+    font-weight:bold;
+}
+
+.date_post{
+    /* margin-left:80%; */
+    /* margin-top:25px; */
+    font-size: 55%;
+    color:darkgray;
+}
+.description_post{
+    word-wrap: break-word;
+    /* width: 90%; */
+}
+
+#edit{
+    /* text-align: right; */
+    align-self:flex-end;
+    font-size: 75%;
+    width:40px;
+    color: var(--link-color); 
+}
+
+#edit:hover,#profile:hover{
+    cursor: pointer;
+    text-decoration:underline;
+}
+#edit-btns{
+    display: inline; 
+}
+
 
 #like_complete{
     display: flex;
@@ -125,21 +160,6 @@ body{
 }
 
 
-#profile{
-    /* width:30px; */
-    font-weight:bold;
-}
-
-.date_post{
-    /* margin-left:80%; */
-    /* margin-top:25px; */
-    font-size: 55%;
-    color:darkgray;
-}
-.description_post{
-    word-wrap: break-word;
-    /* width: 90%; */
-}
 #edit:hover,#profile:hover{
     /* cursor: pointer;
     text-decoration:underline; */
