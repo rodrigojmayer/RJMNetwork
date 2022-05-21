@@ -43,8 +43,8 @@ body{
     width: 60%; */
 }
 #profile_poster{
-    /* margin: 5px 0px 0px 0px;
-    position:absolute; */
+    /* margin: 5px 0px 0px 0px; */
+    /* position:absolute; */
 }
 #profile_header{
     /* margin:30px 0;
@@ -161,6 +161,12 @@ body{
 }
 
 
+/* *************** Profile view *************** */
+
+#profile-flex-order{
+    display: flex;
+    flex-direction: row;
+}
 #edit:hover,#profile:hover{
     /* cursor: pointer;
     text-decoration:underline; */
