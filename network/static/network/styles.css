@@ -64,10 +64,6 @@ body{
     padding:16px;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.2); */
 }
-#edit{
-    /* width:30px;
-    color: blue; */
-}
 
 
 #posts-flex-order{
@@ -145,13 +141,18 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-size: 80%;
 }
 
 .yes_button{
     all: unset;
-    height: 40px;
+    height: 1rem;
     margin-right: 8px;
     cursor: pointer;
+}
+.yes_button svg {
+    width: 1rem;
+    height: 1rem;
 }
 
 
@@ -324,7 +325,7 @@ body{
 html {
     box-sizing: border-box;
     font-family: var(--font);
-    font-size: 32px;
+    font-size: 2rem;
     scroll-behavior: smooth;
 }
 
