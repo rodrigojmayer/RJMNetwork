@@ -105,6 +105,23 @@ body{
 
 
 }
+
+#like_complete{
+    display: flex;
+    flex-direction: row;
+}
+
+.yes_button{
+    margin-right: 8px;
+}
+
+/* letter-spacing: 2px; */
+
+.d-inline-block{
+    margin-right: 4px;
+}
+
+
 #profile{
     /* width:30px; */
     font-weight:bold;
