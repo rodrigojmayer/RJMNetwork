@@ -235,7 +235,7 @@ function pages(user_log, prev_page, next_page){
                 post.id=("posts_style");
                 post_string = `  <!--div id="post-${data_post.pk}"> ${ data_post.pk } </div-->
                                     <a id="profile"  href="/profile/${ data_post.fields.poster }">${ user_post[0].fields.username }</a>
-                                    <div id="post-${ fecha }" class="date_post"> ${ fecha }</div>
+                <div id="post-${ fecha }" class="date_post"> ${ fecha }</div>
                                     <div id="post-description-${ data_post.pk }"> ${ data_post.fields.description } </div>`;
                 if( data_post.fields.poster == user_log  ){
                     post_string += `<div id="edit" onclick="edit_field('${ data_post.pk }')">Edit</div>`;
@@ -248,10 +248,6 @@ function pages(user_log, prev_page, next_page){
                                     <!--div id="like-count-${data_post.pk}" class="d-inline-block">${data_post.fields.likes}</div-->`;
                 if( result.all_likers_id[cont_posts].includes(parseInt(user_log))){
                     like_icon = "heart_full";
-                    post_string += `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M33.6751 7.9851C32.7561 7.05963 31.6632 6.32493 30.4593 5.82324C29.2555 5.32155 27.9643 5.06277 26.6601 5.06177C24.1931 5.06217 21.8162 5.98889 20 7.65843C18.1841 5.98861 15.8071 5.06185 13.34 5.06177C12.0343 5.06313 10.7417 5.3227 9.53661 5.82555C8.33155 6.3284 7.23783 7.06459 6.31838 7.99177C2.39672 11.9301 2.39838 18.0901 6.32172 22.0118L20 35.6901L33.6784 22.0118C37.6017 18.0901 37.6034 11.9301 33.6751 7.9851Z" fill="#3D3D3D"/>
-                    </svg>`;
-
                 }else{
                     like_icon = "heart_empty";
                 }
