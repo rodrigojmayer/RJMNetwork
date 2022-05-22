@@ -166,6 +166,7 @@ body{
 #profile-flex-order{
     display: flex;
     flex-direction: row;
+    /* gap: 2rem; */
 }
 
 #profile-flex-order-child1 #dropbtn-profile{
@@ -185,8 +186,41 @@ body{
 }
 
 #profile-flex-order-child2{
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-    width: 100%;
+#profile-flex-order-child2  h2{
+    height: 2rem;
+}
+
+.page_button {
+    width: 3.9rem;
+    height: 1.3rem;
+    background-color: var(--link-color);
+    color: var(--white-color);
+    margin: 0;
+    font-size: .6rem;
+    border:0;
+    border-radius: 5px;
+    /* width: 90px;
+    height: 25px; */
+}
+
+.page_button:hover{
+    cursor: pointer;
+    /* background-color: var(--link-light-color); */
+}
+
+.page_button:active{
+    background-color: var(--link-dark-color);
+}
+
+#profile-flex-order-child2  button{
+    /* margin-bottom: .5rem; */
+    /* width: ; */
 }
 
 #edit:hover,#profile:hover{
@@ -338,7 +372,9 @@ body{
     --green-color: #2B8800;
     --orange-color: #FF8A00;
     --pic-user-logued-color: #00BAAF;
-    --link-color: #1E6876;     
+    --link-color: #1E6876;
+    --link-dark-color: #144852;
+    --link-light-color: #2d9cb3;
 
     --font: "Ubuntu", sans-serif;
 

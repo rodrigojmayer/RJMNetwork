@@ -14,17 +14,16 @@
             </div>
             <div id="profile-flex-order-child2">
                 <h2 id="profile_poster">{{poster}}</h2>
-                {% if poster.id != user.id  and user.is_authenticated%}
-                    <button id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
-                    <button style="display:none;" id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
-                    <!-- </br> -->
-                {% else %}   
-                    <button style="display:none;" id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
-                    <button id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
-                    <!-- </br> -->
-                {% endif %}
+                    {% if poster.id != user.id  and user.is_authenticated%}
+                        <button id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
+                        <button style="display:none;" id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
+                        <!-- </br> -->
+                    {% else %}
+                        <button style="display:none;" id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
+                        <button id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
+                        <!-- </br> -->
+                    {% endif %}
                 <div id="profile-data-line">
-
                     {{profile_posts.count}} Posts
                     <!-- &emsp;&emsp; -->
                     {% if followed_by %}
