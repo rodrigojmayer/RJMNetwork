@@ -167,6 +167,28 @@ body{
     display: flex;
     flex-direction: row;
 }
+
+#profile-flex-order-child1 #dropbtn-profile{
+    width: 4rem;
+    height: 4rem;
+    margin: .5rem;
+}
+
+#profile-data-line{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+}
+
+#profile-flex-order-child2{
+
+    width: 100%;
+}
+
 #edit:hover,#profile:hover{
     /* cursor: pointer;
     text-decoration:underline; */
