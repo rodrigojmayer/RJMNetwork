@@ -16,26 +16,29 @@
                 <h2 id="profile_poster">{{poster}}</h2>
                 {% if poster.id != user.id  and user.is_authenticated%}
                     <button id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
-                    </br>
+                    <button style="display:none;" id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
+                    <!-- </br> -->
                 {% else %}   
                     <button style="display:none;" id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
-                    </br>
+                    <button id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
+                    <!-- </br> -->
                 {% endif %}
-                <div id="profile_header">
+                <div id="profile-data-line">
+
                     {{profile_posts.count}} Posts
-                    &emsp;&emsp;
+                    <!-- &emsp;&emsp; -->
                     {% if followed_by %}
                         {% for follow in followed_by %}
-                            <button id="profile_followers_count" class="no-button">{{ follow.follower.all.count }} </button>
-                            Followers
+                            <div id="profile_followers_count" class="no-button">{{ follow.follower.all.count }} Followers</div>
+                                
                             {% if not follow.follower.all  %}
-                                <button id="profile_followers_list" class="no-button" style="display:none"> </button>
+                                <!-- <div id="profile_followers_list" class="no-button" style="display:none"> </div> -->
                             {% endif %}
                         {% endfor %}
-                    {% else %}
-                        0 Followers
+                    <!-- {% else %} -->
+                        <!-- 0 Followersddddddddddddddddd -->
                     {% endif %}
-                    &emsp;&emsp;
+                    <!-- &emsp;&emsp; -->
                     {% if followers %}
                         {{ followers|length }} 
                         {% if followers|length > 1 %} Followings
@@ -64,7 +67,7 @@
                                         <a id="profile"  href="profile/{{ post.poster.id }}">{{ post.poster }}</a>
                                         <div id="post-{{post.date_added}}" class="date_post"> {{ post.date_added }}</div>
                                     </div>
-                                    <div id="post-description-{{post.id}}" class="description_post"> <p>{{ post.description }} </p></div>
+                                    <div id="post-description-{{post.id}}" class="description_post"> {{ post.description }} </div>
                                     {% if post.poster.id == user.id %}
                                         <div id="edit" onclick="edit_field('{{ post.id }}')">Edit</div>
                                     {% else %}
