@@ -16,11 +16,11 @@
                 <h2 id="profile_poster">{{poster}}</h2>
                     {% if poster.id != user.id  and user.is_authenticated%}
                         <button id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
-                        <button style="display:none;" id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
+                        <button style="display:none;" id="edit-profile-btn" class="page_button" onclick="load_postbox('edit profile',null)" value='{{user_following}}'>Edit Profile</button>
                         <!-- </br> -->
                     {% else %}
                         <button style="display:none;" id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
-                        <button id="edit-profile-btn" class="page_button" onclick="edit_profile('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>Edit Profile</button>
+                        <button id="edit-profile-btn" class="page_button" onclick="load_postbox('edit profile',null)" value='{{user_following}}'>Edit Profile</button>
                         <!-- </br> -->
                     {% endif %}
                 <div id="profile-data-line">
