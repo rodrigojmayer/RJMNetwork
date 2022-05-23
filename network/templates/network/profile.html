@@ -28,7 +28,7 @@
                     <!-- &emsp;&emsp; -->
                     {% if followed_by %}
                         {% for follow in followed_by %}
-                            <div id="profile_followers_count" class="no-button">{{ follow.follower.all.count }} Followers</div>
+                            <div><span id="profile_followers_count" class="no-button">{{ follow.follower.all.count }}</span> Followers</div>
                                 
                             {% if not follow.follower.all  %}
                                 <!-- <div id="profile_followers_list" class="no-button" style="display:none"> </div> -->
