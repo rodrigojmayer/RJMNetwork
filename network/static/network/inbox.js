@@ -108,6 +108,9 @@ function load_postbox(postbox, user_log){
         pages(user_log, 0, 0)
         return false;
     }
+    if(postbox === 'edit profile'){
+        alert("kacepapa");
+    }
 }
 
 
