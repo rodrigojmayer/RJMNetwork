@@ -388,7 +388,12 @@ def edit(request):
                             }, status=201)
     else:
         print("This post is not yours")
-    
+
+
+@csrf_exempt
+@login_required
+def edit_profile(request):
+    print(request)
 
 @csrf_exempt
 @login_required

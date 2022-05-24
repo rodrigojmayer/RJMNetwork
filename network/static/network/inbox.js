@@ -109,7 +109,20 @@ function load_postbox(postbox, user_log){
         return false;
     }
     if(postbox === 'edit profile'){
-        alert("kacepapa");
+        // alert("kacepapa");
+        if(document.querySelector('#edit_profile_view')){
+            if(document.querySelector('#edit_profile_view').style.display === 'block'){
+                document.querySelector('#edit_profile_view').style.display = 'none';
+            }
+            else
+                document.querySelector('#edit_profile_view').style.display = 'block';
+
+        }
+        document.querySelector('#edit_profile_view').innerHTML =`<h3>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h3>
+        <form id="compose-form">
+            <textarea class="form-control" id="compose-body" ></textarea>
+            <input id="send_post" type="submit" class="page_button"/>
+        </form>`;
     }
 }
 
