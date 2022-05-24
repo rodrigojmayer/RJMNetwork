@@ -333,6 +333,26 @@ body{
     border-width: 1px;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
 }
+
+
+#edit_profile_view{
+    margin-top: 15%;
+    background-color: #f8f9fa;
+    font-family:cursive;
+    position:fixed;
+    left: 30%;
+    top: 0;
+    /* left:auto; */
+    width: 50%;
+    z-index: 3;
+    padding:20px;
+    border-radius: .4rem;
+    border-style: solid;
+    border-color: rgb(14, 18, 71);
+    border-width: 1px;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+    display:none;
+}
 #send_post{
     /* margin-top:15px; */
 }
