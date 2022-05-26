@@ -353,6 +353,33 @@ body{
     box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
     display:none;
 }
+
+.form-control{
+    width: 10rem;
+    height: 1.5rem;
+    margin: .4rem;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    /* color-plac */
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--gray-color);
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--gray-color);
+
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--gray-color);
+
+}
+
 #send_post{
     /* margin-top:15px; */
 }
