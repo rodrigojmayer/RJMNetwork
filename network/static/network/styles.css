@@ -336,14 +336,15 @@ body{
 
 
 #edit_profile_view{
-    margin-top: 15%;
+    margin-top: 8px;
     background-color: #f8f9fa;
     font-family:cursive;
     position:fixed;
     left: 30%;
-    top: 0;
+    top: var(--header-height);
     /* left:auto; */
     width: 50%;
+    height: 18rem;
     z-index: 3;
     padding:20px;
     border-radius: .4rem;
