@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(document.querySelector('#all_posts_view')){
         // alert("entrando");
         document.querySelector('#all_posts_view').style.display = 'block';
+        document.querySelector('#edit_profile_view').style.display = 'none';
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--green-color");
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
@@ -118,7 +119,7 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#edit_profile_view').style.display = 'block';
 
         }
-        document.querySelector('#edit_profile_view').innerHTML =`<h3>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h3>
+        document.querySelector('#edit_profile_view').innerHTML =`<h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
         <form id="compose-form">
         <input autofocus class="form-control" type="text" name="username" placeholder="Username">
         <input class="form-control" type="email" name="username" placeholder="Email Address">
