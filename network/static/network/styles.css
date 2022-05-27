@@ -454,35 +454,35 @@ font-size: 1.3rem;
 
 
 .header {
-/* position: sticky; */
-/* position: fixed;
-padding: 0.5rem 1rem; */
-/* padding: 13px 1rem; */
-/* width: 100%;
-height: var(--header-height);
-background-color: var(--first-color);
-color: var(--white-color);
-display: flex;
-justify-content: space-between;
-align-items: center;
-align-content: center; */
-/* border-radius: 0 0 10px 10px; */
+    /* position: sticky; */
+    /* position: fixed;
+    padding: 0.5rem 1rem; */
+    /* padding: 13px 1rem; */
+    /* width: 100%;
+    height: var(--header-height);
+    background-color: var(--first-color);
+    color: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center; */
+    /* border-radius: 0 0 10px 10px; */
 }
 
 .header{
-position: fixed;
-left: 0;
-top: 0;
-/* padding: 0.5rem 1rem; */
-width: 100%;
-height: var(--header-height);
-background-color: var(--gray-blue-2);
-color: var(--white-color);
-display: flex;
-justify-content: center;
-align-items: center;
-/* align-content: center;  */
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    position: fixed;
+    left: 0;
+    top: 0;
+    /* padding: 0.5rem 1rem; */
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--gray-blue-2);
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-content: center;  */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 .navbar{
@@ -694,10 +694,14 @@ cursor: pointer;
     /* justify-content: center; */
     font-size: smaller;
     
+  overflow-y: hidden;
 }
 
-.compose-form{
-    
+#edit_profile_view h5{
+    margin-bottom: .5rem;
+}
+
+#compose-form{
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -721,13 +725,18 @@ cursor: pointer;
     color: var(--gray-color);
     opacity: 1; /* Firefox */
 }
+/* #password::placeholder { Chrome, Firefox, Opera, Safari 10.1+
+    content:"holis";
+} */
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: var(--gray-color);
+    content:"holis";
 
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: var(--gray-color);
+    content:"holis";
 
 }

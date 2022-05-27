@@ -121,13 +121,16 @@ function load_postbox(postbox, user_log){
         }
         document.querySelector('#edit_profile_view').innerHTML =`<h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
         <form id="compose-form">
-        <input autofocus class="form-control" type="text" name="username" placeholder="Username">
-        <input class="form-control" type="email" name="username" placeholder="Email Address">
-        <input class="form-control" type="password" name="username" placeholder="Password">
-        <input class="form-control" type="password" name="username" placeholder="Confirm Password">
-        <a>Change profile picture</a><br>
+        <input class="form-control" id="username" type="text" name="username" placeholder="Username" autocomplete="off">
+        <input class="form-control" id="emailsddress" type="email" name="emailsddress" placeholder="Email Address">
+        <input class="form-control" id="password" type="password" name="password" placeholder="Password">
+        <input class="form-control" id="confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password">
+        <a class="form-control" >Change profile picture</a>
         <input id="send_post" type="submit" class="page_button"/>
+         
         </form>`;
+
+        document.querySelector('#compose-form .form-control').focus();
     }
 }
 
