@@ -51,9 +51,13 @@ function load_postbox(postbox, user_log){
         if(document.querySelector('#new_post_view')){
             if(document.querySelector('#new_post_view').style.display === 'block'){
                 document.querySelector('#new_post_view').style.display = 'none';
+                document.querySelector('.modal').style.opacity = 0;
             }
-            else
+            else{
                 document.querySelector('#new_post_view').style.display = 'block';
+                document.querySelector('.modal').style.opacity = 1;
+
+            }
             document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");

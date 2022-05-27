@@ -652,6 +652,20 @@ cursor: pointer;
 
 /* ***************** Modal ***************** */
 
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--black-alpha-color);
+    opacity: 0;
+    pointer-events: none;
+    /* overflow: scroll; */
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
 #new_post_view{
     margin-top: 10%;
     background-color: #f8f9fa;
