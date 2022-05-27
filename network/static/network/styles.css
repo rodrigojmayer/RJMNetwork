@@ -685,12 +685,14 @@ cursor: pointer;
 
 
 #edit_profile_view{
-    margin-top: 8px;
+    /* margin-top: 8px; */
     background-color: #f8f9fa;
     font-family:cursive;
-    position:fixed;
-    left: 30%;
-    top: var(--header-height);
+    /* position:fixed; */
+    /* left: 30%; */
+    margin: calc(var(--header-height) + 8px) auto;
+    /* padding-top: ; */
+    /* top: var(--header-height); */
     /* left:auto; */
     /* width: 50%; */
     width: 15rem;

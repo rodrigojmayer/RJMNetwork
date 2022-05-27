@@ -118,9 +118,12 @@ function load_postbox(postbox, user_log){
         if(document.querySelector('#edit_profile_view')){
             if(document.querySelector('#edit_profile_view').style.display === 'block'){
                 document.querySelector('#edit_profile_view').style.display = 'none';
+                document.querySelector('.modal').style.opacity = 0;
             }
-            else
+            else{
                 document.querySelector('#edit_profile_view').style.display = 'block';
+                document.querySelector('.modal').style.opacity = 1;
+            }
 
         }
         document.querySelector('#edit_profile_view').innerHTML =`<h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
