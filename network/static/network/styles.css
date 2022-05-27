@@ -667,12 +667,13 @@ cursor: pointer;
     transition: 0.5s;
   }
 #new_post_view{
-    margin-top: 10%;
+    /* margin-top: 10%; */
+    margin: calc(var(--header-height) + 8px) auto;
     background-color: #f8f9fa;
     font-family:cursive;
-    position:fixed;
-    margin-left: 5%;
-    top: 0;
+    /* position:fixed; */
+    /* margin-left: 5%; */
+    /* top: 0; */
     width: 50%;
     z-index: 3;
     padding:20px;
