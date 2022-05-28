@@ -4,9 +4,9 @@ var rs = getComputedStyle(document.querySelector(":root"));
 
 document.addEventListener('DOMContentLoaded', function(){
     document.querySelector("#lookup-form").style.display = "none";
-    if(document.querySelector('#new_post_view')){
-        document.querySelector('#new_post_view').style.display = 'none';
-    }
+    // if(document.querySelector('#new_post_view')){
+        // document.querySelector('#new_post_view').style.display = 'none';
+    // }
     if(document.querySelector('#new_post'))
         document.querySelector('#new_post').addEventListener('click', () => load_postbox('new post',null));
     if(document.querySelector('#nav-search'))
@@ -49,15 +49,23 @@ document.addEventListener('DOMContentLoaded', function(){
 function load_postbox(postbox, user_log){
     if(postbox === 'new post'){
         if(document.querySelector('#new_post_view')){
-            if(document.querySelector('#new_post_view').style.display === 'block'){
+            // alert(`first alert: ` + document.querySelector('.modal').style.display);
+            if(document.querySelector('.modal').style.display === 'block'){
+            // if(document.querySelector('.modal').style.opacity == 1){
                 document.querySelector('#new_post_view').style.display = 'none';
-                document.querySelector('.modal').style.opacity = 0;
+                document.querySelector('.modal').style.display = 'none';
+                unLockScroll();
+                // document.querySelector('.modal').style.opacity = 0;
             }
             else{
+                // alert(`second alert: ` + document.querySelector('.modal').style.display);
+                document.querySelector('.modal').style.display = 'block';
+                // document.querySelector('.modal').style.opacity = 1;
                 document.querySelector('#new_post_view').style.display = 'block';
-                document.querySelector('.modal').style.opacity = 1;
-
+                document.querySelector('body').style.overflowy = 'hidden';
+                lockScroll()
             }
+            // alert(`third alert: ` + document.querySelector('.modal').style.display);
             document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
             document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
@@ -66,25 +74,25 @@ function load_postbox(postbox, user_log){
         }
         document.querySelector('.cover').style.display="block";
         
-        const post = document.createElement('div');
-        document.querySelector('#new_post_view').innerHTML =`<a href="#close" class="modal-close" onclick="unLockScroll();">
-                        <svg width="30" height="26" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_57083_1326)">
-                            <path d="M27.1875 -0.125H2.8125C1.25977 -0.125 0 1.13477 0 2.6875V23.3125C0 24.8652 1.25977 26.125 2.8125 26.125H27.1875C28.7402 26.125 30 24.8652 30 23.3125V2.6875C30 1.13477 28.7402 -0.125 27.1875 -0.125ZM22.2891 16.8965C22.5703 17.1777 22.5703 17.6348 22.2891 17.916L19.916 20.2891C19.6348 20.5703 19.1777 20.5703 18.8965 20.2891L15 16.3574L11.1035 20.2891C10.8223 20.5703 10.3652 20.5703 10.084 20.2891L7.71094 17.916C7.42969 17.6348 7.42969 17.1777 7.71094 16.8965L11.6426 13L7.71094 9.10352C7.42969 8.82227 7.42969 8.36524 7.71094 8.08399L10.084 5.71094C10.3652 5.42969 10.8223 5.42969 11.1035 5.71094L15 9.64258L18.8965 5.71094C19.1777 5.42969 19.6348 5.42969 19.916 5.71094L22.2891 8.08399C22.5703 8.36524 22.5703 8.82227 22.2891 9.10352L18.3574 13L22.2891 16.8965Z" fill="#D90062"/>
-                            </g>
-                            <rect x="0.25" y="0.25" width="29.5" height="25.5" rx="2.75" stroke="black" stroke-width="0.5"/>
-                            <defs>
-                            <clipPath id="clip0_57083_1326">
-                            <rect width="30" height="26" rx="3" fill="white"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </a>
-                    <h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
-                        <form id="compose-form">
-                            <textarea class="form-control" id="compose-body" ></textarea>
-                            <input id="send_post" type="submit" class="page_button"/>
-                        </form>`;
+        // const post = document.createElement('div');
+    // document.querySelector('#new_post_view').innerHTML =`<a href="#close" class="modal-close" onclick="unLockScroll();">
+    //                 <svg width="30" height="26" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+    //                     <g clip-path="url(#clip0_57083_1326)">
+    //                     <path d="M27.1875 -0.125H2.8125C1.25977 -0.125 0 1.13477 0 2.6875V23.3125C0 24.8652 1.25977 26.125 2.8125 26.125H27.1875C28.7402 26.125 30 24.8652 30 23.3125V2.6875C30 1.13477 28.7402 -0.125 27.1875 -0.125ZM22.2891 16.8965C22.5703 17.1777 22.5703 17.6348 22.2891 17.916L19.916 20.2891C19.6348 20.5703 19.1777 20.5703 18.8965 20.2891L15 16.3574L11.1035 20.2891C10.8223 20.5703 10.3652 20.5703 10.084 20.2891L7.71094 17.916C7.42969 17.6348 7.42969 17.1777 7.71094 16.8965L11.6426 13L7.71094 9.10352C7.42969 8.82227 7.42969 8.36524 7.71094 8.08399L10.084 5.71094C10.3652 5.42969 10.8223 5.42969 11.1035 5.71094L15 9.64258L18.8965 5.71094C19.1777 5.42969 19.6348 5.42969 19.916 5.71094L22.2891 8.08399C22.5703 8.36524 22.5703 8.82227 22.2891 9.10352L18.3574 13L22.2891 16.8965Z" fill="#D90062"/>
+    //                     </g>
+    //                     <rect x="0.25" y="0.25" width="29.5" height="25.5" rx="2.75" stroke="black" stroke-width="0.5"/>
+    //                     <defs>
+    //                     <clipPath id="clip0_57083_1326">
+    //                     <rect width="30" height="26" rx="3" fill="white"/>
+    //                     </clipPath>
+    //                     </defs>
+    //                 </svg>
+    //             </a>
+    //             <h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
+    //                 <form id="compose-form">
+    //                     <textarea class="form-control" id="compose-body" ></textarea>
+    //                     <input id="send_post" type="submit" class="page_button"/>
+    //                 </form>`;
         document.getElementById("compose-body").focus();
         document.querySelector('form').onsubmit = () => {
             var descrip = document.querySelector('#compose-body').value;
@@ -115,7 +123,7 @@ function load_postbox(postbox, user_log){
     }
     if(postbox === 'all posts'){
         window.location.pathname="";
-        document.querySelector('#new_post_view').style.display = 'none';
+        // document.querySelector('#new_post_view').style.display = 'none';
         if(document.querySelector('#profile_view')){
             document.querySelector('#profile_view').style.display = 'none';
         }
@@ -130,11 +138,13 @@ function load_postbox(postbox, user_log){
         if(document.querySelector('#edit_profile_view')){
             if(document.querySelector('#edit_profile_view').style.display === 'block'){
                 document.querySelector('#edit_profile_view').style.display = 'none';
-                document.querySelector('.modal').style.opacity = 0;
+                // document.querySelector('.modal').style.opacity = 0;
+                document.querySelector('.modal').style.display = 'none';
             }
             else{
                 document.querySelector('#edit_profile_view').style.display = 'block';
-                document.querySelector('.modal').style.opacity = 1;
+                // document.querySelector('.modal').style.opacity = 1;
+                document.querySelector('.modal').style.display = 'block';
             }
         }
         document.querySelector('#edit_profile_view').innerHTML =`<h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
@@ -361,54 +371,63 @@ function pages(user_log, prev_page, next_page){
 }
 function close_cover(){
     document.querySelector('.cover').style.display="none";
-    document.querySelector('#new_post_view').style.display = 'none';
+    // document.querySelector('#new_post_view').style.display = 'none';
 }
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown if the user clicks outside of it
-  var cont=0;
-    window.onclick = function(event) {
-        console.log(event.target);
-        
-        // if (cont==1) { 
-        // debugger;
-        // }
-        // cont=1;
-        // setTimeout(alert(event.target),50000);
-        // if (!event.target.matches('.dropbtn')) {
-        if (event.target.matches('#open_profile')) {
-            // console.log(document.querySelector(`#open_profile`));
-            // alert("peditos");
+}
 
-            // fetch('/profile/1', {
-            //     method: 'POST',
-            //     body: JSON.stringify({
-            //         description: "descrip"
-            //     })
-            // })
-            // .then(response => response.json())
-            // .then(result => {
-            //     load_postbox('all posts', result.user_log);
-            // });
-            // return false;
+// Close the dropdown if the user clicks outside of it
+var cont=0;
+window.onclick = function(event) {
+    console.log(event.target);
+    
+    // if (cont==1) { 
+    // debugger;
+    // }
+    // cont=1;
+    // setTimeout(alert(event.target),50000);
+    // if (!event.target.matches('.dropbtn')) {
+    if (event.target.matches('#open_profile')) {
+        // console.log(document.querySelector(`#open_profile`));
+        // alert("peditos");
+
+        // fetch('/profile/1', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         description: "descrip"
+        //     })
+        // })
+        // .then(response => response.json())
+        // .then(result => {
+        //     load_postbox('all posts', result.user_log);
+        // });
+        // return false;
 
 
-        }
-        else if(event.target.matches('#log_out')){
-            alert("kquita");
-        }
+    }
+    else if(event.target.matches('#log_out')){
+        alert("kquita");
+    }
 
-        if (!event.target.matches('#dropbtn-profile')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-            }
-        }
+    if (!event.target.matches('#dropbtn-profile')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
         }
     }
+    }
+}
+    
+ function lockScroll() {
+    document.body.classList.add("lock-scroll");
+    document.body.classList.remove("un-lock-scroll");
+  }
+  function unLockScroll() {
+    document.body.classList.remove("lock-scroll");
+    document.body.classList.add("un-lock-scroll");
+  }
