@@ -653,6 +653,7 @@ cursor: pointer;
 /* ***************** Modal ***************** */
 
 .modal {
+    display: none;
     position: fixed;
     z-index: 999;
     top: 0;
@@ -660,19 +661,25 @@ cursor: pointer;
     bottom: 0;
     left: 0;
     background-color: var(--black-alpha-color);
-    opacity: 0;
-    pointer-events: none;
+    /* opacity: 0; */
+    /* pointer-events: none; */
     /* overflow: scroll; */
     overflow-x: hidden;
+    overflow-y: hidden;
     transition: 0.5s;
-  }
+    /* pointer-events: auto; */
+}
 
-  .modal-close {
+body.modal {
+    overflow: hidden;
+    position: fixed;
+}
+
+.modal-close {
     z-index: 800;
     /* position: absolute; */
     position: relative;
     margin: 0;
-    
     top: -4px;
     left: calc(15rem - 31.2px);
     /* right: -15rem; */
@@ -685,20 +692,22 @@ cursor: pointer;
 
 #new_post_view{
     /* margin-top: 10%; */
+    position: relative;
+    z-index: 999;
     margin: calc(var(--header-height) + 8px) auto;
     background-color: #f8f9fa;
-    font-family:cursive;
+    font-family: cursive;
     /* position:fixed; */
     /* margin-left: 5%; */
     /* top: 0; */
     /* width: 50%; */
     width: 15rem;
     height: 15rem;
-    z-index: 3;
+    /* z-index: 3; */
     /* padding:20px; */
     border-radius: .1rem;
     border-style: solid;
-    border: outset;
+    /* border: outset; */
     border-color: rgb(14, 18, 71);
     border-width: 1px;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
@@ -762,7 +771,6 @@ cursor: pointer;
     text-align: center;
     font-size: smaller;
     /* color-plac */
-
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -784,3 +792,27 @@ cursor: pointer;
     content:"holis";
 
 }
+
+.lock-scroll {
+    overflow: hidden;
+  }
+  
+  .un-lock-scroll {
+    overflow: visible;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
