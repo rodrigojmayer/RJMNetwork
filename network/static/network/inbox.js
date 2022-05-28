@@ -67,7 +67,7 @@ function load_postbox(postbox, user_log){
         document.querySelector('.cover').style.display="block";
         
         const post = document.createElement('div');
-        document.querySelector('#new_post_view').innerHTML =`<h3>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h3>
+        document.querySelector('#new_post_view').innerHTML =`<h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
                         <form id="compose-form">
                             <textarea class="form-control" id="compose-body" ></textarea>
                             <input id="send_post" type="submit" class="page_button"/>
