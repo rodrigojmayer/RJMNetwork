@@ -72,7 +72,7 @@ function load_postbox(postbox, user_log){
             document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
             // alert("dalechango");
         }
-        document.querySelector('.cover').style.display="block";
+        // document.querySelector('.cover').style.display="block";
         
         // const post = document.createElement('div');
     // document.querySelector('#new_post_view').innerHTML =`<a href="#close" class="modal-close" onclick="unLockScroll();">
@@ -129,7 +129,7 @@ function load_postbox(postbox, user_log){
         }
         let div_all_posts_view = document.querySelector('#all_posts_view')
         div_all_posts_view.style.display = 'block';
-        document.querySelector('.cover').style.display="none";
+        // document.querySelector('.cover').style.display="none";
         pages(user_log, 0, 0)
         return false;
     }
@@ -369,10 +369,10 @@ function pages(user_log, prev_page, next_page){
     });
     return false;
 }
-function close_cover(){
-    document.querySelector('.cover').style.display="none";
-    // document.querySelector('#new_post_view').style.display = 'none';
-}
+// function close_cover(){
+//     document.querySelector('.cover').style.display="none";
+//     // document.querySelector('#new_post_view').style.display = 'none';
+// }
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -424,10 +424,15 @@ window.onclick = function(event) {
 }
     
  function lockScroll() {
+    document.querySelector('#new_post_view').style.display = 'block';
+    document.querySelector('.modal').style.display = 'block';
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
   }
   function unLockScroll() {
+      
+    document.querySelector('#new_post_view').style.display = 'none';
+    document.querySelector('.modal').style.display = 'none';
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
   }
