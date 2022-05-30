@@ -761,6 +761,11 @@ a.modal-close svg{
     position:fixed;
 }
 
+a.modal-close svg path{
+
+    fill: var(--pink-color);
+}
+
 #flex-order-h5-close{
     display: flex;
     flex-direction: row;
