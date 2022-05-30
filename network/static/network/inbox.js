@@ -134,28 +134,37 @@ function load_postbox(postbox, user_log){
         return false;
     }
     if(postbox === 'edit profile'){
-        // alert("kacepapa");
+         alert("kacepapa");
         if(document.querySelector('#edit_profile_view')){
+            alert("kacepapa2");
             if(document.querySelector('#edit_profile_view').style.display === 'block'){
+                alert("kacepapa3");
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 // document.querySelector('.modal').style.opacity = 0;
                 document.querySelector('.modal').style.display = 'none';
+                unLockScroll();
             }
             else{
+                document.querySelector('.modal').style.display = 'block';
+                // console.log( document.querySelector('#new_post_view').style.display);
+                document.querySelector('#new_post_view').style.display = 'none';
+                // console.log( document.querySelector('#new_post_view').style.display);
                 document.querySelector('#edit_profile_view').style.display = 'block';
                 // document.querySelector('.modal').style.opacity = 1;
-                document.querySelector('.modal').style.display = 'block';
+                
+                // document.querySelector('.modal').style.display = 'none';
+                lockScroll();
             }
         }
-        document.querySelector('#edit_profile_view').innerHTML =`<h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
-        <form id="compose-form">
-        <input class="form-control" id="username" type="text" name="username" placeholder="Username" autocomplete="off">
-        <input class="form-control" id="emailsddress" type="email" name="emailsddress" placeholder="Email Address">
-        <input class="form-control" id="password" type="password" name="password" placeholder="Password">
-        <input class="form-control" id="confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password">
-        <a class="form-control" >Change profile picture</a>
-        <input id="send_post" type="submit" class="page_button"/>
-        </form>`;
+        // document.querySelector('#edit_profile_view').innerHTML =`<h5>${postbox.charAt(0).toUpperCase() + postbox.slice(1,4) + postbox.charAt(4).toUpperCase() + postbox.slice(5) }</h5>
+        // <form id="compose-form">
+        //     <input class="form-control" id="username" type="text" name="username" placeholder="Username" autocomplete="off">
+        //     <input class="form-control" id="emailsddress" type="email" name="emailsddress" placeholder="Email Address">
+        //     <input class="form-control" id="password" type="password" name="password" placeholder="Password">
+        //     <input class="form-control" id="confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password">
+        //     <a class="form-control" >Change profile picture</a>
+        //     <input id="send_post" type="submit" class="page_button"/>
+        // </form>`;
         document.querySelector('#compose-form .form-control').focus();
     }
 }
@@ -424,15 +433,15 @@ window.onclick = function(event) {
 }
     
  function lockScroll() {
-    document.querySelector('#new_post_view').style.display = 'block';
-    document.querySelector('.modal').style.display = 'block';
+    // document.querySelector('#new_post_view').style.display = 'block';
+    // document.querySelector('.modal').style.display = 'block';
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
   }
   function unLockScroll() {
       
-    document.querySelector('#new_post_view').style.display = 'none';
-    document.querySelector('.modal').style.display = 'none';
+    // document.querySelector('#new_post_view').style.display = 'none';
+    // document.querySelector('.modal').style.display = 'none';
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
   }
