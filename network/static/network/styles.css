@@ -676,12 +676,12 @@ body.modal {
 }
 
 .modal-close {
-    z-index: 800;
+    /* z-index: 800; */
     /* position: absolute; */
-    position: relative;
+    /* position: relative;
     margin: 0;
     top: -4px;
-    left: calc(15rem - 31.2px);
+    left: calc(15rem - 31.2px); */
     /* right: -15rem; */
 }
 
@@ -736,8 +736,9 @@ body.modal {
     width: 15rem;
     height: 18rem;
     z-index: 3;
-    padding:20px;
-    border-radius: .4rem;
+    /* padding:20px; */
+    padding:0;
+    border-radius: .1rem;
     border-style: solid;
     /* border-color: rgb(14, 18, 71); */
     border-width: 1px;
@@ -748,10 +749,25 @@ body.modal {
     /* justify-content: center; */
     font-size: smaller;
     overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+a.modal-close{
+    height: 26px;
+}
+
+a.modal-close svg{
+    
+    position:fixed;
+}
+
+#flex-order-h5-close{
+    display: flex;
+    flex-direction: row;
 }
 
 #edit_profile_view h5{
-    margin-bottom: .5rem;
+    /* margin: -1rem 0 .5rem .5rem; */
 }
 
 #compose-form{
@@ -782,24 +798,24 @@ body.modal {
 } */
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: var(--gray-color);
-    content:"holis";
+    /* color: var(--gray-color); */
+    /* content:"holis"; */
 
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: var(--gray-color);
-    content:"holis";
+    /* color: var(--gray-color); */
+    /* content:"holis"; */
 
 }
 
 .lock-scroll {
     overflow: hidden;
-  }
-  
-  .un-lock-scroll {
+}
+
+.un-lock-scroll {
     overflow: visible;
-  }
+}
 
 
 
