@@ -134,11 +134,11 @@ function load_postbox(postbox, user_log){
         return false;
     }
     if(postbox === 'edit profile'){
-         alert("kacepapa");
+        //  alert("kacepapa");
         if(document.querySelector('#edit_profile_view')){
-            alert("kacepapa2");
+            // alert("kacepapa2");
             if(document.querySelector('#edit_profile_view').style.display === 'block'){
-                alert("kacepapa3");
+                // alert("kacepapa3");
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 // document.querySelector('.modal').style.opacity = 0;
                 document.querySelector('.modal').style.display = 'none';
