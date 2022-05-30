@@ -778,6 +778,7 @@ a.modal-close svg path{
 
 #edit_profile_view h5{
     /* margin: -1rem 0 .5rem .5rem; */
+    padding: .3rem .5rem;
 }
 
 #compose-form{
