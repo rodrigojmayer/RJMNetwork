@@ -759,6 +759,7 @@ a.modal-close{
 a.modal-close svg{
     
     position:fixed;
+    margin-left:-30px;
 }
 
 a.modal-close svg path{
@@ -767,8 +768,12 @@ a.modal-close svg path{
 }
 
 #flex-order-h5-close{
+    /* width: 15rem; */
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
 }
 
 #edit_profile_view h5{
