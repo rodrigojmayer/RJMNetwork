@@ -165,7 +165,30 @@ function load_postbox(postbox, user_log){
         //     <a class="form-control" >Change profile picture</a>
         //     <input id="send_post" type="submit" class="page_button"/>
         // </form>`;
-        document.querySelector('.compose-form .form-control').focus();
+        
+        alert("antes del function");
+        document.querySelector('#username').focus();
+        document.querySelector('#edit_profile_form').onsubmit = () => {
+            alert("entrando al function");
+            var username = document.querySelector('#username').value;
+            var emailsddress = document.querySelector('#emailsddress').value;
+            var password = document.querySelector('#password').value;
+            var confirmpassword = document.querySelector('#confirmpassword').value;
+            fetch('/edit_profile', {
+                method: 'PUT',
+                body: JSON.stringify({
+                    username: username,
+                    emailsddress: emailsddress,
+                    password: password,
+                    confirmpassword: confirmpassword,
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                load_postbox('all posts', result.user_log);
+            });
+            return false;
+       };
     }
 }
 

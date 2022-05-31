@@ -695,7 +695,7 @@ body.modal {
     position: relative;
     z-index: 999;
     margin: calc(var(--header-height) + 8px) auto;
-    background-color: #f8f9fa;
+    background-color: var(--gray-light-color);
     font-family: cursive;
     /* position:fixed; */
     /* margin-left: 5%; */
@@ -724,7 +724,7 @@ body.modal {
 
 #edit_profile_view{
     /* margin-top: 8px; */
-    background-color: #f8f9fa;
+    background-color: var(--gray-light-color);
     font-family:cursive;
     /* position:fixed; */
     /* left: 30%; */
@@ -734,7 +734,7 @@ body.modal {
     /* left:auto; */
     /* width: 50%; */
     width: 15rem;
-    height: 18rem;
+    height: 16rem;
     z-index: 3;
     /* padding:20px; */
     padding:0;
@@ -760,7 +760,7 @@ a.modal-close{
 a.modal-close svg{
     
     position:fixed;
-    margin-left:-34.7px;
+    margin-left:-34px;
 }
 
 a.modal-close svg path{
@@ -791,14 +791,19 @@ a.modal-close svg path{
 }
 
 .form-control{
-    width: 100%;
+    width: 90%;
     height: 1.5rem;
-    margin: .4rem 0;
+    margin: .4rem .5rem;
     border: none;
     border-radius: 5px;
     text-align: center;
     font-size: smaller;
+    /* padding: 0 1rem; */
     /* color-plac */
+}
+
+.form-control:focus{
+    outline: none;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
