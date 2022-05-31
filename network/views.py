@@ -395,12 +395,19 @@ def edit(request):
 def edit_profile(request):
     print("adondeestalalibertad")
     print(json.loads(request.body))
+    data = json.loads(request.body)
+    data_username = data.get("username")
     print(request.user.id)
+    print(data_username)
     print("......")
     
     try:
         user = User.objects.get(id=request.user.id)
+        
         print(user)
+        print(user.username)
+        user.username = data.get("username")
+        user.save()
 
         return JsonResponse({"message":"probando",
                             "id_post": "id_post",
