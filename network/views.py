@@ -396,7 +396,19 @@ def edit_profile(request):
     print("adondeestalalibertad")
     print(json.loads(request.body))
     print(request.user.id)
-    return JsonResponse({"error": "Liker not found."}, status=404)
+    print("......")
+    
+    try:
+        user = User.objects.get(id=request.user.id)
+        print(user)
+
+        return JsonResponse({"message":"probando",
+                            "id_post": "id_post",
+                            "description": "description",
+                            }, status=201)
+
+    except Likers.DoesNotExist:
+        return JsonResponse({"error": "Liker not found."}, status=404)
 
 @csrf_exempt
 @login_required

@@ -166,10 +166,10 @@ function load_postbox(postbox, user_log){
         //     <input id="send_post" type="submit" class="page_button"/>
         // </form>`;
         
-        alert("antes del function");
+        // alert("antes del function");
         document.querySelector('#username').focus();
         document.querySelector('#edit_profile_form').onsubmit = () => {
-            alert("entrando al function");
+            // alert("entrando al function");
             var username = document.querySelector('#username').value;
             var emailsddress = document.querySelector('#emailsddress').value;
             var password = document.querySelector('#password').value;
@@ -185,6 +185,8 @@ function load_postbox(postbox, user_log){
             })
             .then(response => response.json())
             .then(result => {
+                console.log(result);
+                alert("response");
                 load_postbox('all posts', result.user_log);
             });
             return false;
