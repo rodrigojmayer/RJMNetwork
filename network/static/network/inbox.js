@@ -165,7 +165,7 @@ function load_postbox(postbox, user_log){
         //     <a class="form-control" >Change profile picture</a>
         //     <input id="send_post" type="submit" class="page_button"/>
         // </form>`;
-        document.querySelector('#compose-form .form-control').focus();
+        document.querySelector('.compose-form .form-control').focus();
     }
 }
 
@@ -423,27 +423,36 @@ window.onclick = function(event) {
     }
 
     if (!event.target.matches('#dropbtn-profile')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
         }
-    }
+
     }
 }
+   
+function close_window(){
     
- function lockScroll() {
+    document.querySelector('#new_post_view').style.display = 'none';
+    document.querySelector('#edit_profile_view').style.display = 'none';
+    document.querySelector('.modal').style.display = 'none';
+    unLockScroll();
+}
+
+function lockScroll() {
     // document.querySelector('#new_post_view').style.display = 'block';
     // document.querySelector('.modal').style.display = 'block';
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
-  }
-  function unLockScroll() {
-      
+}
+function unLockScroll() {
+        
     // document.querySelector('#new_post_view').style.display = 'none';
     // document.querySelector('.modal').style.display = 'none';
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
-  }
+}
