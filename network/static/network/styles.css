@@ -706,7 +706,7 @@ body.modal {
     /* z-index: 3; */
     /* padding:20px; */
     border-radius: .1rem;
-    border-style: solid;
+    /* border-style: solid; */
     /* border: outset; */
     border-color: rgb(14, 18, 71);
     border-width: 1px;
@@ -739,7 +739,7 @@ body.modal {
     /* padding:20px; */
     padding:0;
     border-radius: .1rem;
-    border-style: solid;
+    /* border-style: solid; */
     /* border-color: rgb(14, 18, 71); */
     border-width: 1px;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
@@ -753,13 +753,13 @@ body.modal {
 }
 
 a.modal-close{
-    height: 26px;
+    height: 30px;
 }
 
 a.modal-close svg{
     
     position:fixed;
-    margin-left:-30px;
+    margin-left:-34.7px;
 }
 
 a.modal-close svg path{

@@ -182,7 +182,9 @@ function edit_field(id_post){
     if(id_post_global != id_post && id_post_global > 0 ){
         document.querySelector(`#edit-box-${id_post_global}`).style.display = 'none';
         document.querySelector(`#edit-save-btn-${id_post_global}`).style.display = 'none';
-    }id_post_global = id_post;
+    }
+    
+    id_post_global = id_post;
 }
 function save_edit(id_post){
     var edited_descrip = document.querySelector(`#edit-box-${id_post}`).value;
