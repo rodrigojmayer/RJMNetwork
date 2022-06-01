@@ -393,21 +393,34 @@ def edit(request):
 @csrf_exempt
 @login_required
 def edit_profile(request):
-    print("adondeestalalibertad")
-    print(json.loads(request.body))
+    # print("adondeestalalibertad")
+    # print(json.loads(request.body))
     data = json.loads(request.body)
-    data_username = data.get("username")
-    print(request.user.id)
-    print(data_username)
-    print("......")
+    # data_username = data.get("username")
+    # print(request.user.id)
+    # print(data_username)
+    # print("......")
     
     try:
-        user = User.objects.get(id=request.user.id)
+        user_logued = User.objects.get(id=request.user.id)
         
-        print(user)
-        print(user.username)
-        user.username = data.get("username")
-        user.save()
+        print("......")
+        print(dir(user_logued))
+        print(user_logued.email)
+        print(user_logued.password)
+        print("......")
+        # print(user_logued.username)
+        if data.get("username"):
+            user_logued.username = data.get("username")
+        if data.get("emailsddress"):
+            user_logued.email = data.get("emailsddress")
+        # user_logued.password = data.get("password")
+        if data.get("password") and data.get("password")==data.get("confirmpassword"):
+            print("...------...")
+            print("YESIRRR")
+            print("...------...")
+            # user_logued.set_password(data.get("password"))
+        user_logued.save()
 
         return JsonResponse({"message":"probando",
                             "id_post": "id_post",

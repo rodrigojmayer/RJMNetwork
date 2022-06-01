@@ -195,6 +195,9 @@ body{
 #profile-flex-order-child2  h2{
     height: 2rem;
 }
+#profile-flex-order-child2  h6{
+    margin-bottom: .2rem;
+}
 
 .page_button {
     width: 3.9rem;

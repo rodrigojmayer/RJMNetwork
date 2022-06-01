@@ -11,6 +11,7 @@
             </div>
             <div id="profile-flex-order-child2">
                 <h2 id="profile_poster">{{poster}}</h2>
+                <h6 id="profile_poster">{{poster.email}}</h6>
                     {% if poster.id != user.id  and user.is_authenticated%}
                         <button id="follow-btn" class="page_button" onclick="follow('{{poster.id}}', '{{user.id}}', '{{followed_by}}')" value='{{user_following}}'>{{user_following}}</button>
                         <button style="display:none;" id="edit-profile-btn" class="page_button" onclick="load_postbox('edit profile',null)" value='{{user_following}}'>Edit Profile</button>
