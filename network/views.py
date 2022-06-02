@@ -1,5 +1,5 @@
 import json, math
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import JsonResponse
@@ -11,6 +11,7 @@ from django.core import serializers
 from datetime import datetime
 from django.db.models import Q
 from array import array
+
 import time
 
 from django.core.paginator import Paginator
@@ -404,11 +405,11 @@ def edit_profile(request):
     try:
         user_logued = User.objects.get(id=request.user.id)
         
-        print("......")
-        print(dir(user_logued))
-        print(user_logued.email)
-        print(user_logued.password)
-        print("......")
+        # print("......")
+        # print(dir(user_logued))
+        # print(user_logued.email)
+        # print(user_logued.password)
+        # print("......")
         # print(user_logued.username)
         if data.get("username"):
             user_logued.username = data.get("username")
@@ -416,10 +417,15 @@ def edit_profile(request):
             user_logued.email = data.get("emailsddress")
         # user_logued.password = data.get("password")
         if data.get("password") and data.get("password")==data.get("confirmpassword"):
-            print("...------...")
-            print("YESIRRR")
-            print("...------...")
-            # user_logued.set_password(data.get("password"))
+            # print("...------...")
+            # print("YESIRRR")
+            # print("...------...")
+            user_logued.set_password(data.get("password"))
+            
+            # request.user.set_password(form.cleaned_data['password'])
+            update_session_auth_hash(request, user_logued)
+
+
         user_logued.save()
 
         return JsonResponse({"message":"probando",
