@@ -188,7 +188,7 @@ function load_postbox(postbox, user_log){
             .then(response => response.json())
             .then(result => {
                 console.log(result);
-                // alert("response");
+                alert("response");
                 load_postbox('all posts', result.user_log);
             });
             return false;
