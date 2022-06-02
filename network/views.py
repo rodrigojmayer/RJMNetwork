@@ -405,14 +405,19 @@ def edit_profile(request):
     try:
         user_logued = User.objects.get(id=request.user.id)
         
-        # print("......")
         # print(dir(user_logued))
         # print(user_logued.email)
         # print(user_logued.password)
-        # print("......")
+        # print("...asdf...")
         # print(user_logued.username)
+        # print("...asdf...")
         if data.get("username"):
-            user_logued.username = data.get("username")
+            # if(User.objects.get(username=data.get("username"))):
+            if User.objects.filter(username=data.get("username")):
+                print("hay coincidenciaaa")
+            else:
+                print("no coincidióóóóó")
+            # user_logued.username = data.get("username")
         if data.get("emailsddress"):
             user_logued.email = data.get("emailsddress")
         # user_logued.password = data.get("password")
