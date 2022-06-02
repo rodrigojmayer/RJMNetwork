@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#all_posts_view').style.display = 'block';
         document.querySelector('#edit_profile_view').style.display = 'none';
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--green-color");
-        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
-        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
+        if(document.querySelector('#nav-liked-posts svg path'))
+            document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+        if(document.querySelector('#nav-following svg path'))
+            document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
         // document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
 
     }
