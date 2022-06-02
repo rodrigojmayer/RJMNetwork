@@ -428,14 +428,18 @@ def edit_profile(request):
                 message = f"{message}Email changed successfully. "
                 user_logued.email = data.get("emailsddress")
         # user_logued.password = data.get("password")
-        if data.get("password") and data.get("password")==data.get("confirmpassword"):
-            # print("...------...")
-            # print("YESIRRR")
-            # print("...------...")
-            user_logued.set_password(data.get("password"))
+        if data.get("password"):
+            if data.get("password")==data.get("confirmpassword"):
+                # print("...------...")
+                # print("YESIRRR")
+                # print("...------...")
+                message = f"{message}Password changed successfully. "
+                user_logued.set_password(data.get("password"))
+                update_session_auth_hash(request, user_logued)
+            else:
+                message = f"{message}Passwords must match. "
             
             # request.user.set_password(form.cleaned_data['password'])
-            update_session_auth_hash(request, user_logued)
 
 
         user_logued.save()
