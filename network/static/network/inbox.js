@@ -189,7 +189,9 @@ function load_postbox(postbox, user_log){
             .then(result => {
                 console.log(result);
                 alert("response");
-                load_postbox('all posts', result.user_log);
+                // load_postbox('all posts', result.user_log);
+                // window.location.href = 'profile/16';
+                location.reload();
             });
             return false;
        };
