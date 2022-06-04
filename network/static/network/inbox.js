@@ -191,6 +191,9 @@ function load_postbox(postbox, user_log){
                 // alert("response");
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
+                document.querySelector('#alert_modal_message div').innerHTML = `${result.message_username}
+                                                                                ${result.message_emailaddress}
+                                                                                ${result.message_password}`;
                 document.querySelector('#alert_modal_message').style.display = 'block';
 
                 // load_postbox('all posts', result.user_log);
