@@ -418,16 +418,16 @@ def edit_profile(request):
             # if(User.objects.get(username=data.get("username"))):
             if User.objects.filter(username=data.get("username")):
                 # print("hay coincidenciaaa")
-                message_username = "Username is already in use."
+                message_username = "- Username is already in use.<br>"
             else:
                 # print("no coincidióóóóó")
-                message_username = "Username changed successfully."
+                message_username = "- Username changed successfully.<br>"
                 user_logued.username = data.get("username")
         if data.get("emailaddress"):
             if User.objects.filter(email=data.get("emailaddress")):
-                message_emailaddress = "Email is already in use."
+                message_emailaddress = "- Email is already in use.<br>"
             else:
-                message_emailaddress = "Email changed successfully."
+                message_emailaddress = "- Email changed successfully.<br>"
                 user_logued.email = data.get("emailaddress")
         # user_logued.password = data.get("password")
         if data.get("password"):
@@ -435,11 +435,11 @@ def edit_profile(request):
                 # print("...------...")
                 # print("YESIRRR")
                 # print("...------...")
-                message_password = "Password changed successfully."
+                message_password = "- Password changed successfully.<br>"
                 user_logued.set_password(data.get("password"))
                 update_session_auth_hash(request, user_logued)
             else:
-                message_password = "Passwords must match."
+                message_password = "- Passwords must match.<br>"
             
             # request.user.set_password(form.cleaned_data['password'])
 

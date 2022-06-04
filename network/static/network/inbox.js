@@ -170,6 +170,10 @@ function load_postbox(postbox, user_log){
         
         // alert("antes del function");
         document.querySelector('#username').focus();
+        
+        // document.querySelector('#change_profile_picture').addEventListener('click', () =>{
+        //     alert("holse");
+        // });
         document.querySelector('#edit_profile_form').onsubmit = () => {
             // alert("entrando al function");
             var username = document.querySelector('#username').value;
@@ -496,4 +500,15 @@ function unLockScroll() {
     // document.querySelector('.modal').style.display = 'none';
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
+}
+
+function showFile(ths){
+    console.log("pepito");
+    console.log(ths.value);
+    console.log("pepin");
+    // document.querySelector('#change_profile_picture').value.style.visibility="visible";
+    // document.querySelector('div .image_selected').innerHTML=ths.value;
+    document.querySelector('#image_selected').src=ths.value;
+    // document.querySelector('#change_profile_picture').style.width="auto";
+    // document.querySelector('#change_profile_picture').style.height="auto";
 }
