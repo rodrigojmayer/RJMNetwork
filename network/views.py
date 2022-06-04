@@ -411,21 +411,23 @@ def edit_profile(request):
         # print("...asdf...")
         # print(user_logued.username)
         # print("...asdf...")
-        message = ""
+        message_username = ""
+        message_emailsddress = ""
+        message_password = ""
         if data.get("username"):
             # if(User.objects.get(username=data.get("username"))):
             if User.objects.filter(username=data.get("username")):
                 # print("hay coincidenciaaa")
-                message = f"{message}Username is already in use. "
+                message_username = "Username is already in use."
             else:
                 # print("no coincidióóóóó")
-                message = f"{message}Username changed successfully. "
+                message_username = "Username changed successfully."
                 user_logued.username = data.get("username")
         if data.get("emailsddress"):
             if User.objects.filter(email=data.get("emailsddress")):
-                message = f"{message}Email is already in use. "
+                message_emailsddress = "Email is already in use."
             else:
-                message = f"{message}Email changed successfully. "
+                message_emailsddress = "Email changed successfully."
                 user_logued.email = data.get("emailsddress")
         # user_logued.password = data.get("password")
         if data.get("password"):
@@ -433,18 +435,20 @@ def edit_profile(request):
                 # print("...------...")
                 # print("YESIRRR")
                 # print("...------...")
-                message = f"{message}Password changed successfully. "
+                message_password = "Password changed successfully."
                 user_logued.set_password(data.get("password"))
                 update_session_auth_hash(request, user_logued)
             else:
-                message = f"{message}Passwords must match. "
+                message_password = "Passwords must match."
             
             # request.user.set_password(form.cleaned_data['password'])
 
 
         user_logued.save()
 
-        return JsonResponse({"message":message,
+        return JsonResponse({"message_username":message_username,
+                            "message_emailsddress":message_emailsddress,
+                            "message_password":message_password,
                             "id_post": "id_post",
                             "description": "description",
                             }, status=201)
