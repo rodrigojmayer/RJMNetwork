@@ -3,6 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
+    header_image = models.ImageField(null=True, blank=True, upload_to="images/")
     pass
 
 class NewPost(models.Model): 

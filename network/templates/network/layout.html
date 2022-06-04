@@ -48,7 +48,12 @@
                     <input class="form-control" id="emailaddress" type="email" name="emailaddress" placeholder="Email Address">
                     <input class="form-control" id="password" type="password" name="password" placeholder="Password">
                     <input class="form-control" id="confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password">
-                    <a class="form-control" >Change profile picture</a>
+                    <!-- <a  >Change profile picture</a> -->
+                    <label class="form-control a-link" for="change_profile_picture" class="btn"><a>Change profile picture</a></label>
+                    <input id="change_profile_picture" onchange="showFile(this)" type="file" style="visibility:hidden;" accept="image/png, image/jpeg"/>
+                    <div class="image_selected"></div>
+                    <img id="image_selected" src='' ></img>
+                    <!-- <img id="image_selected" src='{% static "C:/fakepath/logo1.png" %}' ></img> -->
                     <input id="send_edit_profile" type="submit" class="page_button"/>
                 </form>
             </div>
