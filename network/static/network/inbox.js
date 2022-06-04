@@ -188,10 +188,14 @@ function load_postbox(postbox, user_log){
             .then(response => response.json())
             .then(result => {
                 console.log(result);
-                alert("response");
+                // alert("response");
+                document.querySelector('#edit_profile_view').style.display = 'none';
+                document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
+                document.querySelector('#alert_modal_message').style.display = 'block';
+
                 // load_postbox('all posts', result.user_log);
                 // window.location.href = 'profile/16';
-                location.reload();
+                // location.reload();
             });
             return false;
        };

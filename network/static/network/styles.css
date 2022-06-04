@@ -838,6 +838,35 @@ a.modal-close svg path{
 }
 
 
+#alert_modal_message{
+    display: none;
+    background-color: var(--gray-light-color);
+    font-family:cursive;
+    /* position:fixed; */
+    /* left: 30%; */
+    margin: calc(var(--header-height) + 8px) auto;
+    /* padding-top: ; */
+    /* top: var(--header-height); */
+    /* left:auto; */
+    /* width: 50%; */
+    width: 15rem;
+    height: 16rem;
+    z-index: 3;
+    /* padding:20px; */
+    padding:0;
+    border-radius: .1rem;
+    /* border-style: solid; */
+    /* border-color: rgb(14, 18, 71); */
+    border-width: 1px;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+    /* display:flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    font-size: smaller;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
 
 
 
