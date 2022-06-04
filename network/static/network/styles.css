@@ -699,13 +699,13 @@ body.modal {
     z-index: 999;
     margin: calc(var(--header-height) + 8px) auto;
     background-color: var(--gray-light-color);
-    font-family: cursive;
+    /* font-family: cursive; */
     /* position:fixed; */
     /* margin-left: 5%; */
     /* top: 0; */
     /* width: 50%; */
     width: 15rem;
-    height: 15rem;
+    /* height: 15rem; */
     /* z-index: 3; */
     /* padding:20px; */
     border-radius: .1rem;
@@ -728,7 +728,7 @@ body.modal {
 #edit_profile_view{
     /* margin-top: 8px; */
     background-color: var(--gray-light-color);
-    font-family:cursive;
+    /* font-family:cursive; */
     /* position:fixed; */
     /* left: 30%; */
     margin: calc(var(--header-height) + 8px) auto;
@@ -737,7 +737,7 @@ body.modal {
     /* left:auto; */
     /* width: 50%; */
     width: 15rem;
-    height: 16rem;
+    /* height: 16rem; */
     z-index: 3;
     /* padding:20px; */
     padding:0;
@@ -780,9 +780,14 @@ a.modal-close svg path{
     width: 100%;
 }
 
-#edit_profile_view h5{
+.modal_div h5{
     /* margin: -1rem 0 .5rem .5rem; */
     padding: .3rem .5rem;
+}
+
+
+.modal_div .page_button{
+    margin-bottom: .5rem;
 }
 
 .compose-form{
@@ -841,7 +846,7 @@ a.modal-close svg path{
 #alert_modal_message{
     display: none;
     background-color: var(--gray-light-color);
-    font-family:cursive;
+    /* font-family:cursive; */
     /* position:fixed; */
     /* left: 30%; */
     margin: calc(var(--header-height) + 8px) auto;
@@ -850,7 +855,7 @@ a.modal-close svg path{
     /* left:auto; */
     /* width: 50%; */
     width: 15rem;
-    height: 16rem;
+    /* height: 10rem; */
     z-index: 3;
     /* padding:20px; */
     padding:0;
@@ -866,6 +871,12 @@ a.modal-close svg path{
     font-size: smaller;
     overflow-y: hidden;
     overflow-x: hidden;
+}
+
+
+#alert_modal_message #messages{
+    margin-left: .9rem;
+    margin-bottom: .5rem;
 }
 
 

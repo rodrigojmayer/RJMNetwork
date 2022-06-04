@@ -20,7 +20,7 @@
 
         
         <div class="modal" display="none">
-            <div id="new_post_view">
+            <div class="modal_div" id="new_post_view">
                 <div id="flex-order-h5-close">
                     <h5>New post</h5>
                     <a class="modal-close" onclick="close_window();">
@@ -34,7 +34,7 @@
                     <input id="send_post" type="submit" class="page_button"/>
                 </form>
             </div>
-            <div id="edit_profile_view">
+            <div class="modal_div" id="edit_profile_view">
                 <div id="flex-order-h5-close">
                     <h5>Edit profile</h5>
                     <a class="modal-close" onclick="close_window();">
@@ -52,10 +52,12 @@
                     <input id="send_edit_profile" type="submit" class="page_button"/>
                 </form>
             </div>
-            <div id="alert_modal_message">
+            <div class="modal_div" id="alert_modal_message">
                 <h5></h5>
-                <div></div>
-                <input id="send_edit_profile" type="submit" class="page_button"/>
+                <div id="messages"></div>
+                <form class="compose-form">
+                    <input id="ok_message" type="submit" class="page_button" value="Ok"/>
+                </form>
             </div>
         </div>
 

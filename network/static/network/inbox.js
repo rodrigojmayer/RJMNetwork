@@ -192,15 +192,15 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
                 if(result.message_username || result.message_emailaddress || result.message_password){
-                document.querySelector('#alert_modal_message div').innerHTML = `${result.message_username}
+                document.querySelector('#alert_modal_message #messages').innerHTML = `${result.message_username}
                                                                                 ${result.message_emailaddress}
                                                                                 ${result.message_password}`;
                 }
                 else
-                    document.querySelector('#alert_modal_message div').innerHTML = `No changes`;
+                    document.querySelector('#alert_modal_message #messages').innerHTML = `No changes`;
 
                 document.querySelector('#alert_modal_message').style.display = 'block';
-
+                document.querySelector('#ok_message').addEventListener('click', () =>location.reload());
                 // load_postbox('all posts', result.user_log);
                 // window.location.href = 'profile/16';
                 // location.reload();
