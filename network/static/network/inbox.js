@@ -173,14 +173,14 @@ function load_postbox(postbox, user_log){
         document.querySelector('#edit_profile_form').onsubmit = () => {
             // alert("entrando al function");
             var username = document.querySelector('#username').value;
-            var emailsddress = document.querySelector('#emailsddress').value;
+            var emailaddress = document.querySelector('#emailaddress').value;
             var password = document.querySelector('#password').value;
             var confirmpassword = document.querySelector('#confirmpassword').value;
             fetch('/edit_profile', {
                 method: 'PUT',
                 body: JSON.stringify({
                     username: username,
-                    emailsddress: emailsddress,
+                    emailaddress: emailaddress,
                     password: password,
                     confirmpassword: confirmpassword,
                 })
@@ -191,9 +191,14 @@ function load_postbox(postbox, user_log){
                 // alert("response");
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
+                if(result.message_username || result.message_emailaddress || result.message_password){
                 document.querySelector('#alert_modal_message div').innerHTML = `${result.message_username}
                                                                                 ${result.message_emailaddress}
                                                                                 ${result.message_password}`;
+                }
+                else
+                    document.querySelector('#alert_modal_message div').innerHTML = `No changes`;
+
                 document.querySelector('#alert_modal_message').style.display = 'block';
 
                 // load_postbox('all posts', result.user_log);

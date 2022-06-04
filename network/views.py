@@ -412,7 +412,7 @@ def edit_profile(request):
         # print(user_logued.username)
         # print("...asdf...")
         message_username = ""
-        message_emailsddress = ""
+        message_emailaddress = ""
         message_password = ""
         if data.get("username"):
             # if(User.objects.get(username=data.get("username"))):
@@ -423,12 +423,12 @@ def edit_profile(request):
                 # print("no coincidióóóóó")
                 message_username = "Username changed successfully."
                 user_logued.username = data.get("username")
-        if data.get("emailsddress"):
-            if User.objects.filter(email=data.get("emailsddress")):
-                message_emailsddress = "Email is already in use."
+        if data.get("emailaddress"):
+            if User.objects.filter(email=data.get("emailaddress")):
+                message_emailaddress = "Email is already in use."
             else:
-                message_emailsddress = "Email changed successfully."
-                user_logued.email = data.get("emailsddress")
+                message_emailaddress = "Email changed successfully."
+                user_logued.email = data.get("emailaddress")
         # user_logued.password = data.get("password")
         if data.get("password"):
             if data.get("password")==data.get("confirmpassword"):
@@ -447,7 +447,7 @@ def edit_profile(request):
         user_logued.save()
 
         return JsonResponse({"message_username":message_username,
-                            "message_emailsddress":message_emailsddress,
+                            "message_emailaddress":message_emailaddress,
                             "message_password":message_password,
                             "id_post": "id_post",
                             "description": "description",
