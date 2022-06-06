@@ -396,65 +396,104 @@ def edit(request):
 def edit_profile(request):
     # print("adondeestalalibertad")
     # print(json.loads(request.body))
-    data = json.loads(request.body)
+    # data = json.loads(request.body)
     # data_username = data.get("username")
     # print(request.user.id)
+    print(request.FILES)
     # print(data_username)
-    # print("......")
-    
-    try:
-        user_logued = User.objects.get(id=request.user.id)
+    print("......ANDA O NO ANDA?")
+    print(request.POST['username'])
+    user_logued = User.objects.get(id=request.user.id)
+    print(user_logued.email)
+    if(request.FILES):
+        print(request.FILES['change_profile_picture'])
+        user_logued.header_image = request.FILES['change_profile_picture']
+    user_logued.save()
+
+    # return profile(request, user_logued.id)
+    # return HttpResponseRedirect(reverse("profile/user_logued.id"))
+    return HttpResponseRedirect('/profile/%s' % user_logued.id)
+    # message_username = ""
+    # message_emailaddress = ""
+    # message_password = ""
+    # return JsonResponse({"message_username":message_username,
+    #                         "message_emailaddress":message_emailaddress,
+    #                         "message_password":message_password,
+    #                         "id_post": "id_post",
+    #                         "description": "description",
+    #                         }, status=201)
+    # return render(request, "network/profile.html", {
+    #         "poster":user_logued,
+            # "followed_by":followed_by,
+            # "followers":followers,
+            # "profile_posts":profile_posts,
+            # "user_following":user_following,
+            # "list_total_pages":list_total_pages,
+        # })
+
+    # try:
+    #     user_logued = User.objects.get(id=request.user.id)
         
-        # print(dir(user_logued))
-        # print(user_logued.email)
-        # print(user_logued.password)
-        # print("...asdf...")
-        # print(user_logued.username)
-        # print("...asdf...")
-        message_username = ""
-        message_emailaddress = ""
-        message_password = ""
-        if data.get("username"):
-            # if(User.objects.get(username=data.get("username"))):
-            if User.objects.filter(username=data.get("username")):
-                # print("hay coincidenciaaa")
-                message_username = "- Username is already in use.<br>"
-            else:
-                # print("no coincidióóóóó")
-                message_username = "- Username changed successfully.<br>"
-                user_logued.username = data.get("username")
-        if data.get("emailaddress"):
-            if User.objects.filter(email=data.get("emailaddress")):
-                message_emailaddress = "- Email is already in use.<br>"
-            else:
-                message_emailaddress = "- Email changed successfully.<br>"
-                user_logued.email = data.get("emailaddress")
-        # user_logued.password = data.get("password")
-        if data.get("password"):
-            if data.get("password")==data.get("confirmpassword"):
-                # print("...------...")
-                # print("YESIRRR")
-                # print("...------...")
-                message_password = "- Password changed successfully.<br>"
-                user_logued.set_password(data.get("password"))
-                update_session_auth_hash(request, user_logued)
-            else:
-                message_password = "- Passwords must match.<br>"
+    #     # print(dir(user_logued))
+    #     # print(user_logued.email)
+    #     # print(user_logued.password)
+    #     # print("...asdf...")
+    #     # print(user_logued.username)
+    #     # print("...asdf...")
+    #     message_username = ""
+    #     message_emailaddress = ""
+    #     message_password = ""
+    #     if data.get("username"):
+    #         # if(User.objects.get(username=data.get("username"))):
+    #         if User.objects.filter(username=data.get("username")):
+    #             # print("hay coincidenciaaa")
+    #             message_username = "- Username is already in use.<br>"
+    #         else:
+    #             # print("no coincidióóóóó")
+    #             message_username = "- Username changed successfully.<br>"
+    #             user_logued.username = data.get("username")
+    #     if data.get("emailaddress"):
+    #         if User.objects.filter(email=data.get("emailaddress")):
+    #             message_emailaddress = "- Email is already in use.<br>"
+    #         else:
+    #             message_emailaddress = "- Email changed successfully.<br>"
+    #             user_logued.email = data.get("emailaddress")
+    #     # user_logued.password = data.get("password")
+    #     if data.get("password"):
+    #         if data.get("password")==data.get("confirmpassword"):
+    #             # print("...------...")
+    #             # print("YESIRRR")
+    #             # print("...------...")
+    #             message_password = "- Password changed successfully.<br>"
+    #             user_logued.set_password(data.get("password"))
+    #             update_session_auth_hash(request, user_logued)
+    #         else:
+    #             message_password = "- Passwords must match.<br>"
             
-            # request.user.set_password(form.cleaned_data['password'])
+    #         # request.user.set_password(form.cleaned_data['password'])
 
+    #     print("  ")
+    #     print(data)
+    #     # print(request.get)
+    #     print("  ")
+    #     if data.get("change_profile_picture"):
+    #         print("  ")
+    #         print(data.get("change_profile_picture"))
+    #         print("  ")
+    #         user_logued.header_image = data.get("change_profile_picture")
+    #         # user_logued.header_image = '\WhatsApp Image 2022-06-06 at 6.23.25 PM.jpeg'
 
-        user_logued.save()
+    #     user_logued.save()
 
-        return JsonResponse({"message_username":message_username,
-                            "message_emailaddress":message_emailaddress,
-                            "message_password":message_password,
-                            "id_post": "id_post",
-                            "description": "description",
-                            }, status=201)
+    #     return JsonResponse({"message_username":message_username,
+    #                         "message_emailaddress":message_emailaddress,
+    #                         "message_password":message_password,
+    #                         "id_post": "id_post",
+    #                         "description": "description",
+    #                         }, status=201)
 
-    except Likers.DoesNotExist:
-        return JsonResponse({"error": "Liker not found."}, status=404)
+    # except Likers.DoesNotExist:
+    #     return JsonResponse({"error": "Liker not found."}, status=404)
 
 @csrf_exempt
 @login_required
