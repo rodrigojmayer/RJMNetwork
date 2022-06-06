@@ -174,43 +174,49 @@ function load_postbox(postbox, user_log){
         // document.querySelector('#change_profile_picture').addEventListener('click', () =>{
         //     alert("holse");
         // });
-        document.querySelector('#edit_profile_form').onsubmit = () => {
-            // alert("entrando al function");
-            var username = document.querySelector('#username').value;
-            var emailaddress = document.querySelector('#emailaddress').value;
-            var password = document.querySelector('#password').value;
-            var confirmpassword = document.querySelector('#confirmpassword').value;
-            fetch('/edit_profile', {
-                method: 'PUT',
-                body: JSON.stringify({
-                    username: username,
-                    emailaddress: emailaddress,
-                    password: password,
-                    confirmpassword: confirmpassword,
-                })
-            })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                // alert("response");
-                document.querySelector('#edit_profile_view').style.display = 'none';
-                document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
-                if(result.message_username || result.message_emailaddress || result.message_password){
-                document.querySelector('#alert_modal_message #messages').innerHTML = `${result.message_username}
-                                                                                ${result.message_emailaddress}
-                                                                                ${result.message_password}`;
-                }
-                else
-                    document.querySelector('#alert_modal_message #messages').innerHTML = `No changes`;
+    //     document.querySelector('#edit_profile_form').onsubmit = () => {
+    //         // alert("entrando al function");
+    //         var username = document.querySelector('#username').value;
+    //         var emailaddress = document.querySelector('#emailaddress').value;
+    //         var password = document.querySelector('#password').value;
+    //         var confirmpassword = document.querySelector('#confirmpassword').value;
+    //         var change_profile_picture = document.querySelector('#change_profile_picture');
+    //         // var change_profile_picture = 'C:/Users/rodri/Downloads/WhatsApp Image 2022-06-06 at 6.23.25 PM.jpeg'
+            
+    //         console.log("aquivamos");
+    //         console.log(change_profile_picture);
+    //         fetch('/edit_profile', {
+    //             method: 'POST',
+    //             body: JSON.stringify({
+    //                 username: username,
+    //                 emailaddress: emailaddress,
+    //                 password: password,
+    //                 confirmpassword: confirmpassword,
+    //                 change_profile_picture: change_profile_picture,
+    //             })
+    //         })
+    //         .then(response => response.json())
+    //         .then(result => {
+    //             console.log(result);
+    //             // alert("response");
+    //             document.querySelector('#edit_profile_view').style.display = 'none';
+    //             document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
+    //             if(result.message_username || result.message_emailaddress || result.message_password){
+    //             document.querySelector('#alert_modal_message #messages').innerHTML = `${result.message_username}
+    //                                                                             ${result.message_emailaddress}
+    //                                                                             ${result.message_password}`;
+    //             }
+    //             else
+    //                 document.querySelector('#alert_modal_message #messages').innerHTML = `No changes`;
 
-                document.querySelector('#alert_modal_message').style.display = 'block';
-                document.querySelector('#ok_message').addEventListener('click', () =>location.reload());
-                // load_postbox('all posts', result.user_log);
-                // window.location.href = 'profile/16';
-                // location.reload();
-            });
-            return false;
-       };
+    //             document.querySelector('#alert_modal_message').style.display = 'block';
+    //             document.querySelector('#ok_message').addEventListener('click', () =>location.reload());
+    //             // load_postbox('all posts', result.user_log);
+    //             // window.location.href = 'profile/16';
+    //             // location.reload();
+    //         });
+    //         return false;
+    //    };
     }
 }
 
