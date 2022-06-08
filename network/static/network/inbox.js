@@ -518,3 +518,10 @@ function showFile(ths){
     // document.querySelector('#change_profile_picture').style.width="auto";
     // document.querySelector('#change_profile_picture').style.height="auto";
 }
+
+function openOkMessage(ths){
+    console.log("openOkMessage");
+    console.log(ths.value);
+    document.querySelector('#edit_profile_options').style.display = "none";
+    document.querySelector('#alert_modal_message').style.display = "block";
+}

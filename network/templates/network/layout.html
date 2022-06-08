@@ -44,24 +44,28 @@
                     </a>
                 </div>
                 <form class="compose-form" action="{% url 'edit_profile' %}" id="edit_profile_form" method="post"  enctype="multipart/form-data">
-                    <input class="form-control" id="username" type="text" name="username" placeholder="Username" autocomplete="off">
-                    <input class="form-control" id="emailaddress" type="email" name="emailaddress" placeholder="Email Address">
-                    <input class="form-control" id="password" type="password" name="password" placeholder="Password">
-                    <input class="form-control" id="confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password">
-                    <!-- <a  >Change profile picture</a> -->
-                    <label class="form-control a-link" for="change_profile_picture" class="btn"><a>Change profile picture</a></label>
-                    <input id="change_profile_picture" name="change_profile_picture" onchange="showFile(this)" type="file" style="visibility:hidden;" accept="image/png, image/jpeg"/>
-                    <!-- <div class="image_selected"></div> -->
-                    <!-- <img id="image_selected" src='' ></img> -->
-                    <!-- <img id="image_selected" src='{% static "C:/fakepath/logo1.png" %}' ></img> -->
-                    <input id="send_edit_profile" type="submit" class="page_button"/>
-                </form>
-            </div>
-            <div class="modal_div" id="alert_modal_message">
-                <h5></h5>
-                <div id="messages"></div>
-                <form class="compose-form">
-                    <input id="ok_message" type="submit" class="page_button" value="Ok"/>
+                    <div id="edit_profile_options">
+                        <input class="form-control" id="username" type="text" name="username" placeholder="Username" autocomplete="off">
+                        <input class="form-control" id="emailaddress" type="email" name="emailaddress" placeholder="Email Address">
+                        <input class="form-control" id="password" type="password" name="password" placeholder="Password">
+                        <input class="form-control" id="confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password">
+                        <!-- <a  >Change profile picture</a> -->
+                        <label class="form-control a-link" for="change_profile_picture" class="btn"><a>Change profile picture</a></label>
+                        <input id="change_profile_picture" name="change_profile_picture" onchange="showFile(this)" type="file" style="visibility:hidden;" accept="image/png, image/jpeg"/>
+                        <!-- <div class="image_selected"></div> -->
+                        <!-- <img id="image_selected" src='' ></img> -->
+                        <!-- <img id="image_selected" src='{% static "C:/fakepath/logo1.png" %}' ></img> -->
+                        <input id="send_edit_profile" onclick="openOkMessage(this)" class="page_button"/>
+                        <!-- <input id="send_edit_profile" type="submit" class="page_button"/> -->
+                        <!-- </form> -->
+                    </div>
+                    <div class="modal_div" id="alert_modal_message">
+                        <h5></h5>
+                        <div id="messages"></div>
+                        <!-- <form class="compose-form"> -->
+                            <input id="ok_message" type="submit" class="page_button" value="Ok"/>
+                    </div>
+
                 </form>
             </div>
         </div>
