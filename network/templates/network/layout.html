@@ -43,8 +43,8 @@
                         </svg>
                     </a>
                 </div>
-                <form class="compose-form" action="{% url 'edit_profile' %}" id="edit_profile_form" method="post"  enctype="multipart/form-data">
-                    <div id="edit_profile_options">
+                <form  action="{% url 'edit_profile' %}" id="edit_profile_form" method="post"  enctype="multipart/form-data">
+                    <div class="compose-form" id="edit_profile_options">
                         <input class="form-control" id="username" type="text" name="username" placeholder="Username" autocomplete="off">
                         <input class="form-control" id="emailaddress" type="email" name="emailaddress" placeholder="Email Address">
                         <input class="form-control" id="password" type="password" name="password" placeholder="Password">
@@ -55,7 +55,7 @@
                         <!-- <div class="image_selected"></div> -->
                         <!-- <img id="image_selected" src='' ></img> -->
                         <!-- <img id="image_selected" src='{% static "C:/fakepath/logo1.png" %}' ></img> -->
-                        <input id="send_edit_profile" onclick="openOkMessage(this)" class="page_button"/>
+                        <input id="send_edit_profile" onclick="openOkMessage(this)" class="page_button" value="Edit"/>
                         <!-- <input id="send_edit_profile" type="submit" class="page_button"/> -->
                         <!-- </form> -->
                     </div>
@@ -63,7 +63,8 @@
                         <h5></h5>
                         <div id="messages"></div>
                         <!-- <form class="compose-form"> -->
-                            <input id="ok_message" type="submit" class="page_button" value="Ok"/>
+                            <input id="accept_message" type="submit" class="page_button" value="Accept"/>
+                            <input id="cancel_message" class="page_button" onclick="close_window();" value="Cancel"/>
                     </div>
 
                 </form>
