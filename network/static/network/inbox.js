@@ -152,6 +152,7 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#new_post_view').style.display = 'none';
                 // console.log( document.querySelector('#new_post_view').style.display);
                 document.querySelector('#edit_profile_view').style.display = 'block';
+                document.querySelector('#edit_profile_options').style.display = "flex";
                 // document.querySelector('.modal').style.opacity = 1;
                 
                 // document.querySelector('.modal').style.display = 'none';
@@ -491,6 +492,8 @@ function close_window(){
     document.querySelector('#new_post_view').style.display = 'none';
     document.querySelector('#edit_profile_view').style.display = 'none';
     document.querySelector('.modal').style.display = 'none';
+    // document.querySelector('#edit_profile_options').style.display = "block";
+    document.querySelector('#alert_modal_message').style.display = "none";
     unLockScroll();
 }
 
