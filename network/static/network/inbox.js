@@ -139,6 +139,12 @@ function load_postbox(postbox, user_log){
         //  alert("kacepapa");
         if(document.querySelector('#edit_profile_view')){
             // alert("kacepapa2");
+            if(document.querySelector('#alert_modal_message').style.display === "block"){
+                document.querySelector('#edit_profile_view').style.display = 'none'
+                document.querySelector('#alert_modal_message').style.display = "none";
+            }
+            // document.querySelector('#edit_profile_options').style.display = "none";
+            // document.querySelector('#alert_modal_message').style.display = "block";
             if(document.querySelector('#edit_profile_view').style.display === 'block'){
                 // alert("kacepapa3");
                 document.querySelector('#edit_profile_view').style.display = 'none';
@@ -152,6 +158,7 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#new_post_view').style.display = 'none';
                 // console.log( document.querySelector('#new_post_view').style.display);
                 document.querySelector('#edit_profile_view').style.display = 'block';
+                document.querySelector('#edit_profile_view #edit_close').style.display = 'block';
                 document.querySelector('#edit_profile_options').style.display = "flex";
                 // document.querySelector('.modal').style.opacity = 1;
                 
@@ -494,6 +501,14 @@ function close_window(){
     document.querySelector('.modal').style.display = 'none';
     // document.querySelector('#edit_profile_options').style.display = "block";
     document.querySelector('#alert_modal_message').style.display = "none";
+
+    // alert(document.querySelector("#username").value);
+    document.querySelector("#username").value = null;
+    // alert(document.querySelector("#username").value);
+    document.querySelector("#emailaddress").value = null;
+    document.querySelector("#password").value = null;
+    document.querySelector("#change_profile_picture").value = null;
+
     unLockScroll();
 }
 
@@ -530,22 +545,25 @@ function openOkMessage(ths){
     document.querySelector("#alert_modal_message").style.margin = "0";
     
     // document.querySelector('#alert_modal_message h5').innerHTML = 'You are ';
-    document.querySelector('#edit_profile_view #edit_close').style.display = 'none';
-    document.querySelector('#edit_profile_view h5').innerHTML = 'You are ';
+    // document.querySelector('#edit_profile_view #edit_close').style.display = 'none';
     
     let n = 0;
     let message = "";
+    document.querySelector('#edit_profile_view h5').innerHTML = 'No profile changes';
+    document.querySelector("#alert_modal_message #messages").innerHTML = message;
+
     if(document.querySelector("#username").value){
-        message += "- Changing the Username.<br>"
+        message += "- Changing the Username.<br>";
+        // message += document.querySelector("#username").value;
     }
     if(document.querySelector("#emailaddress").value){
-        message += "- Changing the Email Address.<br>"
+        message += "- Changing the Email Address.<br>";
     }
     if(document.querySelector("#password").value){
-        message += "- Changing the Password."
+        message += "- Changing the Password.";
     }
     if(document.querySelector("#change_profile_picture").value){
-        message += "- Changing the Picture."
+        message += "- Changing the Picture.";
     }
     
     // console.log(message_username);
@@ -553,6 +571,7 @@ function openOkMessage(ths){
     // console.log(message_password);
     console.log(message);
     if (message){
+        document.querySelector('#edit_profile_view h5').innerHTML = 'You are ';
         document.querySelector("#alert_modal_message #messages").innerHTML = message;
     }
 
