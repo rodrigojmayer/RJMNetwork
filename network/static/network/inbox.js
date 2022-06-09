@@ -527,8 +527,12 @@ function openOkMessage(ths){
     console.log(ths.value);
     document.querySelector('#edit_profile_options').style.display = "none";
     document.querySelector('#alert_modal_message').style.display = "block";
+    document.querySelector("#alert_modal_message").style.margin = "0";
     
-    document.querySelector('#alert_modal_message h5').innerHTML = 'You are ';
+    // document.querySelector('#alert_modal_message h5').innerHTML = 'You are ';
+    document.querySelector('#edit_profile_view #edit_close').style.display = 'none';
+    document.querySelector('#edit_profile_view h5').innerHTML = 'You are ';
+    
     let n = 0;
     let message = "";
     if(document.querySelector("#username").value){
@@ -538,7 +542,10 @@ function openOkMessage(ths){
         message += "- Changing the Email Address.<br>"
     }
     if(document.querySelector("#password").value){
-        message += "- Changing Password."
+        message += "- Changing the Password."
+    }
+    if(document.querySelector("#change_profile_picture").value){
+        message += "- Changing the Picture."
     }
     
     // console.log(message_username);

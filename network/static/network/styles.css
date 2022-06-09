@@ -897,7 +897,15 @@ a.modal-close svg path{
     margin-bottom: .5rem;
 }
 
+.flex_order_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
+#cancel_message{
+    background-color: var(--pink-color);
+}
 
 
 
