@@ -199,6 +199,13 @@ body{
     margin-bottom: .2rem;
 }
 
+#profile_img{
+    margin-right: .5rem;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
 .page_button {
     width: 3.9rem;
     height: 1.3rem;
