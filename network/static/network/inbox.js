@@ -535,7 +535,7 @@ function showFile(ths){
     console.log("pepin");
     // document.querySelector('#change_profile_picture').value.style.visibility="visible";
     // document.querySelector('div .image_selected').innerHTML=ths.value;
-    document.querySelector('#image_selected').src=ths.value;
+    // document.querySelector('#image_selected').src=ths.value;
     // document.querySelector('#change_profile_picture').style.width="auto";
     // document.querySelector('#change_profile_picture').style.height="auto";
 }
