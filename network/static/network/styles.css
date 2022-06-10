@@ -104,6 +104,13 @@ body{
 
 }
 
+.posts_profile_picture{
+    margin-right: .5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+}
+
 #profile{
     /* width:30px; */
     font-weight:bold;
@@ -199,7 +206,7 @@ body{
     margin-bottom: .2rem;
 }
 
-#profile_img{
+#profile_view_picture{
     margin-right: .5rem;
     height: 150px;
     width: 150px;
