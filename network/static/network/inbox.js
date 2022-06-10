@@ -150,6 +150,8 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 // document.querySelector('.modal').style.opacity = 0;
                 document.querySelector('.modal').style.display = 'none';
+                
+                document.querySelector('#edit_profile_view h5').innerHTML = 'Changes to be made: ';
                 unLockScroll();
             }
             else{
@@ -160,6 +162,7 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#edit_profile_view').style.display = 'block';
                 document.querySelector('#edit_profile_view #edit_close').style.display = 'block';
                 document.querySelector('#edit_profile_options').style.display = "flex";
+                document.querySelector('#edit_profile_view h5').innerHTML = 'Edit profile ';    
                 // document.querySelector('.modal').style.opacity = 1;
                 
                 // document.querySelector('.modal').style.display = 'none';
@@ -549,21 +552,20 @@ function openOkMessage(ths){
     
     let n = 0;
     let message = "";
-    document.querySelector('#edit_profile_view h5').innerHTML = 'No profile changes';
-    document.querySelector("#alert_modal_message #messages").innerHTML = message;
+    document.querySelector('#edit_profile_view h5').innerHTML = 'Changes to be made:';
 
     if(document.querySelector("#username").value){
-        message += "- Changing the Username.<br>";
+        message += "- Username.<br>";
         // message += document.querySelector("#username").value;
     }
     if(document.querySelector("#emailaddress").value){
-        message += "- Changing the Email Address.<br>";
+        message += "- Email Address<br>";
     }
     if(document.querySelector("#password").value){
-        message += "- Changing the Password.";
+        message += "- Password<br>";
     }
     if(document.querySelector("#change_profile_picture").value){
-        message += "- Changing the Picture.";
+        message += "- Picture";
     }
     
     // console.log(message_username);
@@ -571,8 +573,11 @@ function openOkMessage(ths){
     // console.log(message_password);
     console.log(message);
     if (message){
-        document.querySelector('#edit_profile_view h5').innerHTML = 'You are ';
         document.querySelector("#alert_modal_message #messages").innerHTML = message;
+    }
+    else{
+        // document.querySelector('#edit_profile_view h5').innerHTML = 'No changes';
+        document.querySelector("#alert_modal_message #messages").innerHTML = 'No changes';
     }
 
 
