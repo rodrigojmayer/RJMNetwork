@@ -20,6 +20,9 @@ from .models import User, NewPost, Followers, Likers
 
 def index(request):
     all_posts = NewPost.objects.select_related('poster')
+    all_fields=NewPost._meta.fields
+    print("estos son los campos")
+    print(all_fields)
     total_posts=all_posts.count()
     total_pages=math.ceil(total_posts/10)
     list_total_pages = []
