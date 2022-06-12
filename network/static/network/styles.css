@@ -119,12 +119,11 @@ body{
 }
 
 .no_profile_picture_letter{
-    
   position:absolute;
   height:30px;
   width:30px;
-  top: 7px;
-  left : 13px;
+  top: 6.5px;
+  left : 14px;
   z-index: 20;
 }
 
