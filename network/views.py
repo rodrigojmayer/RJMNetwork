@@ -11,6 +11,7 @@ from django.core import serializers
 from datetime import datetime
 from django.db.models import Q
 from array import array
+from random import randrange
 
 import time
 
@@ -20,8 +21,11 @@ from .models import User, NewPost, Followers, Likers
 
 def index(request):
     all_posts = NewPost.objects.select_related('poster')
-    all_fields=NewPost._meta.fields
-    print("estos son los campos")
+    all_fields= NewPost._meta.fields
+    users = User.objects.all()
+    for j in users:
+        print(j.id)
+    print("estos son los campos - - - ")
     print(all_fields)
     total_posts=all_posts.count()
     total_pages=math.ceil(total_posts/10)
@@ -31,6 +35,7 @@ def index(request):
     all_posts = all_posts.order_by("-date_added")[:10]
     all_likers = Likers.objects.all()
     for post in all_posts:
+        # print(post.poster)
         post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
         post.number_likes=0
         likers = all_likers.filter(post=post.id)
@@ -41,9 +46,12 @@ def index(request):
             for each in each_liker.liker.all():
                 likers_id.append(each.id)
             post.likers_id = likers_id
+
+    random_number = randrange(10)
     return render(request, "network/index.html", {
         "all_posts": all_posts,
         "list_total_pages":list_total_pages,
+        "random_number":random_number
     })
 
 
