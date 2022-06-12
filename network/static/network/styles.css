@@ -84,7 +84,7 @@ body{
 #posts-flex-order-child1 #dropbtn-profile{
     display: block;
     margin: auto;
-    margin-top: 8px;
+    /* margin-top: 8px; */
 }
     
 #posts-flex-order-child2{
@@ -109,6 +109,30 @@ body{
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%;
+}
+
+.no_profile_picture{
+    position: relative; 
+    margin:0;
+    left: 0; 
+    top: 0;
+}
+
+.no_profile_picture_letter{
+    
+  position:absolute;
+  height:30px;
+  width:30px;
+  top: 7px;
+  left : 13px;
+  z-index: 20;
+}
+
+.no_profile_picture_circle{
+    position:absolute;
+    height:1.5rem;
+    width:1.5rem;
+    z-index: 10;
 }
 
 #profile{
@@ -179,7 +203,7 @@ body{
 #profile-flex-order-child1 #dropbtn-profile{
     width: 4rem;
     height: 4rem;
-    margin: .5rem;
+    /* margin: .5rem; */
 }
 
 #profile-data-line{
