@@ -12,6 +12,7 @@ from datetime import datetime
 from django.db.models import Q
 from array import array
 from random import randrange
+import random
 
 import time
 
@@ -24,15 +25,20 @@ def index(request):
     all_fields= NewPost._meta.fields
     users = User.objects.all()
     user_color = {}
+    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
     for j in users:
         # print(j.id)
-        j.randim = randrange(100)
-        user_color[j.id] = randrange(100)
+        # j.randim = randrange(10000)
+
+        
+        user_color[j.id] = random.choice(colors_list)
+        colors_list.remove(user_color[j.id])
+        # user_color[j.id] = randrange(100)
     # for u in user_color:
         # print(user_color.index(u))
         # print(u)
-    for l in users:
-        print(l.randim)
+    # for l in users:
+        # print(l.randim)
     print(users)
     print("estos son los campos - - - ")
     print(all_fields)
