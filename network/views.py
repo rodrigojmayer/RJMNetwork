@@ -23,8 +23,17 @@ def index(request):
     all_posts = NewPost.objects.select_related('poster')
     all_fields= NewPost._meta.fields
     users = User.objects.all()
+    user_color = {}
     for j in users:
-        print(j.id)
+        # print(j.id)
+        j.randim = randrange(100)
+        user_color[j.id] = randrange(100)
+    # for u in user_color:
+        # print(user_color.index(u))
+        # print(u)
+    for l in users:
+        print(l.randim)
+    print(users)
     print("estos son los campos - - - ")
     print(all_fields)
     total_posts=all_posts.count()
@@ -46,12 +55,20 @@ def index(request):
             for each in each_liker.liker.all():
                 likers_id.append(each.id)
             post.likers_id = likers_id
+        
+        # print(post._meta.fields)
+        # print(post.poster.id)
+        # # print(users.objects.get(id=post.poster.id).randim)
+        # user_color = users.objects.get(id=post.poster.id)
+        # print(user_color.randim)
 
-    random_number = randrange(10)
+    random_number = randrange(100)
     return render(request, "network/index.html", {
         "all_posts": all_posts,
+        "users": users,
         "list_total_pages":list_total_pages,
-        "random_number":random_number
+        "random_number":random_number,
+        "user_color": user_color
     })
 
 
