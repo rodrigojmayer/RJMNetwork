@@ -124,6 +124,7 @@ body{
   width:30px;
   top: 6.5px;
   left : 14px;
+  /* text-align: center; */
   z-index: 20;
 }
 

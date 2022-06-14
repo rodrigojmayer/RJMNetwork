@@ -1,5 +1,6 @@
 {% extends "network/layout.html" %}
 {% load static %}
+{% load network_extras %}
 {% block body %}
     <!-- <div id="new_post_view">
         <h3></h3>
@@ -22,7 +23,11 @@
                                         </svg>
                                         <div  class="no_profile_picture_letter">
                                             <!-- {{ post.poster|make_list|first|capfirst }} -->
-                                            {{ random_number }}
+                                            <!-- {{ random_number }} -->
+                                            <!-- {{ users.randim }} -->
+                                            {{ post.poster.id }}
+                                            {{ user_color.1 }}
+                                            {{user_color|keyvalue:post.poster.id}}
                                         </div>
                                     </div>
                                 {% endif %}
