@@ -27,21 +27,11 @@ def index(request):
     user_color = {}
     colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
     for j in users:
-        # print(j.id)
-        # j.randim = randrange(10000)
-
-        
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
-        # user_color[j.id] = randrange(100)
-    # for u in user_color:
-        # print(user_color.index(u))
-        # print(u)
-    # for l in users:
-        # print(l.randim)
-    print(users)
-    print("estos son los campos - - - ")
-    print(all_fields)
+    # print(users)
+    # print("estos son los campos - - - ")
+    # print(all_fields)
     total_posts=all_posts.count()
     total_pages=math.ceil(total_posts/10)
     list_total_pages = []
@@ -61,7 +51,6 @@ def index(request):
             for each in each_liker.liker.all():
                 likers_id.append(each.id)
             post.likers_id = likers_id
-        
         # print(post._meta.fields)
         # print(post.poster.id)
         # # print(users.objects.get(id=post.poster.id).randim)
@@ -226,6 +215,12 @@ def profile(request, id_poster):
                 for each in each_liker.liker.all():
                     likers_id.append(each.id)
                 post.likers_id = likers_id
+        users = User.objects.all()
+        user_color = {}
+        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+        for j in users:
+            user_color[j.id] = random.choice(colors_list)
+            colors_list.remove(user_color[j.id])
 
         return render(request, "network/profile.html", {
             "poster":user_poster,
@@ -234,6 +229,7 @@ def profile(request, id_poster):
             "profile_posts":profile_posts,
             "user_following":user_following,
             "list_total_pages":list_total_pages,
+            "user_color": user_color
         })
     else:
         return render(request, "network/register.html")
