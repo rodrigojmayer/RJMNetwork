@@ -127,12 +127,22 @@ body{
   /* text-align: center; */
   z-index: 20;
 }
+.profile_picture_letter{
+    position:absolute;
+    height:30px;
+    width:30px;
+    top: 6.5px;
+    left : 14.5px;
+    /* text-align: center; */
+    z-index: 2;
+
+}
 
 .no_profile_picture_circle{
     position:absolute;
     height:1.5rem;
     width:1.5rem;
-    z-index: 10;
+    z-index: 1;
 }
 
 #profile{
@@ -525,6 +535,7 @@ font-size: 1.3rem;
     align-items: center;
     /* align-content: center;  */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 990;
 }
 
 .navbar{
