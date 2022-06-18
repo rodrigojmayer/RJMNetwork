@@ -21,6 +21,7 @@ urlpatterns = [
     path("liked_posts", views.liked_posts, name="liked_posts"),
     path("pagesposts", views.pagesposts, name="pagesposts"),
     path("edit", views.edit, name="edit"),
+    path("pre_edit_profile", views.pre_edit_profile, name="pre_edit_profile"),
     path("edit_profile/", views.edit_profile, name="edit_profile"),
     path("like/<int:id_post>", views.like, name="like"),
    

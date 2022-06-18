@@ -251,7 +251,7 @@ function edit_field(id_post){
 function save_edit(id_post){
     var edited_descrip = document.querySelector(`#edit-box-${id_post}`).value;
     fetch(`/edit`, {
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify({
             id_post: id_post,
             description: edited_descrip,
@@ -535,6 +535,37 @@ function showFile(ths){
     console.log("pepito");
     console.log(ths.value);
     console.log("pepin");
+    
+    // document.querySelector('#profile_img').src=ths.value;
+
+    fetch('/pre_edit_profile', {
+        method: 'PUT',
+        body: JSON.stringify({
+            src: ths.value,
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result);
+        // alert("response");
+        // document.querySelector('#edit_profile_view').style.display = 'none';
+        // document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
+        // if(result.message_username || result.message_emailaddress || result.message_password){
+        // document.querySelector('#alert_modal_message #messages').innerHTML = `${result.message_username}
+        //                                                                 ${result.message_emailaddress}
+        //                                                                 ${result.message_password}`;
+        // }
+        // else
+           
+        // alert(`No changes`);
+
+        // load_postbox('all posts', result.user_log);
+        // window.location.href = 'profile/16';
+        // location.reload();
+    });
+    return false;
+
+
     // document.querySelector('#change_profile_picture').value.style.visibility="visible";
     // document.querySelector('div .image_selected').innerHTML=ths.value;
     // document.querySelector('#image_selected').src=ths.value;
