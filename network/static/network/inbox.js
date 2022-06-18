@@ -534,36 +534,44 @@ function unLockScroll() {
 function showFile(ths){
     console.log("pepito");
     console.log(ths.value);
+    console.log(ths.files.name);
+    console.log(ths.files[0].name);
+    console.log(ths.files);
+    console.log(ths.files[0]);
+    console.log(ths.files[0].pathname);
+    console.log(ths.pathname);
+    
+    // document.querySelector("#edit_profile_form #profile_img").src = ths.files[0].name;
+    // document.querySelector("#edit_profile_form #profile_img").src = "C:/Users/rodri/Downloads/logo1.png";
+
+    const image_input = document.querySelector("#change_profile_picture");
+    image_input.addEventListener("change", function() {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            const uploaded_image = reader.result;
+            document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+        });
+        reader.readAsDataURL(this.files[0]);
+    });
+    
+    
+    
     console.log("pepin");
     
     // document.querySelector('#profile_img').src=ths.value;
 
-    fetch('/pre_edit_profile', {
-        method: 'PUT',
-        body: JSON.stringify({
-            src: ths.value,
-        })
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log(result);
-        // alert("response");
-        // document.querySelector('#edit_profile_view').style.display = 'none';
-        // document.querySelector('#alert_modal_message h5').innerHTML = 'Holitas';
-        // if(result.message_username || result.message_emailaddress || result.message_password){
-        // document.querySelector('#alert_modal_message #messages').innerHTML = `${result.message_username}
-        //                                                                 ${result.message_emailaddress}
-        //                                                                 ${result.message_password}`;
-        // }
-        // else
-           
-        // alert(`No changes`);
-
-        // load_postbox('all posts', result.user_log);
-        // window.location.href = 'profile/16';
-        // location.reload();
-    });
-    return false;
+    // fetch('/pre_edit_profile', {
+    //     method: 'PUT',
+    //     body: JSON.stringify({
+    //         src: ths.files[0].name,
+    //     })
+    // })
+    // .then(response => response.json())
+    // .then(result => {
+    //     console.log(result);
+    
+    // });
+    // return false;
 
 
     // document.querySelector('#change_profile_picture').value.style.visibility="visible";

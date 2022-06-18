@@ -12,6 +12,8 @@ from datetime import datetime
 from django.db.models import Q
 from array import array
 from random import randrange
+from django.core.files.uploadedfile import UploadedFile
+
 import random
 
 import time
@@ -443,16 +445,35 @@ def edit(request):
 def pre_edit_profile(request):
     print('---------------change_profile_picture---------------')
     # print(request.body[src])
-    user_1 = User.objects.get(id=request.user.id)
+    user_999 = User.objects.filter(id=999)
+    if(user_999):
+        print(user_999)
+    else:
+        print("kkk")
+        user_999 = User.objects.create(id=999, username="user_999", email="email_user@999.com", password="password_user_999")
+        user_999.save()
+    # print(user_999)
     data = json.loads(request.body)
     src = data.get("src", "")
     print(src)
-    user_logued = User.objects.get(id=request.user.id)
     print(request.FILES)
-    if(request.FILES):
-        # print(request.FILES['change_profile_picture'])
-        user_logued.header_image = request.FILES['change_profile_picture']
-        message_image = "- Profile image changed."
+    # if(src):
+        # user_999.header_image = src
+    # user_999.save()
+
+
+
+    
+    instance = User(
+        header_image=UploadedFile(
+            file=open(src, 'rb')
+            # file=open('C:/Users/rodri/Downloads/logo1.png', 'rb')
+        )
+    )
+    instance.save()
+
+
+
 
     return JsonResponse({"message_username":"holis",})
 
@@ -503,6 +524,8 @@ def edit_profile(request):
             message_password = "- Passwords must match.<br>"
 
 
+    print("-----request.FILES--------")
+    print(request.FILES)
     if(request.FILES):
         # print(request.FILES['change_profile_picture'])
         user_logued.header_image = request.FILES['change_profile_picture']
