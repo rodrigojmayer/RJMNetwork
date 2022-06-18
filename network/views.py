@@ -292,10 +292,18 @@ def following(request):
                 for each in each_liker.liker.all():
                     likers_id.append(each.id)
                 post.likers_id = likers_id
+
+        users = User.objects.all()
+        user_color = {}
+        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+        for j in users:
+            user_color[j.id] = random.choice(colors_list)
+            colors_list.remove(user_color[j.id])
         return render(request, "network/following.html",{
             "follows_filter":follows_filter,
             "all_posts":all_posts2,
             "list_total_pages":list_total_pages,
+            "user_color": user_color,
         })
     else:
         return render(request, "network/register.html")

@@ -484,7 +484,9 @@ window.onclick = function(event) {
         alert("kquita");
     }
 
-    if (!event.target.matches('#dropbtn-profile')) {
+    if (!event.target.matches('#dropbtn-profile') && 
+        !event.target.matches('#profile_letter')&& 
+        !event.target.matches('#profile_img')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
