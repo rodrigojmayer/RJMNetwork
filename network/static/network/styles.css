@@ -127,6 +127,7 @@ body{
   /* text-align: center; */
   z-index: 20;
 }
+
 .profile_picture_letter{
     position:absolute;
     height:30px;
@@ -134,15 +135,24 @@ body{
     top: 6.5px;
     left : 14.5px;
     /* text-align: center; */
-    z-index: 2;
+    z-index: 20;
 
+}
+
+#profile_profile_picture_letter{
+    position:absolute;
+    font-size: 3.5rem;
+    /* text-align: center; */
+    margin: auto;
+    top: .5rem;
+    left : 1.3rem;
 }
 
 .no_profile_picture_circle{
     position:absolute;
     height:1.5rem;
     width:1.5rem;
-    z-index: 1;
+    z-index: 10;
 }
 
 #profile{
@@ -211,8 +221,8 @@ body{
 }
 
 #profile-flex-order-child1 #dropbtn-profile{
-    width: 4rem;
-    height: 4rem;
+    width: 4.7rem;
+    height: 4.7rem;
     /* margin: .5rem; */
 }
 
@@ -242,8 +252,10 @@ body{
 
 #profile_view_picture{
     margin-right: .5rem;
-    height: 150px;
-    width: 150px;
+    /* height: 150px; */
+    /* width: 150px; */
+    height: 4.7rem;
+    width: 4.7rem;
     border-radius: 50%;
 }
 
@@ -550,6 +562,7 @@ font-size: 1.3rem;
     justify-content: space-around;
     align-items: center;
     box-shadow: 16px 8px 16px 0px rgba(0,0,0,1.2);
+    z-index: 990;
 }
 
 .dropbtn {
