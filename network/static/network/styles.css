@@ -111,6 +111,22 @@ body{
     border-radius: 50%;
 }
 
+#display-image{
+    /* width: 400px; */
+    /* height: 225px; */
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+    margin-right: .5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+}
+
+#display-image img{
+    height: 1.5rem;
+    width: 1.5rem;
+}
 .no_profile_picture{
     position: relative; 
     margin:0;
@@ -590,7 +606,7 @@ font-size: 1.3rem;
     display: inline-block;
     /* z-index: 900; */
 }
-  
+
 .dropdown-content {
     display: none;
     position: absolute;
