@@ -77,7 +77,13 @@ def login_view(request):
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username, password=password) 
+        # users = User.objects.all()
+        # user_color = {}
+        # colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+        # for j in users:
+            # user_color[j.id] = random.choice(colors_list)
+            # colors_list.remove(user_color[j.id])
 
         # Check if authentication successful
         if user is not None:
@@ -85,10 +91,13 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "network/login.html", {
-                "message": "Invalid username and/or password."
+                "message": "Invalid username and/or password.",
+                # "user": user,
+                # "user_color": user_color
             })
     else:
-        return render(request, "network/login.html")
+        return render(request, "network/login.html", {
+                "user": 0})
 
 
 def logout_view(request):
@@ -122,7 +131,8 @@ def register(request):
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "network/register.html")
+        return render(request, "network/register.html", {
+                "user": 0})
 
 @csrf_exempt
 @login_required
@@ -428,6 +438,23 @@ def edit(request):
     else:
         print("This post is not yours")
 
+@csrf_exempt
+@login_required
+def pre_edit_profile(request):
+    print('---------------change_profile_picture---------------')
+    # print(request.body[src])
+    user_1 = User.objects.get(id=request.user.id)
+    data = json.loads(request.body)
+    src = data.get("src", "")
+    print(src)
+    user_logued = User.objects.get(id=request.user.id)
+    print(request.FILES)
+    if(request.FILES):
+        # print(request.FILES['change_profile_picture'])
+        user_logued.header_image = request.FILES['change_profile_picture']
+        message_image = "- Profile image changed."
+
+    return JsonResponse({"message_username":"holis",})
 
 @csrf_exempt
 @login_required
