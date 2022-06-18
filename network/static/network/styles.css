@@ -594,13 +594,13 @@ font-size: 1.3rem;
 .dropdown-content {
     display: none;
     position: absolute;
-    top:-114px;
+    top:-110px;
     background-color: var(--gray-blue);
     min-width: 160px;
     overflow: auto;
     border-radius: 5px 5px 0 0;
     /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
-    /* z-index: 900; */
+    z-index: 999;
 }
   
 .dropdown-content a {
@@ -614,6 +614,10 @@ font-size: 1.3rem;
 #myDropdown a:hover {
     background-color: var(--link-color);
     color:var(--white-color)
+}
+
+#myDropdown{
+    z-index: 990;
 }
 
 .dropdown #profile_letter{
