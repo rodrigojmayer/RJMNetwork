@@ -440,42 +440,42 @@ def edit(request):
     else:
         print("This post is not yours")
 
-@csrf_exempt
-@login_required
-def pre_edit_profile(request):
-    print('---------------change_profile_picture---------------')
-    # print(request.body[src])
-    user_999 = User.objects.filter(id=999)
-    if(user_999):
-        print(user_999)
-    else:
-        print("kkk")
-        user_999 = User.objects.create(id=999, username="user_999", email="email_user@999.com", password="password_user_999")
-        user_999.save()
-    # print(user_999)
-    data = json.loads(request.body)
-    src = data.get("src", "")
-    print(src)
-    print(request.FILES)
-    # if(src):
-        # user_999.header_image = src
-    # user_999.save()
+# @csrf_exempt
+# @login_required
+# def pre_edit_profile(request):
+#     print('---------------change_profile_picture---------------')
+#     # print(request.body[src])
+#     user_999 = User.objects.filter(id=999)
+#     if(user_999):
+#         print(user_999)
+#     else:
+#         print("kkk")
+#         user_999 = User.objects.create(id=999, username="user_999", email="email_user@999.com", password="password_user_999")
+#         user_999.save()
+#     # print(user_999)
+#     data = json.loads(request.body)
+#     src = data.get("src", "")
+#     print(src)
+#     print(request.FILES)
+#     # if(src):
+#         # user_999.header_image = src
+#     # user_999.save()
 
 
 
     
-    instance = User(
-        header_image=UploadedFile(
-            file=open(src, 'rb')
-            # file=open('C:/Users/rodri/Downloads/logo1.png', 'rb')
-        )
-    )
-    instance.save()
+#     instance = User(
+#         header_image=UploadedFile(
+#             file=open(src, 'rb')
+#             # file=open('C:/Users/rodri/Downloads/logo1.png', 'rb')
+#         )
+#     )
+#     instance.save()
 
 
 
 
-    return JsonResponse({"message_username":"holis",})
+#     return JsonResponse({"message_username":"holis",})
 
 @csrf_exempt
 @login_required
