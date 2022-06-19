@@ -65,8 +65,10 @@
                             {% else %}
                                 <div class="no_profile_picture">
                                     <img id="display-image" >
-                                        <div  id="profile_letter_preview" class="no_profile_picture_letter" style="background-color: #{{user_color|keyvalue:user.id}}">
-                                            {{ user|make_list|first|capfirst }}
+                                        <div id="no_profile_picture_background" style="background-color: #{{user_color|keyvalue:user.id}}">
+                                            <div  id="profile_letter_preview" class="no_profile_picture_letter" >
+                                                {{ user|make_list|first|capfirst }}
+                                            </div>
                                         </div>
                                     </img>
                                 </div>

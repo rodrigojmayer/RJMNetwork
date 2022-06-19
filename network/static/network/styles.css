@@ -644,12 +644,22 @@ font-size: 1.3rem;
     left: 5.5px;
 }
 
-#profile_letter_preview{
-    
+#profile_letter_preview{ 
+    width: 200px;
+    height: 200px;
     top: .5rem;
     left: 1.7rem;
     font-size: 5rem;
     /* margin:auto; */
+}
+#no_profile_picture_background{
+
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
 }
   
 .show {
