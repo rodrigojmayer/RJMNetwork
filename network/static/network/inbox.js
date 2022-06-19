@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 img.src = e.target.result;
             }
             reader.readAsDataURL(imageFile);
-            document.getElementById("profile_letter_preview").style.display="none";
+            document.getElementById("no_profile_picture_background").style.display="none";
             document.getElementById("display-image").style.opacity=1;
             // document.getElementById("display-image").style.removeProperty("background-color");
             
@@ -199,6 +199,8 @@ function load_postbox(postbox, user_log){
                 unLockScroll();
             }
             else{
+                document.querySelector('#display-image').src = document.querySelector('#profile_view_picture').src;
+                // console.log(document.querySelector('#display-image').src);
                 document.querySelector('.modal').style.display = 'block';
                 // console.log( document.querySelector('#new_post_view').style.display);
                 document.querySelector('#new_post_view').style.display = 'none';
@@ -525,7 +527,7 @@ window.onclick = function(event) {
 
     }
     else if(event.target.matches('#log_out')){
-        alert("kquita");
+        // alert("kquita");
     }
 
     if (!event.target.matches('#dropbtn-profile') && 
@@ -558,7 +560,7 @@ function close_window(){
     document.querySelector("#password").value = null;
     document.querySelector("#change_profile_picture").value = null;
 
-    document.getElementById("profile_letter_preview").style.display="block";
+    document.getElementById("no_profile_picture_background").style.display="block";
     document.getElementById("display-image").style.opacity=0;
 
     unLockScroll();
