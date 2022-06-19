@@ -47,6 +47,49 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
     // console.log(document.querySelector('#nav-following'))
+
+    
+    // const image_input = document.querySelector("#change_profile_picture");
+    // image_input.addEventListener("change", function() {
+    //     const reader = new FileReader();
+    //     reader.addEventListener("load", () => {
+    //         const uploaded_image = reader.result;
+    //         document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+    //     });
+    //     reader.readAsDataURL(this.files[0]);
+    // });    
+    const image_input = document.querySelector("#change_profile_picture");
+    image_input.addEventListener("change", function(e) {
+        if (e.target.files) {
+            let imageFile = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = document.createElement("img");
+                img.onload = function (event) {
+                    // Dynamically create a canvas element
+                    var canvas = document.createElement("canvas");
+
+                    // var canvas = document.getElementById("canvas");
+                    var ctx = canvas.getContext("2d");
+
+                    // Actual resizing
+                    ctx.drawImage(img, 0, 0, 300, 160);
+
+                    // Show resized image in preview element
+                    var dataurl = canvas.toDataURL(imageFile.type);
+                    document.getElementById("display-image").src = dataurl;
+                }
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(imageFile);
+            document.getElementById("profile_letter_preview").style.display="none";
+            document.getElementById("display-image").style.removeProperty("background-color");
+            
+            console.log("quepasasa")
+        }
+
+    });
+
 })
 function load_postbox(postbox, user_log){
     if(postbox === 'new post'){
@@ -514,6 +557,9 @@ function close_window(){
     document.querySelector("#password").value = null;
     document.querySelector("#change_profile_picture").value = null;
 
+    document.getElementById("profile_letter_preview").style.display="block";
+    document.getElementById("display-image").style.returnProperty("background-color");
+
     unLockScroll();
 }
 
@@ -531,6 +577,9 @@ function unLockScroll() {
     document.body.classList.add("un-lock-scroll");
 }
 
+
+
+
 function showFile(ths){
     console.log("pepito");
     console.log(ths.value);
@@ -544,15 +593,13 @@ function showFile(ths){
     // document.querySelector("#edit_profile_form #profile_img").src = ths.files[0].name;
     // document.querySelector("#edit_profile_form #profile_img").src = "C:/Users/rodri/Downloads/logo1.png";
 
-    const image_input = document.querySelector("#change_profile_picture");
-    image_input.addEventListener("change", function() {
-        const reader = new FileReader();
-        reader.addEventListener("load", () => {
-            const uploaded_image = reader.result;
-            document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
-        });
-        reader.readAsDataURL(this.files[0]);
-    });
+
+
+    setTimeout(function(){
+        console.log("retrasando")
+     }, 5000);
+
+
     
     
     
