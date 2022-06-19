@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function(){
             document.getElementById("display-image").style.opacity=1;
             // document.getElementById("display-image").style.removeProperty("background-color");
             
-            console.log("quepasasa")
+            // console.log("quepasasa")
         }
 
     });
@@ -581,53 +581,53 @@ function unLockScroll() {
 
 
 
-function showFile(ths){
-    console.log("pepito");
-    console.log(ths.value);
-    console.log(ths.files.name);
-    console.log(ths.files[0].name);
-    console.log(ths.files);
-    console.log(ths.files[0]);
-    console.log(ths.files[0].pathname);
-    console.log(ths.pathname);
+// function showFile(ths){
+//     console.log("pepito");
+//     console.log(ths.value);
+//     console.log(ths.files.name);
+//     console.log(ths.files[0].name);
+//     console.log(ths.files);
+//     console.log(ths.files[0]);
+//     console.log(ths.files[0].pathname);
+//     console.log(ths.pathname);
     
-    // document.querySelector("#edit_profile_form #profile_img").src = ths.files[0].name;
-    // document.querySelector("#edit_profile_form #profile_img").src = "C:/Users/rodri/Downloads/logo1.png";
+//     // document.querySelector("#edit_profile_form #profile_img").src = ths.files[0].name;
+//     // document.querySelector("#edit_profile_form #profile_img").src = "C:/Users/rodri/Downloads/logo1.png";
 
 
 
-    setTimeout(function(){
-        console.log("retrasando")
-     }, 5000);
+//     setTimeout(function(){
+//         console.log("retrasando")
+//      }, 5000);
 
 
     
     
     
-    console.log("pepin");
+//     console.log("pepin");
     
-    // document.querySelector('#profile_img').src=ths.value;
+//     // document.querySelector('#profile_img').src=ths.value;
 
-    // fetch('/pre_edit_profile', {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         src: ths.files[0].name,
-    //     })
-    // })
-    // .then(response => response.json())
-    // .then(result => {
-    //     console.log(result);
+//     // fetch('/pre_edit_profile', {
+//     //     method: 'PUT',
+//     //     body: JSON.stringify({
+//     //         src: ths.files[0].name,
+//     //     })
+//     // })
+//     // .then(response => response.json())
+//     // .then(result => {
+//     //     console.log(result);
     
-    // });
-    // return false;
+//     // });
+//     // return false;
 
 
-    // document.querySelector('#change_profile_picture').value.style.visibility="visible";
-    // document.querySelector('div .image_selected').innerHTML=ths.value;
-    // document.querySelector('#image_selected').src=ths.value;
-    // document.querySelector('#change_profile_picture').style.width="auto";
-    // document.querySelector('#change_profile_picture').style.height="auto";
-}
+//     // document.querySelector('#change_profile_picture').value.style.visibility="visible";
+//     // document.querySelector('div .image_selected').innerHTML=ths.value;
+//     // document.querySelector('#image_selected').src=ths.value;
+//     // document.querySelector('#change_profile_picture').style.width="auto";
+//     // document.querySelector('#change_profile_picture').style.height="auto";
+// }
 
 function openOkMessage(ths){
     // console.log("openOkMessage");
