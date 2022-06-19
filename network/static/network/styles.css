@@ -112,21 +112,24 @@ body{
 }
 
 #display-image{
-    /* width: 400px; */
-    /* height: 225px; */
-    border: 1px solid black;
+    /* width: 4rem;
+    height: 4rem; */
+    width: 200px;
+    height: 200px;
+    border: 0px solid black;
     background-position: center;
     background-size: cover;
-    margin-right: .5rem;
-    height: 1.5rem;
-    width: 1.5rem;
-    border-radius: 50%;
+    /* margin-right: .5rem; */
+    /* height: 1.5rem; */
+    /* width: 1.5rem; */
+    border-radius: 10%;
 }
 
-#display-image img{
-    height: 1.5rem;
-    width: 1.5rem;
-}
+/* #display-image img{
+    height: 3rem;
+    width: 3rem;
+} */
+
 .no_profile_picture{
     position: relative; 
     margin:0;
@@ -639,6 +642,14 @@ font-size: 1.3rem;
 .dropdown #profile_letter{
     top: 10.5px;
     left: 5.5px;
+}
+
+#profile_letter_preview{
+    
+    top: .5rem;
+    left: 1.7rem;
+    font-size: 5rem;
+    /* margin:auto; */
 }
   
 .show {
