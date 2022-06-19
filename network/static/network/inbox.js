@@ -199,7 +199,9 @@ function load_postbox(postbox, user_log){
                 unLockScroll();
             }
             else{
-                document.querySelector('#display-image').src = document.querySelector('#profile_view_picture').src;
+                if(document.querySelector('#profile_view_picture').src){
+                    document.querySelector('#display-image').src = document.querySelector('#profile_view_picture').src;
+                }
                 // console.log(document.querySelector('#display-image').src);
                 document.querySelector('.modal').style.display = 'block';
                 // console.log( document.querySelector('#new_post_view').style.display);
