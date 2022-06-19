@@ -83,7 +83,8 @@ document.addEventListener('DOMContentLoaded', function(){
             }
             reader.readAsDataURL(imageFile);
             document.getElementById("profile_letter_preview").style.display="none";
-            document.getElementById("display-image").style.removeProperty("background-color");
+            document.getElementById("display-image").style.opacity=1;
+            // document.getElementById("display-image").style.removeProperty("background-color");
             
             console.log("quepasasa")
         }
@@ -558,7 +559,7 @@ function close_window(){
     document.querySelector("#change_profile_picture").value = null;
 
     document.getElementById("profile_letter_preview").style.display="block";
-    document.getElementById("display-image").style.returnProperty("background-color");
+    document.getElementById("display-image").style.opacity=0;
 
     unLockScroll();
 }
