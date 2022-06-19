@@ -548,7 +548,8 @@ window.onclick = function(event) {
 }
    
 function close_window(){
-    
+    // alert("tre");
+    unLockScroll();
     document.querySelector('#new_post_view').style.display = 'none';
     document.querySelector('#edit_profile_view').style.display = 'none';
     document.querySelector('.modal').style.display = 'none';
@@ -565,7 +566,6 @@ function close_window(){
     document.getElementById("no_profile_picture_background").style.display="block";
     document.getElementById("display-image").style.opacity=0;
 
-    unLockScroll();
 }
 
 function lockScroll() {
