@@ -573,6 +573,11 @@ function lockScroll() {
     // document.querySelector('.modal').style.display = 'block';
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
+    // alert("lockScroll");
+    document.querySelector("html").style.marginRight = "11px";
+    document.querySelector(".logo").style.paddingRight = "11px";
+    document.getElementById("navbar").style.paddingRight = "11px";
+    document.getElementById("new_post").style.paddingRight = "11px";
 }
 function unLockScroll() {
         
@@ -580,6 +585,11 @@ function unLockScroll() {
     // document.querySelector('.modal').style.display = 'none';
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
+    // alert("unLockScroll");
+    document.querySelector("html").style.marginRight = "0px";
+    document.querySelector(".logo").style.paddingRight = "0px";
+    document.getElementById("navbar").style.paddingRight = "0px";
+    document.getElementById("new_post").style.paddingRight = "0px";
 }
 
 

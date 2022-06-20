@@ -475,6 +475,25 @@ color: var(--text-color);
 background-color: var(--gray-light-color);
 }
 
+
+.scroller {
+    overflow-y: scroll;
+    scrollbar-color: #0A4C95 #C2D2E4;
+    width: 11px;
+}
+::-webkit-scrollbar {
+    width: 11px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gray-color);
+    border-radius: 10px;
+}
+
+
 /* #arrow-first-page svg:hover,
 #arrow-prev-page svg:hover,
 #arrow-next-page svg:hover,
