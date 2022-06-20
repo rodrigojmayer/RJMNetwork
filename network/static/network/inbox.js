@@ -574,10 +574,10 @@ function lockScroll() {
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
     // alert("lockScroll");
-    document.querySelector("html").style.marginRight = "11px";
-    document.querySelector(".logo").style.paddingRight = "11px";
-    document.getElementById("navbar").style.paddingRight = "11px";
-    document.getElementById("new_post").style.paddingRight = "11px";
+    document.querySelector("html").style.marginRight = "17px";
+    document.querySelector(".logo").style.paddingRight = "17px";
+    document.getElementById("navbar").style.paddingRight = "17px";
+    document.getElementById("new_post").style.paddingRight = "17px";
 }
 function unLockScroll() {
         
