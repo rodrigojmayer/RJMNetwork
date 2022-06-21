@@ -71,7 +71,8 @@
                     </div>
                 {% endfor %}
                 <div id="id_page_buttons">
-                    <button id="selected_button" class="no-button" > 1 </button>
+                    <!-- <button id="selected_button" class="no-button" > 1 </button> -->
+                    <button id="selected_button" class="page_button" > 1 </button>
                     {% if list_total_pages %}
                         {% for page in list_total_pages %}
                             <button class="page_button"  id="not_selected_button" onclick="pages('{{user.id}}', 0, '{{page}}'-1)">{{page}}</button>
