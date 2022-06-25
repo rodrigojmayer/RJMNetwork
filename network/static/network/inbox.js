@@ -396,10 +396,18 @@ function pages(user_log, prev_page, next_page){
         posts.id=(`page_${next_page}`);
         document.querySelector(`#all_posts_view`).append(posts);
         var cont_posts = 0;
-        console.log(data_all_posts);
+        // console.log(data_all_posts);
         for (var data_post of data_all_posts) {
             if(cont_posts < 10){
-                var user_post = JSON.parse(result.F).filter(function (entry) {
+                // var newArray = homes.filter(function (el) {
+                //     return el.price <= 1000 &&
+                //            el.sqft >= 500 &&
+                //            el.num_of_beds >=2 &&
+                //            el.num_of_baths >= 2.5;
+                //   });
+                // console.log(data_post.fields.poster);
+                                
+                var user_post = JSON.parse(result.all_users_json).filter(function (entry) {
                     return entry.pk == data_post.fields.poster;
                 });
                 var date_added_string = data_post.fields.date_added;
@@ -481,7 +489,9 @@ function pages(user_log, prev_page, next_page){
         for(i_page in result.list_total_pages){
             page = result.list_total_pages[i_page];
             if(page == next_page+1){
-                post_buttons += `  <button id="selected_button" class="no-button">${page}</button>   `;
+                // post_buttons += `  <button id="selected_button" class="no-button">${page}</button>   `;
+                post_buttons += `  <button id="selected_button" class="page_button" >${page}</button>   `;
+                        
             }else{
                 post_buttons += `  <button class="page_button" id="not_selected_button" onclick="pages('${ user_log }', ${next_page}, ${page}-1)">${page}</button>   `;    
             }
