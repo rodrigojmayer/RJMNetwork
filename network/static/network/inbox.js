@@ -384,9 +384,14 @@ function pages(user_log, prev_page, next_page){
     })
     .then(response => response.json())
     .then(result => {
-
+        // console.log(result.all_posts_json)
+        
         data_all_posts = JSON.parse(result.all_posts_json);
         data_users_json = JSON.parse(result.all_users_json);
+        // console.log(all_posts_json)
+        console.log(data_all_posts)
+        // console.log(all_users_json)
+        console.log(data_users_json)
         const posts = document.createElement("div");
         posts.id=(`page_${next_page}`);
         document.querySelector(`#all_posts_view`).append(posts);
