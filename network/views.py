@@ -394,6 +394,8 @@ def pagesposts(request):
 
     all_posts = NewPost.objects.select_related('poster')
 
+    users_without_color=[]
+
     if(request.GET.get("url") == "/follow"):
         follows_filter=[]
         followers = Followers.objects.filter(follower=request.user.id)
@@ -417,6 +419,9 @@ def pagesposts(request):
         post.number_likes=0
         likers = all_likers.filter(post=post.id)
         likers_id = []
+        users_without_color.insert(int(post.poster.id), int(post.poster.id))
+        print(post.poster.id)
+        print("$#----------------------#$")
         for each_liker in likers:
             post.likers = each_liker.liker.all()
             post.number_likes = each_liker.liker.count()
@@ -425,6 +430,8 @@ def pagesposts(request):
             all_likers_id.append( likers_id)
 
     all_users = User.objects.all()
+    print(users_without_color)
+    print("---------------gdasdg------------------")
     print(all_posts)
     print("---------------------------------")
     all_posts_json = serializers.serialize('json', all_posts)
@@ -432,11 +439,26 @@ def pagesposts(request):
     print("------------------------------------------")
     print(all_posts_json)
 
+
+
+            
+    users = User.objects.all()
+    user_color = {}
+    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+    for j in users_without_color:
+    # for j in users:
+        # print(j)
+        # print("--------fdsaf")
+        user_color[j] = random.choice(colors_list)
+        colors_list.remove(user_color[j])
+
+
     return JsonResponse({"message":"probando",
                         "all_likers_id": all_likers_id,
                         "all_posts_json": all_posts_json,
                         "all_users_json": all_users_json,
                         "list_total_pages": list_total_pages,
+                        "user_color": user_color,
                         }, status=201)
 
 @csrf_exempt
