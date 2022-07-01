@@ -1,6 +1,7 @@
 let id_post_global = -1;
 var rs = getComputedStyle(document.querySelector(":root"));
 
+// var body = document.querySelector('.body');
 
 document.addEventListener('DOMContentLoaded', function(){
     document.querySelector("#lookup-form").style.display = "none";
@@ -90,6 +91,22 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
     });
+
+
+    
+      
+    //   const p = document.querySelector('p')
+      
+    //   for (let i = 1; i <= 100; i++) {
+    //     const p = document.createElement('p')
+    //     p.textContent = i
+    //     div.appendChild(p)
+    //   }
+      
+    //   console.log(scrollbarVisible(p))
+      console.log(scrollbarVisible(document.querySelector('.body')))
+
+
 
 })
 function load_postbox(postbox, user_log){
@@ -365,6 +382,7 @@ function follow(id_poster, user_log, followed_by2){
     });
 }
 function pages(user_log, prev_page, next_page){
+    console.log("entra aca papapapa")
     prev_page = parseInt(prev_page);
     next_page = parseInt(next_page);
     var clean = document.getElementById(`page_${prev_page}`);
@@ -386,6 +404,8 @@ function pages(user_log, prev_page, next_page){
     .then(result => {
         // console.log(result.all_posts_json)
         
+        console.log(result.user_color)
+        console.log("ese deberia ser el array de los colores")
         data_all_posts = JSON.parse(result.all_posts_json);
         data_users_json = JSON.parse(result.all_users_json);
         // console.log(all_posts_json)
@@ -503,6 +523,10 @@ function pages(user_log, prev_page, next_page){
         page_buttons.innerHTML = post_buttons;
         document.querySelector(`#page_${next_page}`).append(page_buttons);
     });
+    // setTimeout(function(){ 
+        console.log(scrollbarVisible(document.querySelector('.body')));
+            //  }, 5000);
+    
     return false;
 }
 // function close_cover(){
@@ -589,10 +613,10 @@ function lockScroll() {
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
     // alert("lockScroll");
-    document.querySelector("html").style.marginRight = "17px";
-    document.querySelector(".logo").style.paddingRight = "17px";
-    document.getElementById("navbar").style.paddingRight = "17px";
-    document.getElementById("new_post").style.paddingRight = "17px";
+    // document.querySelector("html").style.marginRight = "17px";
+    // document.querySelector(".logo").style.paddingRight = "17px";
+    // document.getElementById("navbar").style.paddingRight = "17px";
+    // document.getElementById("new_post").style.paddingRight = "17px";
 }
 function unLockScroll() {
         
@@ -601,10 +625,10 @@ function unLockScroll() {
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
     // alert("unLockScroll");
-    document.querySelector("html").style.marginRight = "0px";
-    document.querySelector(".logo").style.paddingRight = "0px";
-    document.getElementById("navbar").style.paddingRight = "0px";
-    document.getElementById("new_post").style.paddingRight = "0px";
+    // document.querySelector("html").style.marginRight = "0px";
+    // document.querySelector(".logo").style.paddingRight = "0px";
+    // document.getElementById("navbar").style.paddingRight = "0px";
+    // document.getElementById("new_post").style.paddingRight = "0px";
 }
 
 
@@ -707,3 +731,15 @@ function openOkMessage(ths){
     // else
     //     document.querySelector('#alert_modal_message #messages').innerHTML = `No changes`;
 }
+
+
+const scrollbarVisible = (element) => {
+
+    // console.log(element.scrollHeight);
+    // console.log(window.innerWidth);
+    // return element.scrollHeight > element.clientHeight;
+    return element.scrollHeight > window.innerWidth;
+    // return element.scrollHeight 
+  };
+  
+      
