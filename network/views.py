@@ -13,14 +13,115 @@ from django.db.models import Q
 from array import array
 from random import randrange
 from django.core.files.uploadedfile import UploadedFile
+from django.core.paginator import Paginator
 
 import random
 
 import time
 
-from django.core.paginator import Paginator
 
 from .models import User, NewPost, Followers, Likers
+
+
+@csrf_exempt
+@login_required
+def postsbox(request, actual_page, jump_page):
+    
+    all_posts = NewPost.objects.select_related('poster')
+    users = User.objects.all()
+    user_color = {}
+    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+    for j in users:
+        user_color[j.id] = random.choice(colors_list)
+        colors_list.remove(user_color[j.id])
+    # print(users)
+    # print("estos son los campos - - - ")
+    # print(all_fields)
+
+
+#########################################################################
+    # total_posts=all_posts.count()
+    # total_pages=math.ceil(total_posts/10)
+    # list_total_pages = []
+    # for i in range(2, total_pages+1):
+    #     list_total_pages.append(i)
+#########################################################################
+
+    all_posts = all_posts.order_by("-date_added")
+    p = Paginator(all_posts, 10)
+    
+    # print(actual_page)
+    # print(list(p.object_list))
+    # print(p.num_pages)
+    
+    
+    list_total_pages = []
+    for i in range(2, p.num_pages+1):
+        list_total_pages.append(i)
+
+
+    # print(jump_page)
+    # actual_page = 1
+    if(jump_page==12):
+      num_page = 1
+    elif(jump_page==11):
+      num_page = actual_page - 1
+    elif(jump_page == 1):
+      num_page = actual_page + 1
+    elif(jump_page == 2 or actual_page > p.num_pages):
+      num_page = p.num_pages
+    else:
+      num_page = actual_page
+
+    # print(actual_page)
+
+
+    # num_page = actual_page
+
+
+    num_page = jump_page
+    page = p.page(num_page)
+    # random_number = randrange(100)
+
+
+    print(list(page.object_list))
+    all_posts = page.object_list
+    # all_posts = all_posts.order_by("-date_added")[:10]
+    all_likers = Likers.objects.all()
+    for post in all_posts:
+        print(post.poster)
+        post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
+        post.number_likes=0
+        likers = all_likers.filter(post=post.id)
+        likers_id = []
+        for each_liker in likers:
+            post.likers = each_liker.liker.all()
+            post.number_likes = each_liker.liker.count()
+            for each in each_liker.liker.all():
+                likers_id.append(each.id)
+            post.likers_id = likers_id
+        # print(post._meta.fields)
+        # print(post.poster.id)
+        # # print(users.objects.get(id=post.poster.id).randim)
+        # user_color = users.objects.get(id=post.poster.id)
+        # print(user_color.randim)
+
+
+
+
+
+    return render(request, "network/index.html", {
+        "all_posts": all_posts,
+        "users": users,
+        "list_total_pages": list_total_pages,
+        # "random_number": random_number,
+        "user_color": user_color,
+        "p_actual": num_page,
+        # "p_last": p.num_pages
+    })
+
+
+
 
 def index(request):
     all_posts = NewPost.objects.select_related('poster')

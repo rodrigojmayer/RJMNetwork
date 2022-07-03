@@ -404,7 +404,7 @@ function pages(user_log, prev_page, next_page){
     .then(result => {
         // console.log(result.all_posts_json)
         
-        console.log(result.user_color)
+        console.log(result.user_color) 
         console.log("ese deberia ser el array de los colores")
         data_all_posts = JSON.parse(result.all_posts_json);
         data_users_json = JSON.parse(result.all_users_json);
@@ -446,6 +446,23 @@ function pages(user_log, prev_page, next_page){
                 const post = document.createElement("div");
                 post.className=("border border-secondary rounded p-3 mt-2");
                 post.id=("posts_style");
+
+                
+                console.log(data_post);
+        
+                //  if post.poster.header_image 
+                //     <img class="posts_profile_picture" alt="Image not found" src="/media/{{ post.poster.header_image }}">
+                // else 
+                //     <div class="no_profile_picture">
+                //         <svg id="dropbtn-profile" class="no_profile_picture_circle" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                //             <path id="dropbtn-profile" d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0C31.0457 0 40 8.9543 40 20Z" fill="#{{user_color|keyvalue:post.poster.id}}"/>
+                //         </svg>
+                //         <div  class="no_profile_picture_letter">
+                //             {{ post.poster|make_list|first|capfirst }}
+                //         </div>
+                //     </div>
+
+
                 post_string = `  <!--div id="post-${data_post.pk}"> ${ data_post.pk } </div-->
                                 <div id="posts-flex-order">
                                     <div id="posts-flex-order-child1">
