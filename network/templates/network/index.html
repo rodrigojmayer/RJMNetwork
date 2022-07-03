@@ -9,7 +9,7 @@
 
     <h3> All Posts</h3>
     {{p_actual}}
-    <!-- {{user_color}} -->
+    {{list_total_pages}}
     <div id="all_posts_view">
         <div id="page_0">
             {% if all_posts %}    
@@ -67,10 +67,14 @@
                 {% endfor %}
                 <div id="id_page_buttons">
                     <!-- <button id="selected_button" class="no-button" > 1 </button> -->
-                    <button id="selected_button" class="page_button" > 1 </button>
                     {% if list_total_pages %}
                         {% for page in list_total_pages %} 
-                            <button class="page_button"  id="not_selected_button" onclick="pages('{{user.id}}', 0, '{{page}}'-1)">{{page}}</button>
+                            {% if page == p_actual %}
+                                <button id="selected_button" class="page_button" > {{ p_actual }} </button>
+                            {% else %}
+                                <button class="page_button"  id="not_selected_button" onclick="pages('{{user.id}}', 0, '{{page}}'-1)">{{page}}</button>
+                                
+                            {% endif %}
                         {% endfor %}
                         <button class="page_button" onclick="pages('{{user.id}}', 0, 1)">Next page</button>   
                     {% endif %}

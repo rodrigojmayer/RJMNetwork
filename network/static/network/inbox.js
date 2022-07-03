@@ -381,7 +381,30 @@ function follow(id_poster, user_log, followed_by2){
         }
     });
 }
+
 function pages(user_log, prev_page, next_page){
+    next_page = parseInt(next_page)+1;
+
+    // window.location.href = 'http://www.google.com';
+    let url=window.location.pathname;
+    // console.log(url.split)
+    newurl = url.split('/').slice(0,-1).join('/')+'/'+next_page;
+    window.location.href = newurl;
+
+    // fetch(`/postsbox/1/jump_page=${next_page}`, {
+    //     method: 'GET',
+    //     body: JSON.stringify({
+    //         description: descrip
+    //     })
+    // })
+    // .then(response => response.json())
+    // .then(result => {
+    //     load_postbox('all posts', result.user_log);
+    // });
+    // return false;
+
+}
+function pages_prev(user_log, prev_page, next_page){
     console.log("entra aca papapapa")
     prev_page = parseInt(prev_page);
     next_page = parseInt(next_page);
