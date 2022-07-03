@@ -56,7 +56,7 @@ def postsbox(request, actual_page, jump_page):
     
     
     list_total_pages = []
-    for i in range(2, p.num_pages+1):
+    for i in range(1, p.num_pages+1):
         list_total_pages.append(i)
 
 
@@ -85,10 +85,10 @@ def postsbox(request, actual_page, jump_page):
 
 
     print(list(page.object_list))
-    all_posts = page.object_list
+    page_posts = page.object_list
     # all_posts = all_posts.order_by("-date_added")[:10]
     all_likers = Likers.objects.all()
-    for post in all_posts:
+    for post in page_posts:
         print(post.poster)
         post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
         post.number_likes=0
@@ -111,7 +111,7 @@ def postsbox(request, actual_page, jump_page):
 
 
     return render(request, "network/index.html", {
-        "all_posts": all_posts,
+        "all_posts": page_posts,
         "users": users,
         "list_total_pages": list_total_pages,
         # "random_number": random_number,
