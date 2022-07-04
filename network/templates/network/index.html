@@ -68,15 +68,24 @@
                 <div id="id_page_buttons">
                     <!-- <button id="selected_button" class="no-button" > 1 </button> -->
                     {% if list_total_pages %}
+                        {% if p_actual == 1 %}
+                            <button id="selected_button"  class="page_button">Prev page</button>  
+                        {% else %}
+                            <button class="page_button" onclick="pages('{{user.id}}', '{{p_actual}}', -1)">Prev page</button>  
+                        {% endif %}
                         {% for page in list_total_pages %} 
                             {% if page == p_actual %}
                                 <button id="selected_button" class="page_button" > {{ p_actual }} </button>
                             {% else %}
-                                <button class="page_button"  id="not_selected_button" onclick="pages('{{user.id}}', 0, '{{page}}'-1)">{{page}}</button>
+                                <button class="page_button"  id="not_selected_button" onclick="pages('{{user.id}}', '{{page}}', 0)">{{page}}</button>
                                 
                             {% endif %}
                         {% endfor %}
-                        <button class="page_button" onclick="pages('{{user.id}}', 0, 1)">Next page</button>   
+                        {% if p_actual == p_last %}
+                            <button id="selected_button"  class="page_button">Next page</button>  
+                        {% else %}
+                            <button class="page_button" onclick="pages('{{user.id}}','{{p_actual}}', +1)">Next page</button>  
+                        {% endif %}
                     {% endif %}
                 </div>
             {% else %}
