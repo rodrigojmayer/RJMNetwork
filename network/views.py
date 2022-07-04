@@ -25,7 +25,7 @@ from .models import User, NewPost, Followers, Likers
 
 @csrf_exempt
 @login_required
-def postsbox(request, actual_page, jump_page):
+def postsbox(request, jump_page):
     
     all_posts = NewPost.objects.select_related('poster')
     users = User.objects.all()
@@ -62,16 +62,16 @@ def postsbox(request, actual_page, jump_page):
 
     # print(jump_page)
     # actual_page = 1
-    if(jump_page==12):
-      num_page = 1
-    elif(jump_page==11):
-      num_page = actual_page - 1
-    elif(jump_page == 1):
-      num_page = actual_page + 1
-    elif(jump_page == 2 or actual_page > p.num_pages):
-      num_page = p.num_pages
-    else:
-      num_page = actual_page
+    # if(jump_page==12):
+    #   num_page = 1
+    # elif(jump_page==11):
+    #   num_page = actual_page - 1
+    # elif(jump_page == 1):
+    #   num_page = actual_page + 1
+    # elif(jump_page == 2 or actual_page > p.num_pages):
+    #   num_page = p.num_pages
+    # else:
+    #   num_page = actual_page
 
     # print(actual_page)
 
@@ -117,7 +117,7 @@ def postsbox(request, actual_page, jump_page):
         # "random_number": random_number,
         "user_color": user_color,
         "p_actual": num_page,
-        # "p_last": p.num_pages
+        "p_last": p.num_pages
     })
 
 

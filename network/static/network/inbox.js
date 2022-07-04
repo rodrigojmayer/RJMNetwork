@@ -382,9 +382,11 @@ function follow(id_poster, user_log, followed_by2){
     });
 }
 
-function pages(user_log, prev_page, next_page){
-    next_page = parseInt(next_page)+1;
-
+function pages(user_log, next_page, jump_page){
+    // alert(next_page)
+    // alert(jump_page)
+    next_page = parseInt(next_page) + parseInt(jump_page);
+// alert(next_page)
     // window.location.href = 'http://www.google.com';
     let url=window.location.pathname;
     // console.log(url.split)
