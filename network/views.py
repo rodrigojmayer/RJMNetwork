@@ -123,6 +123,12 @@ def postsbox(request, jump_page):
 
 
 
+
+
+
+
+
+
 def index(request):
     all_posts = NewPost.objects.select_related('poster')
     all_fields= NewPost._meta.fields
@@ -168,6 +174,62 @@ def index(request):
         "random_number":random_number,
         "user_color": user_color
     })
+
+
+
+
+def following(request):
+
+    if request.user.id:
+        follows_filter=[]
+        followers = Followers.objects.filter(follower=request.user.id)
+        for each_followers_filter in followers:
+            # print(each_followers_filter.followed.id)
+            follows_filter.append(each_followers_filter.followed.id)
+        all_posts = NewPost.objects.all()
+        all_posts = all_posts.order_by("-date_added")
+        all_posts2=all_posts.filter(poster__in=follows_filter)
+        # print(follows_filter)
+        # print("1--------------")
+        # print(all_posts)
+        # print("-2-------------")
+        # print(all_posts2)
+        total_posts=all_posts2.count()
+        all_posts2=all_posts2[:10]
+        total_pages=math.ceil(total_posts/10)
+        list_total_pages = []
+        for i in range(2, total_pages+1):
+            list_total_pages.append(i)
+        all_likers = Likers.objects.all()
+    
+        for post in all_posts2:
+            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
+            post.number_likes=0
+            likers = all_likers.filter(post=post.id)
+            likers_id = []
+            for each_liker in likers:
+                post.likers = each_liker.liker.all()
+                post.number_likes = each_liker.liker.count()
+                for each in each_liker.liker.all():
+                    likers_id.append(each.id)
+                post.likers_id = likers_id
+
+        users = User.objects.all()
+        user_color = {}
+        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+        for j in users:
+            user_color[j.id] = random.choice(colors_list)
+            colors_list.remove(user_color[j.id])
+        return render(request, "network/following.html",{
+            "follows_filter":follows_filter,
+            "all_posts":all_posts2,
+            "list_total_pages":list_total_pages,
+            "user_color": user_color,
+        })
+    else:
+        return render(request, "network/register.html")
+
+
 
 
 def new_post(request):
@@ -374,57 +436,6 @@ def follow(request, id_poster):
     }
     , status=201)
 
-
-def following(request):
-
-    if request.user.id:
-        follows_filter=[]
-        followers = Followers.objects.filter(follower=request.user.id)
-        for each_followers_filter in followers:
-            # print(each_followers_filter.followed.id)
-            follows_filter.append(each_followers_filter.followed.id)
-        all_posts = NewPost.objects.all()
-        all_posts = all_posts.order_by("-date_added")
-        all_posts2=all_posts.filter(poster__in=follows_filter)
-        # print(follows_filter)
-        # print("1--------------")
-        # print(all_posts)
-        # print("-2-------------")
-        # print(all_posts2)
-        total_posts=all_posts2.count()
-        all_posts2=all_posts2[:10]
-        total_pages=math.ceil(total_posts/10)
-        list_total_pages = []
-        for i in range(2, total_pages+1):
-            list_total_pages.append(i)
-        all_likers = Likers.objects.all()
-    
-        for post in all_posts2:
-            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
-            post.number_likes=0
-            likers = all_likers.filter(post=post.id)
-            likers_id = []
-            for each_liker in likers:
-                post.likers = each_liker.liker.all()
-                post.number_likes = each_liker.liker.count()
-                for each in each_liker.liker.all():
-                    likers_id.append(each.id)
-                post.likers_id = likers_id
-
-        users = User.objects.all()
-        user_color = {}
-        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-        for j in users:
-            user_color[j.id] = random.choice(colors_list)
-            colors_list.remove(user_color[j.id])
-        return render(request, "network/following.html",{
-            "follows_filter":follows_filter,
-            "all_posts":all_posts2,
-            "list_total_pages":list_total_pages,
-            "user_color": user_color,
-        })
-    else:
-        return render(request, "network/register.html")
 
 def liked_posts(request):
 
