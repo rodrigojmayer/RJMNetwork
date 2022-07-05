@@ -23,73 +23,44 @@ import time
 from .models import User, NewPost, Followers, Likers
 
 
-@csrf_exempt
-@login_required
-def postsbox(request, jump_page):
+# @csrf_exempt
+# @login_required
+def postsbox(request, filter_view, jump_page):
     
+
+    
+
+
     all_posts = NewPost.objects.select_related('poster')
-    users = User.objects.all()
-    user_color = {}
-    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-    for j in users:
-        user_color[j.id] = random.choice(colors_list)
-        colors_list.remove(user_color[j.id])
-    # print(users)
-    # print("estos son los campos - - - ")
-    # print(all_fields)
-
-
-#########################################################################
-    # total_posts=all_posts.count()
-    # total_pages=math.ceil(total_posts/10)
-    # list_total_pages = []
-    # for i in range(2, total_pages+1):
-    #     list_total_pages.append(i)
-#########################################################################
-
     all_posts = all_posts.order_by("-date_added")
+    if filter_view == "following":
+        if request.user.id:
+            follows_filter=[]
+            followers = Followers.objects.filter(follower=request.user.id)
+            for each_followers_filter in followers:
+                follows_filter.append(each_followers_filter.followed.id)
+            all_posts=all_posts.filter(poster__in=follows_filter)
+    
+        else:
+            return render(request, "network/register.html")
+
+
+
+            
+
+
     p = Paginator(all_posts, 10)
-    
-    # print(actual_page)
-    # print(list(p.object_list))
-    # print(p.num_pages)
-    
-    
     list_total_pages = []
     for i in range(1, p.num_pages+1):
         list_total_pages.append(i)
-
-
-    # print(jump_page)
-    # actual_page = 1
-    # if(jump_page==12):
-    #   num_page = 1
-    # elif(jump_page==11):
-    #   num_page = actual_page - 1
-    # elif(jump_page == 1):
-    #   num_page = actual_page + 1
-    # elif(jump_page == 2 or actual_page > p.num_pages):
-    #   num_page = p.num_pages
-    # else:
-    #   num_page = actual_page
-
-    # print(actual_page)
-
-
-    # num_page = actual_page
-
-
     num_page = jump_page
     page = p.page(num_page)
-    # random_number = randrange(100)
-
-
-    print(list(page.object_list))
     page_posts = page.object_list
-    # all_posts = all_posts.order_by("-date_added")[:10]
     all_likers = Likers.objects.all()
+    posters_id = []
     for post in page_posts:
-        print(post.poster)
+        if post.poster.id not in posters_id:
+            posters_id.append(post.poster.id)
         post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
         post.number_likes=0
         likers = all_likers.filter(post=post.id)
@@ -100,17 +71,19 @@ def postsbox(request, jump_page):
             for each in each_liker.liker.all():
                 likers_id.append(each.id)
             post.likers_id = likers_id
-        # print(post._meta.fields)
-        # print(post.poster.id)
-        # # print(users.objects.get(id=post.poster.id).randim)
-        # user_color = users.objects.get(id=post.poster.id)
-        # print(user_color.randim)
+
+    users=User.objects.filter(id__in=posters_id)
+    user_color = {}
+    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+    for j in users:
+        user_color[j.id] = random.choice(colors_list)
+        colors_list.remove(user_color[j.id])
 
 
 
 
-
-    return render(request, "network/index.html", {
+    # return render(request, "network/index.html", {
+    return render(request, "network/"+filter_view+".html", {
         "all_posts": page_posts,
         "users": users,
         "list_total_pages": list_total_pages,
@@ -812,3 +785,70 @@ def like(request, id_post):
         "message": "Profile followed successfully."
     }
     , status=201)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+def following(request):
+
+    if request.user.id:
+        follows_filter=[]
+        followers = Followers.objects.filter(follower=request.user.id)
+        for each_followers_filter in followers:
+            follows_filter.append(each_followers_filter.followed.id)
+        all_posts = NewPost.objects.all()
+        all_posts = all_posts.order_by("-date_added")
+        all_posts2=all_posts.filter(poster__in=follows_filter)
+
+
+        total_posts=all_posts2.count()
+        all_posts2=all_posts2[:10]
+        total_pages=math.ceil(total_posts/10)
+
+
+        list_total_pages = []
+        for i in range(2, total_pages+1):
+            list_total_pages.append(i)
+        all_likers = Likers.objects.all()
+        for post in all_posts2:
+            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
+            post.number_likes=0
+            likers = all_likers.filter(post=post.id)
+            likers_id = []
+            for each_liker in likers:
+                post.likers = each_liker.liker.all()
+                post.number_likes = each_liker.liker.count()
+                for each in each_liker.liker.all():
+                    likers_id.append(each.id)
+                post.likers_id = likers_id
+        users = User.objects.all()
+        user_color = {}
+        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+        for j in users:
+            user_color[j.id] = random.choice(colors_list)
+            colors_list.remove(user_color[j.id])
+
+        return render(request, "network/following.html",{
+            "follows_filter":follows_filter,
+            "all_posts":all_posts2,
+            "list_total_pages":list_total_pages,
+            "user_color": user_color,
+        })
+    else:
+        return render(request, "network/register.html")
