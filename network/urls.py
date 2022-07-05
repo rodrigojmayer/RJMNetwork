@@ -25,6 +25,7 @@ urlpatterns = [
     path("edit_profile/", views.edit_profile, name="edit_profile"),
     path("like/<int:id_post>", views.like, name="like"),
 
-    path("postsbox/<int:jump_page>", views.postsbox, name="postsbox"),
+    path("postsbox/<str:filter_view>/<int:jump_page>", views.postsbox, name="postsbox"),
+    # path("postsbox/<int:jump_page>", views.postsbox, name="postsbox"),
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
