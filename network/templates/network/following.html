@@ -8,8 +8,8 @@
     </div>   -->
     
 <h3>Following</h3>
-{{p_actual}}
-{{list_total_pages}}
+<!-- {{p_actual}}
+{{list_total_pages}} -->
     <div id="all_posts_view">
         
         <div id="page_0">  
@@ -90,7 +90,7 @@
                         {% if p_actual == p_last %}
                             <!-- <button id="selected_button"  class="page_button">Next page</button>   -->
                         {% else %}
-                            <button class="page_button" onclick="pages('{{user.id}}', 0, +1)">Next page</button>   
+                            <button class="page_button" onclick="pages('{{user.id}}', '{{p_actual}}', +1)">Next page</button>   
                         {% endif %}  
                     {% endif %}  
                 </div>
