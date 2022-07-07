@@ -795,68 +795,6 @@ def like(request, id_post):
 
 
 
-def liked_posts(request):
-
-    if request.user.id:
-        likers_filter=[]
-        likers = Likers.objects.filter(liker=request.user.id)
-        for each_likers_filter in likers:
-            # print(each_likers_filter.followed.id)
-            # print(each_likers_filter.post.id)
-            # print(each_likers_filter)
-            # likers_filter.append(each_likers_filter.followed.id)
-            likers_filter.append(each_likers_filter.post.id)
-        all_posts = NewPost.objects.all()
-        all_posts = all_posts.order_by("-date_added")
-        # all_posts2=all_posts.filter(poster__in=[15])
-        all_posts2=all_posts.filter(id__in=likers_filter)
-        # print(likers_filter)
-        # print("1--------------")
-        # print(all_posts)
-        # print("-2-------------")
-        # print(all_posts2)
-        total_posts=all_posts2.count()
-        all_posts2=all_posts2[:10]
-        total_pages=math.ceil(total_posts/10)
-        list_total_pages = []
-        for i in range(2, total_pages+1):
-            list_total_pages.append(i)
-        all_likers = Likers.objects.all()
-    
-        for post in all_posts2:
-            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
-            post.number_likes=0
-            likers = all_likers.filter(post=post.id)
-            likers_id = []
-            for each_liker in likers:
-                post.likers = each_liker.liker.all()
-                post.number_likes = each_liker.liker.count()
-                for each in each_liker.liker.all():
-                    likers_id.append(each.id)
-                post.likers_id = likers_id
-
-                
-        users = User.objects.all()
-        user_color = {}
-        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-        for j in users:
-            user_color[j.id] = random.choice(colors_list)
-            colors_list.remove(user_color[j.id])
-            
-        return render(request, "network/liked_posts.html",{
-            "likers_filter":likers_filter,
-            "all_posts":all_posts2,
-            "list_total_pages":list_total_pages,
-            "user_color": user_color,
-        })
-    else:
-        return render(request, "network/register.html")
-
-
-
-
-
-
 
 
 
