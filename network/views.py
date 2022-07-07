@@ -25,10 +25,15 @@ from .models import User, NewPost, Followers, Likers
 
 # @csrf_exempt
 # @login_required
-def postsbox(request, filter_view, jump_page):
+def postsbox(request, filter_view, user_id, jump_page):
     
 
-    
+    print("user_id")
+    print(user_id)
+    if(user_id == 0):
+        user_id = request.user.id
+
+    user_poster = User.objects.get(id=user_id)
 
 
     all_posts = NewPost.objects.select_related('poster')
@@ -47,6 +52,8 @@ def postsbox(request, filter_view, jump_page):
             for each_likers_filter in likers:
                 likers_filter.append(each_likers_filter.post.id)
             all_posts = all_posts.filter(id__in=likers_filter)
+
+
     
     else:
         return render(request, "network/register.html")
@@ -93,7 +100,8 @@ def postsbox(request, filter_view, jump_page):
         # "random_number": random_number,
         "user_color": user_color,
         "p_actual": num_page,
-        "p_last": p.num_pages
+        "p_last": p.num_pages,
+        "poster":user_poster,
     })
 
 
@@ -265,6 +273,72 @@ def liked_posts(request):
         return render(request, "network/register.html")
 
 
+def profile(request, id_poster):
+    
+    if request.user.id:
+        user_poster = User.objects.get(id=id_poster)
+        try:
+            followed_by = Followers.objects.filter(followed=id_poster)
+        except Followers.DoesNotExist:
+            followed_by = None
+        
+        followers_obj = Followers.objects.filter(follower__id=id_poster)
+        followers=[]
+        for follower in followers_obj:
+            followers.append(follower.followed)
+
+        profile_posts = NewPost.objects.filter(poster=id_poster)
+        profile_posts = profile_posts.order_by("-date_added")
+        id_poster=int(id_poster)
+
+        total_posts=profile_posts.count()
+        profile_posts=profile_posts[:10]
+        total_pages=math.ceil(total_posts/10)
+        list_total_pages = []
+        for i in range(2, total_pages+1):
+            list_total_pages.append(i)
+
+
+        user_following = followed_by.filter(follower__id=request.user.id)
+        if(user_following):
+            user_following="Unfollow"
+        else:
+            user_following="Follow"
+        
+        all_likers = Likers.objects.all()
+    
+        for post in profile_posts:
+            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
+            post.number_likes=0
+            likers = all_likers.filter(post=post.id)
+            likers_id = []
+            for each_liker in likers:
+                post.likers = each_liker.liker.all()
+                post.number_likes = each_liker.liker.count()
+                for each in each_liker.liker.all():
+                    likers_id.append(each.id)
+                post.likers_id = likers_id
+        users = User.objects.all()
+        user_color = {}
+        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+        for j in users:
+            user_color[j.id] = random.choice(colors_list)
+            colors_list.remove(user_color[j.id])
+
+        return render(request, "network/profile.html", {
+            "poster":user_poster,
+            "followed_by":followed_by,
+            "followers":followers,
+            "profile_posts":profile_posts,
+            "user_following":user_following,
+            "list_total_pages":list_total_pages,
+            "user_color": user_color
+        })
+    else:
+        return render(request, "network/register.html")
+
+
+
 
 def new_post(request):
     return render(request, "network/new_post.html")
@@ -378,70 +452,6 @@ def compose_post(request):
 #         "add_post_available": True
 #     })
 
-
-def profile(request, id_poster):
-    
-    if request.user.id:
-        user_poster = User.objects.get(id=id_poster)
-        try:
-            followed_by = Followers.objects.filter(followed=id_poster)
-        except Followers.DoesNotExist:
-            followed_by = None
-        
-        followers_obj = Followers.objects.filter(follower__id=id_poster)
-        followers=[]
-        for follower in followers_obj:
-            followers.append(follower.followed)
-
-        profile_posts = NewPost.objects.filter(poster=id_poster)
-        profile_posts = profile_posts.order_by("-date_added")
-        id_poster=int(id_poster)
-
-        total_posts=profile_posts.count()
-        profile_posts=profile_posts[:10]
-        total_pages=math.ceil(total_posts/10)
-        list_total_pages = []
-        for i in range(2, total_pages+1):
-            list_total_pages.append(i)
-
-
-        user_following = followed_by.filter(follower__id=request.user.id)
-        if(user_following):
-            user_following="Unfollow"
-        else:
-            user_following="Follow"
-        
-        all_likers = Likers.objects.all()
-    
-        for post in profile_posts:
-            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
-            post.number_likes=0
-            likers = all_likers.filter(post=post.id)
-            likers_id = []
-            for each_liker in likers:
-                post.likers = each_liker.liker.all()
-                post.number_likes = each_liker.liker.count()
-                for each in each_liker.liker.all():
-                    likers_id.append(each.id)
-                post.likers_id = likers_id
-        users = User.objects.all()
-        user_color = {}
-        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-        for j in users:
-            user_color[j.id] = random.choice(colors_list)
-            colors_list.remove(user_color[j.id])
-
-        return render(request, "network/profile.html", {
-            "poster":user_poster,
-            "followed_by":followed_by,
-            "followers":followers,
-            "profile_posts":profile_posts,
-            "user_following":user_following,
-            "list_total_pages":list_total_pages,
-            "user_color": user_color
-        })
-    else:
-        return render(request, "network/register.html")
 
 
 @csrf_exempt
@@ -801,4 +811,68 @@ def like(request, id_post):
 
 
 
+
+def profile(request, id_poster):
+    
+    if request.user.id:
+        user_poster = User.objects.get(id=id_poster)
+        try:
+            followed_by = Followers.objects.filter(followed=id_poster)
+        except Followers.DoesNotExist:
+            followed_by = None
+        
+        followers_obj = Followers.objects.filter(follower__id=id_poster)
+        followers=[]
+        for follower in followers_obj:
+            followers.append(follower.followed)
+
+        profile_posts = NewPost.objects.filter(poster=id_poster)
+        profile_posts = profile_posts.order_by("-date_added")
+        id_poster=int(id_poster)
+
+        total_posts=profile_posts.count()
+        profile_posts=profile_posts[:10]
+        total_pages=math.ceil(total_posts/10)
+        list_total_pages = []
+        for i in range(2, total_pages+1):
+            list_total_pages.append(i)
+
+
+        user_following = followed_by.filter(follower__id=request.user.id)
+        if(user_following):
+            user_following="Unfollow"
+        else:
+            user_following="Follow"
+        
+        all_likers = Likers.objects.all()
+    
+        for post in profile_posts:
+            post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
+            post.number_likes=0
+            likers = all_likers.filter(post=post.id)
+            likers_id = []
+            for each_liker in likers:
+                post.likers = each_liker.liker.all()
+                post.number_likes = each_liker.liker.count()
+                for each in each_liker.liker.all():
+                    likers_id.append(each.id)
+                post.likers_id = likers_id
+        users = User.objects.all()
+        user_color = {}
+        colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+        for j in users:
+            user_color[j.id] = random.choice(colors_list)
+            colors_list.remove(user_color[j.id])
+
+        return render(request, "network/profile.html", {
+            "poster":user_poster,
+            "followed_by":followed_by,
+            "followers":followers,
+            "profile_posts":profile_posts,
+            "user_following":user_following,
+            "list_total_pages":list_total_pages,
+            "user_color": user_color
+        })
+    else:
+        return render(request, "network/register.html")
 
