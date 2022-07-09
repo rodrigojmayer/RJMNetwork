@@ -158,6 +158,7 @@ function load_postbox(postbox, user_log){
     //                 </form>`;
         document.getElementById("compose-body").focus();
         document.querySelector('form').onsubmit = () => {
+            alert("holise")
             var descrip = document.querySelector('#compose-body').value;
             fetch('/posts', {
                 method: 'POST',
@@ -171,6 +172,10 @@ function load_postbox(postbox, user_log){
             });
             return false;
        };
+
+       
+
+
     }
     if(postbox === 'search bar'){
         // if(document.querySelector('#lookup-form').style.display === 'block'){
@@ -193,7 +198,7 @@ function load_postbox(postbox, user_log){
         let div_all_posts_view = document.querySelector('#all_posts_view')
         div_all_posts_view.style.display = 'block';
         // document.querySelector('.cover').style.display="none";
-        pages(user_log, 0, 0)
+        pages(user_log, 0, 1)
         return false;
     }
     if(postbox === 'edit profile'){
