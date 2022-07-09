@@ -158,7 +158,7 @@ function load_postbox(postbox, user_log){
     //                 </form>`;
         document.getElementById("compose-body").focus();
         document.querySelector('form').onsubmit = () => {
-            alert("holise")
+            // alert("holise")
             var descrip = document.querySelector('#compose-body').value;
             fetch('/posts', {
                 method: 'POST',
