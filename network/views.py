@@ -714,7 +714,7 @@ def edit_profile(request):
 
 
 
-    return HttpResponseRedirect('/profile/%s' % user_logued.id)
+    return HttpResponseRedirect('/postsbox/profile/%s/1' % user_logued.id)
 
 
 
