@@ -30,6 +30,8 @@ def postsbox(request, filter_view, user_id, jump_page):
 
     print("user_id")
     print(user_id)
+    print("filter_view")
+    print(filter_view)
     if(user_id == 0):
         user_id = request.user.id
 
