@@ -15,17 +15,18 @@ urlpatterns = [
     # API Routes
     path("posts", views.compose_post, name="compose_post"),
     # path("posts/<str:postbox>", views.post, name="post"),
-    path("profile/<str:id_poster>", views.profile, name="profile"),
+    # path("profile/<str:id_poster>", views.profile, name="profile"),
     path("follow/<int:id_poster>", views.follow, name="follow"),
-    path("following", views.following, name="following"),
-    path("liked_posts", views.liked_posts, name="liked_posts"),
+    # path("following", views.following, name="following"),
+    # path("liked_posts", views.liked_posts, name="liked_posts"),
     path("pagesposts", views.pagesposts, name="pagesposts"),
     path("edit", views.edit, name="edit"),
     # path("pre_edit_profile", views.pre_edit_profile, name="pre_edit_profile"),
     path("edit_profile/", views.edit_profile, name="edit_profile"),
     path("like/<int:id_post>", views.like, name="like"),
 
-    path("postsbox/<str:filter_view>/<int:user_id>/<int:jump_page>", views.postsbox, name="postsbox"),
+    # path("postsbox/<str:filter_view>/<int:user_id>/<int:jump_page>", views.postsbox, name="postsbox"),
+    path("<str:filter_view>/<int:user_id>/<int:jump_page>", views.postsbox, name="postsbox"),
     # path("postsbox/<int:jump_page>", views.postsbox, name="postsbox"),
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
