@@ -40,6 +40,8 @@ def postsbox(request, filter_view, user_id, jump_page):
 
     all_posts = NewPost.objects.select_related('poster')
     all_posts = all_posts.order_by("-date_added")
+    followed_by = None
+    followers = None
     if request.user.id:
         if filter_view == "following":
             follows_filter=[]
@@ -48,14 +50,27 @@ def postsbox(request, filter_view, user_id, jump_page):
                 follows_filter.append(each_followers_filter.followed.id)
             all_posts=all_posts.filter(poster__in=follows_filter)
 
-        if filter_view == "liked_posts":
+        elif filter_view == "liked_posts":
             likers_filter=[]
             likers = Likers.objects.filter(liker=request.user.id)
             for each_likers_filter in likers:
                 likers_filter.append(each_likers_filter.post.id)
             all_posts = all_posts.filter(id__in=likers_filter)
 
+        elif filter_view == "profile":
+            # user_poster = User.objects.get(id=id_poster)
+            try:
+                followed_by = Followers.objects.filter(followed=user_id)
+            except Followers.DoesNotExist:
+                followed_by = None
+        
+            followers_obj = Followers.objects.filter(follower__id=user_id)
+            followers=[]
+            for follower in followers_obj:
+                followers.append(follower.followed)
 
+            all_posts = all_posts.filter(poster=user_id)
+            user_id=int(user_id)
     
     else:
         return render(request, "network/register.html")
@@ -104,6 +119,8 @@ def postsbox(request, filter_view, user_id, jump_page):
         "p_actual": num_page,
         "p_last": p.num_pages,
         "poster":user_poster,
+        "followed_by":followed_by,
+        "followers":followers,
     })
 
 
