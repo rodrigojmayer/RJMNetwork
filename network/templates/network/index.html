@@ -31,7 +31,7 @@
                             <div id="posts-flex-order-child2">
                                 <div id="posts-first-line">
                                     
-                                    <a id="profile"  href="{% url 'postsbox' 'profile' post.poster.id 1 %}">{{ post.poster }}</a>
+                                    <a id="profile"  href="{% url 'postsbox' 'profile' ' ' post.poster.id 1  %}">{{ post.poster }}</a>
                                     <div id="post-{{post.date_added}}" class="date_post"> {{ post.date_added }}</div>
                                 </div>
                                 <div id="post-description-{{post.id}}" class="description_post"> {{ post.description }} </div>
