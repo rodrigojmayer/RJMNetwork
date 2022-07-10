@@ -118,7 +118,8 @@ def postsbox(request, filter_view, user_id, jump_page):
 
     # return render(request, "network/index.html", {
     return render(request, "network/"+filter_view+".html", {
-        "all_posts": page_posts,
+        "all_posts": all_posts,
+        "all_posts_page": page_posts,
         "users": users,
         "list_total_pages": list_total_pages,
         # "random_number": random_number,
