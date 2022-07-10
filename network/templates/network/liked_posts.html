@@ -3,17 +3,13 @@
 {% load network_extras %}
 
 {% block body %} 
-    <!-- <div id="new_post_view">
-        <h3></h3>
-    </div>   -->
     
 <h3>Liked Posts</h3>
     <div id="all_posts_view">
         
         <div id="page_0">  
-            <!-- {{all_posts}} -->
-            {% if all_posts %}    
-                {% for post in all_posts %} 
+            {% if all_posts_page %}    
+                {% for post in all_posts_page %} 
                     <div id="posts_style">
                         <div id="posts-flex-order">
                             <div id="posts-flex-order-child1">

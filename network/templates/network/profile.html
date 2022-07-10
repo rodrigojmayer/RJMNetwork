@@ -42,7 +42,7 @@
                         <!-- </br> -->
                     {% endif %}
                 <div id="profile-data-line">
-                    {{profile_posts.count}} Posts
+                    {{all_posts.count}} Posts
                     <!-- &emsp;&emsp; -->
                     {% if followed_by %}
                         {% for follow in followed_by %}
@@ -71,9 +71,9 @@
         <div id="all_posts_view">
             <div id="page_0">  
                 <!--  if profile_posts      -->
-                {% if all_posts %}    
+                {% if all_posts_page %}    
                     <!--  for post in profile_posts   -->
-                    {% for post in all_posts %} 
+                    {% for post in all_posts_page %} 
                         <div  id="posts_style">
                             <div id="posts-flex-order">
                                 <div id="posts-flex-order-child1">
