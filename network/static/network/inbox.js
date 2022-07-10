@@ -178,16 +178,25 @@ function load_postbox(postbox, user_log){
 
     }
     if(postbox === 'search bar'){
-        // if(document.querySelector('#lookup-form').style.display === 'block'){
-            // document.querySelector('#lookup-form').style.display = 'none';
-        // }
-        // else
-        document.querySelector('#lookup-form').style.display = 'block';
+
+        console.log(document.querySelector('#nav-following svg path').style.fill)
+        console.log(document.querySelector('#nav-liked-posts svg path').style.fill)
+        console.log(document.querySelector('#nav-home svg path').style.fill)
+
+        if(document.getElementById('lookup-form').style.display === 'block'){
+            document.getElementById('lookup-form').style.display = 'none';
+            document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-color");
+        }
+        else{
+        document.getElementById('lookup-form').style.display = 'block';
         document.querySelector(".search-text").focus();
         document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
-        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
-        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
-        document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+        // document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
+        // document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+        // document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+        }
+
+
     }
     if(postbox === 'all posts'){
         window.location.pathname="";

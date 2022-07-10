@@ -478,7 +478,7 @@ body{
 html {
     box-sizing: border-box;
     font-family: var(--font);
-    font-size: 2rem;
+    font-size: 1.9rem;
     scroll-behavior: smooth;
     overflow-y: scroll;
 }
