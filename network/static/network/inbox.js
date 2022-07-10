@@ -303,9 +303,16 @@ function load_postbox(postbox, user_log){
 
 
 function edit_field(id_post){
-    actual_display = document.querySelector(`#edit-box-${id_post}`).style.display;
+    const textarea = document.querySelector(`#edit-box-${id_post}`);
+    // actual_display = document.querySelector(`#edit-box-${id_post}`).style.display;
+    actual_display = textarea.style.display;
     if( actual_display == 'none'){
         new_display = 'block';
+        setTimeout(function() {
+            const end = textarea.value.length;
+            textarea.setSelectionRange(end,end);
+            textarea.focus();
+        }, 0);
     }else{
         new_display = 'none';
     }

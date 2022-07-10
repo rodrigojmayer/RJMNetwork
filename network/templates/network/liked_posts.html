@@ -40,7 +40,7 @@
                                     <div id="edit" onclick="edit_field('{{ post.id }}')">Edit</div>
                                 {% else %}
                                 {% endif %}
-                                <textarea class="form-control mb-2" id="edit-box-{{post.id}}" name="edit-box" style="display:none;">{{ post.description }}</textarea>
+                                <textarea class="form-control-edit mb-2" id="edit-box-{{post.id}}" name="edit-box" style="display:none;">{{ post.description }}</textarea>
                                 <div id="edit-btns">
                                     <button id="edit-save-btn-{{post.id}}" class="btn btn-primary" style="display:none;"  onclick="save_edit('{{ post.id }}')">Save</button>
                                 </div>
