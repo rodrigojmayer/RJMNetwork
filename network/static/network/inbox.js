@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function(){
             // document.getElementById("display-image").style.removeProperty("background-color");
             
             // console.log("quepasasa")
+
         }
 
     });
@@ -186,14 +187,40 @@ function load_postbox(postbox, user_log){
         if(document.getElementById('lookup-form').style.display === 'block'){
             document.getElementById('lookup-form').style.display = 'none';
             document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-color");
+
+
+
+
+
+
         }
         else{
-        document.getElementById('lookup-form').style.display = 'block';
-        document.querySelector(".search-text").focus();
-        document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
-        // document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
-        // document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
-        // document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+            document.getElementById('lookup-form').style.display = 'block';
+            document.querySelector(".search-text").focus();
+            document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
+            // document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
+            // document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+            // document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+
+
+
+            
+                        
+            // Searching
+            // Search by pressing enter
+            document.getElementById("lookup-form").onsubmit = "searching";
+            // Clean search when the input is empty (when press the x too)
+            document.getElementById("search").addEventListener("input", (e) => {
+                if (e.currentTarget.value == "") searching();
+            });
+            // Search by clicking the magnifying glass icon
+            document.querySelector("#submitSearch").addEventListener("click", searching);
+
+
+
+
+
+
         }
 
 
@@ -427,171 +454,171 @@ function pages(user_log, next_page, jump_page){
     // return false;
 
 }
-function pages_prev(user_log, prev_page, next_page){
-    console.log("entra aca papapapa")
-    prev_page = parseInt(prev_page);
-    next_page = parseInt(next_page);
-    var clean = document.getElementById(`page_${prev_page}`);
-    if(clean)
-        clean.remove();
-    start_post = ( next_page ) * 10;
-    end_post = start_post + 11;
-    let url=window.location.pathname;
-    let id_poster = url.split("/");
-    url = url.substring(0,7);
-    fetch(`/pagesposts?start=${start_post}&end=${end_post}&url=${url}&id_poster=${id_poster[2]}`, {
-        method: 'POST',
-        body: JSON.stringify({
-            start: start_post,
-            end: end_post,
-        })
-    })
-    .then(response => response.json())
-    .then(result => {
-        // console.log(result.all_posts_json)
+// function pages_prev(user_log, prev_page, next_page){
+//     console.log("entra aca papapapa")
+//     prev_page = parseInt(prev_page);
+//     next_page = parseInt(next_page);
+//     var clean = document.getElementById(`page_${prev_page}`);
+//     if(clean)
+//         clean.remove();
+//     start_post = ( next_page ) * 10;
+//     end_post = start_post + 11;
+//     let url=window.location.pathname;
+//     let id_poster = url.split("/");
+//     url = url.substring(0,7);
+//     fetch(`/pagesposts?start=${start_post}&end=${end_post}&url=${url}&id_poster=${id_poster[2]}`, {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             start: start_post,
+//             end: end_post,
+//         })
+//     })
+//     .then(response => response.json())
+//     .then(result => {
+//         // console.log(result.all_posts_json)
         
-        console.log(result.user_color) 
-        console.log("ese deberia ser el array de los colores")
-        data_all_posts = JSON.parse(result.all_posts_json);
-        data_users_json = JSON.parse(result.all_users_json);
-        // console.log(all_posts_json)
-        console.log(data_all_posts)
-        // console.log(all_users_json)
-        console.log(data_users_json)
-        const posts = document.createElement("div");
-        posts.id=(`page_${next_page}`);
-        document.querySelector(`#all_posts_view`).append(posts);
-        var cont_posts = 0;
-        // console.log(data_all_posts);
-        for (var data_post of data_all_posts) {
-            if(cont_posts < 10){
-                // var newArray = homes.filter(function (el) {
-                //     return el.price <= 1000 &&
-                //            el.sqft >= 500 &&
-                //            el.num_of_beds >=2 &&
-                //            el.num_of_baths >= 2.5;
-                //   });
-                // console.log(data_post.fields.poster);
+//         console.log(result.user_color) 
+//         console.log("ese deberia ser el array de los colores")
+//         data_all_posts = JSON.parse(result.all_posts_json);
+//         data_users_json = JSON.parse(result.all_users_json);
+//         // console.log(all_posts_json)
+//         console.log(data_all_posts)
+//         // console.log(all_users_json)
+//         console.log(data_users_json)
+//         const posts = document.createElement("div");
+//         posts.id=(`page_${next_page}`);
+//         document.querySelector(`#all_posts_view`).append(posts);
+//         var cont_posts = 0;
+//         // console.log(data_all_posts);
+//         for (var data_post of data_all_posts) {
+//             if(cont_posts < 10){
+//                 // var newArray = homes.filter(function (el) {
+//                 //     return el.price <= 1000 &&
+//                 //            el.sqft >= 500 &&
+//                 //            el.num_of_beds >=2 &&
+//                 //            el.num_of_baths >= 2.5;
+//                 //   });
+//                 // console.log(data_post.fields.poster);
                                 
-                var user_post = JSON.parse(result.all_users_json).filter(function (entry) {
-                    return entry.pk == data_post.fields.poster;
-                });
-                var date_added_string = data_post.fields.date_added;
-                date_added_string = Date.parse(date_added_string);
-                date = new Date(date_added_string ),
-                datevalues = {
-                    anio : date.getFullYear(),
-                    mes_num : date.getMonth()+1,
-                    mes : date.toLocaleString('default', { month: 'short' }),
-                    dia : ('0'+date.getDate()).slice(-2),
-                    hora : date.getHours(),
-                    min :('0'+date.getMinutes()).slice(-2),
-                    seg : date.getSeconds()
-                };
-                fecha = datevalues.mes + " " + datevalues.dia + ", " + datevalues.anio + ", " + datevalues.hora + ":" + datevalues.min;
-                const post = document.createElement("div");
-                post.className=("border border-secondary rounded p-3 mt-2");
-                post.id=("posts_style");
+//                 var user_post = JSON.parse(result.all_users_json).filter(function (entry) {
+//                     return entry.pk == data_post.fields.poster;
+//                 });
+//                 var date_added_string = data_post.fields.date_added;
+//                 date_added_string = Date.parse(date_added_string);
+//                 date = new Date(date_added_string ),
+//                 datevalues = {
+//                     anio : date.getFullYear(),
+//                     mes_num : date.getMonth()+1,
+//                     mes : date.toLocaleString('default', { month: 'short' }),
+//                     dia : ('0'+date.getDate()).slice(-2),
+//                     hora : date.getHours(),
+//                     min :('0'+date.getMinutes()).slice(-2),
+//                     seg : date.getSeconds()
+//                 };
+//                 fecha = datevalues.mes + " " + datevalues.dia + ", " + datevalues.anio + ", " + datevalues.hora + ":" + datevalues.min;
+//                 const post = document.createElement("div");
+//                 post.className=("border border-secondary rounded p-3 mt-2");
+//                 post.id=("posts_style");
 
                 
-                console.log(data_post);
+//                 console.log(data_post);
         
-                //  if post.poster.header_image 
-                //     <img class="posts_profile_picture" alt="Image not found" src="/media/{{ post.poster.header_image }}">
-                // else 
-                //     <div class="no_profile_picture">
-                //         <svg id="dropbtn-profile" class="no_profile_picture_circle" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                //             <path id="dropbtn-profile" d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0C31.0457 0 40 8.9543 40 20Z" fill="#{{user_color|keyvalue:post.poster.id}}"/>
-                //         </svg>
-                //         <div  class="no_profile_picture_letter">
-                //             {{ post.poster|make_list|first|capfirst }}
-                //         </div>
-                //     </div>
+//                 //  if post.poster.header_image 
+//                 //     <img class="posts_profile_picture" alt="Image not found" src="/media/{{ post.poster.header_image }}">
+//                 // else 
+//                 //     <div class="no_profile_picture">
+//                 //         <svg id="dropbtn-profile" class="no_profile_picture_circle" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 //             <path id="dropbtn-profile" d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0C31.0457 0 40 8.9543 40 20Z" fill="#{{user_color|keyvalue:post.poster.id}}"/>
+//                 //         </svg>
+//                 //         <div  class="no_profile_picture_letter">
+//                 //             {{ post.poster|make_list|first|capfirst }}
+//                 //         </div>
+//                 //     </div>
 
 
-                post_string = `  <!--div id="post-${data_post.pk}"> ${ data_post.pk } </div-->
-                                <div id="posts-flex-order">
-                                    <div id="posts-flex-order-child1">
-                                        <svg id="dropbtn-profile" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path id="dropbtn-profile" d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0C31.0457 0 40 8.9543 40 20Z" fill="#00BAAF"/>
-                                            <path id="dropbtn-profile" d="M10.42 25V14.35H14.83C15.29 14.35 15.71 14.445 16.09 14.635C16.48 14.825 16.815 15.085 17.095 15.415C17.375 15.735 17.595 16.095 17.755 16.495C17.915 16.885 17.995 17.285 17.995 17.695C17.995 18.275 17.865 18.825 17.605 19.345C17.355 19.855 17 20.27 16.54 20.59C16.08 20.91 15.54 21.07 14.92 21.07H11.47V25H10.42ZM11.47 20.14H14.875C15.295 20.14 15.66 20.025 15.97 19.795C16.28 19.565 16.52 19.265 16.69 18.895C16.86 18.525 16.945 18.125 16.945 17.695C16.945 17.255 16.845 16.85 16.645 16.48C16.445 16.11 16.18 15.82 15.85 15.61C15.53 15.39 15.175 15.28 14.785 15.28H11.47V20.14ZM19.541 25V17.185H20.561V25H19.541ZM19.541 15.55V14.05H20.561V15.55H19.541ZM26.1976 25.15C25.6276 25.15 25.1026 25.045 24.6226 24.835C24.1526 24.615 23.7376 24.315 23.3776 23.935C23.0276 23.555 22.7526 23.12 22.5526 22.63C22.3626 22.14 22.2676 21.62 22.2676 21.07C22.2676 20.33 22.4326 19.655 22.7626 19.045C23.0926 18.435 23.5526 17.95 24.1426 17.59C24.7326 17.23 25.4126 17.05 26.1826 17.05C26.9126 17.05 27.5576 17.22 28.1176 17.56C28.6776 17.89 29.0926 18.34 29.3626 18.91L28.3726 19.225C28.1526 18.825 27.8426 18.515 27.4426 18.295C27.0526 18.065 26.6176 17.95 26.1376 17.95C25.6176 17.95 25.1426 18.085 24.7126 18.355C24.2826 18.625 23.9376 18.995 23.6776 19.465C23.4276 19.935 23.3026 20.47 23.3026 21.07C23.3026 21.66 23.4326 22.195 23.6926 22.675C23.9526 23.155 24.2976 23.54 24.7276 23.83C25.1576 24.11 25.6326 24.25 26.1526 24.25C26.4926 24.25 26.8176 24.19 27.1276 24.07C27.4476 23.95 27.7226 23.79 27.9526 23.59C28.1926 23.38 28.3526 23.155 28.4326 22.915L29.4376 23.215C29.2976 23.585 29.0626 23.92 28.7326 24.22C28.4126 24.51 28.0326 24.74 27.5926 24.91C27.1626 25.07 26.6976 25.15 26.1976 25.15Z" fill="white"/>
-                                        </svg>
-                                    </div>
-                                    <div id="posts-flex-order-child2">
-                                        <div id="posts-first-line">
-                                            <a id="profile"  href="/profile/${ data_post.fields.poster }">${ user_post[0].fields.username }</a>
-                                            <div id="post-${ fecha }" class="date_post"> ${ fecha }</div>
-                                        </div>
-                                        <div id="post-description-${ data_post.pk }"> ${ data_post.fields.description } </div>`;
-                if( data_post.fields.poster == user_log  ){
-                    post_string += `    <div id="edit" onclick="edit_field('${ data_post.pk }')">Edit</div>`;
-                }
-                post_string += `        <textarea class="form-control mb-2" id="edit-box-${data_post.pk}" name="edit-box" style="display:none;">${ data_post.fields.description }</textarea>
-                                        <div id="edit-btns">
-                                            <button id="edit-save-btn-${data_post.pk}" class="page_button" style="display:none;" onclick="save_edit('${data_post.pk}')">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="like_complete">    
-                                <!--button class="btn mr-1 d-inline-block" style="background-color:white; border-color: red;" id="like-btn-${data_post.pk}" onclick="like('${data_post.pk}')"></button-->   
-                                <!--div id="like-count-${data_post.pk}" class="d-inline-block">${data_post.fields.likes}</div-->`;
-                if( result.all_likers_id[cont_posts].includes(parseInt(user_log))){
-                    // like_icon = "heart_full";
-                    like_svg = `<button class="yes_button" id="like-btn-{{post.id}}" value="heart_full" onclick="like('{{ post.id }}')">
-                                    <svg id="heart-img-{{ post.id }}" alt="jacket" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M33.6751 7.9851C32.7561 7.05963 31.6632 6.32493 30.4593 5.82324C29.2555 5.32155 27.9643 5.06277 26.6601 5.06177C24.1931 5.06217 21.8162 5.98889 20 7.65843C18.1841 5.98861 15.8071 5.06185 13.34 5.06177C12.0343 5.06313 10.7417 5.3227 9.53661 5.82555C8.33155 6.3284 7.23783 7.06459 6.31838 7.99177C2.39672 11.9301 2.39838 18.0901 6.32172 22.0118L20 35.6901L33.6784 22.0118C37.6017 18.0901 37.6034 11.9301 33.6751 7.9851Z" fill="#DA2D57"/>
-                                    </svg>
-                                 </button>`
-                }else{
-                    // like_icon = "heart_empty";
-                    like_svg = `<button class="yes_button" id="like-btn-{{post.id}}" value="heart_empty"  onclick="like('{{ post.id }}')">
-                                    <svg id="heart-img-{{ post.id }}" alt="jacket" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20 7.65843C18.1841 5.98861 15.8071 5.06185 13.34 5.06177C12.0343 5.06313 10.7417 5.3227 9.53661 5.82555C8.33155 6.3284 7.23783 7.06459 6.31838 7.99177C2.39672 11.9301 2.39838 18.0901 6.32172 22.0118L18.5417 34.2318C18.825 34.7301 19.3717 35.0518 20 35.0518C20.258 35.0493 20.5119 34.9863 20.7411 34.8679C20.9704 34.7495 21.1686 34.579 21.32 34.3701L33.6784 22.0118C37.6017 18.0884 37.6017 11.9301 33.675 7.9851C32.7561 7.05963 31.6632 6.32493 30.4593 5.82324C29.2555 5.32155 27.9643 5.06277 26.66 5.06177C24.1931 5.06217 21.8162 5.98889 20 7.65843ZM31.3184 10.3418C33.9234 12.9601 33.925 17.0501 31.3217 19.6551L20 30.9768L8.67838 19.6551C6.07505 17.0501 6.07672 12.9601 8.67505 10.3484C9.94172 9.08843 11.5984 8.3951 13.34 8.3951C15.0817 8.3951 16.7317 9.08843 17.9884 10.3451L18.8217 11.1784C18.9764 11.3333 19.16 11.4562 19.3622 11.5401C19.5644 11.6239 19.7812 11.6671 20 11.6671C20.2189 11.6671 20.4357 11.6239 20.6379 11.5401C20.8401 11.4562 21.0237 11.3333 21.1784 11.1784L22.0117 10.3451C24.5317 7.8301 28.8017 7.83677 31.3184 10.3418Z" fill="#3D3D3D"/>
-                                    </svg>
-                                </button>`
-                }
-                // post_string += `<button class="yes_button" id="like-btn-${data_post.pk}" value="${like_icon}" onclick="like(${data_post.pk})">
-                //                     <img id="heart-img-${data_post.pk}" src="/static/network/images/${like_icon}.jpg" alt="like_image" width="25" >
-                //                 </button>   
-                //                 <div id="like-count-${data_post.pk}" class="d-inline-block">${result.all_likers_id[cont_posts].length} </div> likes`;
+//                 post_string = `  <!--div id="post-${data_post.pk}"> ${ data_post.pk } </div-->
+//                                 <div id="posts-flex-order">
+//                                     <div id="posts-flex-order-child1">
+//                                         <svg id="dropbtn-profile" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                                             <path id="dropbtn-profile" d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0C31.0457 0 40 8.9543 40 20Z" fill="#00BAAF"/>
+//                                             <path id="dropbtn-profile" d="M10.42 25V14.35H14.83C15.29 14.35 15.71 14.445 16.09 14.635C16.48 14.825 16.815 15.085 17.095 15.415C17.375 15.735 17.595 16.095 17.755 16.495C17.915 16.885 17.995 17.285 17.995 17.695C17.995 18.275 17.865 18.825 17.605 19.345C17.355 19.855 17 20.27 16.54 20.59C16.08 20.91 15.54 21.07 14.92 21.07H11.47V25H10.42ZM11.47 20.14H14.875C15.295 20.14 15.66 20.025 15.97 19.795C16.28 19.565 16.52 19.265 16.69 18.895C16.86 18.525 16.945 18.125 16.945 17.695C16.945 17.255 16.845 16.85 16.645 16.48C16.445 16.11 16.18 15.82 15.85 15.61C15.53 15.39 15.175 15.28 14.785 15.28H11.47V20.14ZM19.541 25V17.185H20.561V25H19.541ZM19.541 15.55V14.05H20.561V15.55H19.541ZM26.1976 25.15C25.6276 25.15 25.1026 25.045 24.6226 24.835C24.1526 24.615 23.7376 24.315 23.3776 23.935C23.0276 23.555 22.7526 23.12 22.5526 22.63C22.3626 22.14 22.2676 21.62 22.2676 21.07C22.2676 20.33 22.4326 19.655 22.7626 19.045C23.0926 18.435 23.5526 17.95 24.1426 17.59C24.7326 17.23 25.4126 17.05 26.1826 17.05C26.9126 17.05 27.5576 17.22 28.1176 17.56C28.6776 17.89 29.0926 18.34 29.3626 18.91L28.3726 19.225C28.1526 18.825 27.8426 18.515 27.4426 18.295C27.0526 18.065 26.6176 17.95 26.1376 17.95C25.6176 17.95 25.1426 18.085 24.7126 18.355C24.2826 18.625 23.9376 18.995 23.6776 19.465C23.4276 19.935 23.3026 20.47 23.3026 21.07C23.3026 21.66 23.4326 22.195 23.6926 22.675C23.9526 23.155 24.2976 23.54 24.7276 23.83C25.1576 24.11 25.6326 24.25 26.1526 24.25C26.4926 24.25 26.8176 24.19 27.1276 24.07C27.4476 23.95 27.7226 23.79 27.9526 23.59C28.1926 23.38 28.3526 23.155 28.4326 22.915L29.4376 23.215C29.2976 23.585 29.0626 23.92 28.7326 24.22C28.4126 24.51 28.0326 24.74 27.5926 24.91C27.1626 25.07 26.6976 25.15 26.1976 25.15Z" fill="white"/>
+//                                         </svg>
+//                                     </div>
+//                                     <div id="posts-flex-order-child2">
+//                                         <div id="posts-first-line">
+//                                             <a id="profile"  href="/profile/${ data_post.fields.poster }">${ user_post[0].fields.username }</a>
+//                                             <div id="post-${ fecha }" class="date_post"> ${ fecha }</div>
+//                                         </div>
+//                                         <div id="post-description-${ data_post.pk }"> ${ data_post.fields.description } </div>`;
+//                 if( data_post.fields.poster == user_log  ){
+//                     post_string += `    <div id="edit" onclick="edit_field('${ data_post.pk }')">Edit</div>`;
+//                 }
+//                 post_string += `        <textarea class="form-control mb-2" id="edit-box-${data_post.pk}" name="edit-box" style="display:none;">${ data_post.fields.description }</textarea>
+//                                         <div id="edit-btns">
+//                                             <button id="edit-save-btn-${data_post.pk}" class="page_button" style="display:none;" onclick="save_edit('${data_post.pk}')">Save</button>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div id="like_complete">    
+//                                 <!--button class="btn mr-1 d-inline-block" style="background-color:white; border-color: red;" id="like-btn-${data_post.pk}" onclick="like('${data_post.pk}')"></button-->   
+//                                 <!--div id="like-count-${data_post.pk}" class="d-inline-block">${data_post.fields.likes}</div-->`;
+//                 if( result.all_likers_id[cont_posts].includes(parseInt(user_log))){
+//                     // like_icon = "heart_full";
+//                     like_svg = `<button class="yes_button" id="like-btn-{{post.id}}" value="heart_full" onclick="like('{{ post.id }}')">
+//                                     <svg id="heart-img-{{ post.id }}" alt="jacket" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                                         <path d="M33.6751 7.9851C32.7561 7.05963 31.6632 6.32493 30.4593 5.82324C29.2555 5.32155 27.9643 5.06277 26.6601 5.06177C24.1931 5.06217 21.8162 5.98889 20 7.65843C18.1841 5.98861 15.8071 5.06185 13.34 5.06177C12.0343 5.06313 10.7417 5.3227 9.53661 5.82555C8.33155 6.3284 7.23783 7.06459 6.31838 7.99177C2.39672 11.9301 2.39838 18.0901 6.32172 22.0118L20 35.6901L33.6784 22.0118C37.6017 18.0901 37.6034 11.9301 33.6751 7.9851Z" fill="#DA2D57"/>
+//                                     </svg>
+//                                  </button>`
+//                 }else{
+//                     // like_icon = "heart_empty";
+//                     like_svg = `<button class="yes_button" id="like-btn-{{post.id}}" value="heart_empty"  onclick="like('{{ post.id }}')">
+//                                     <svg id="heart-img-{{ post.id }}" alt="jacket" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                                         <path d="M20 7.65843C18.1841 5.98861 15.8071 5.06185 13.34 5.06177C12.0343 5.06313 10.7417 5.3227 9.53661 5.82555C8.33155 6.3284 7.23783 7.06459 6.31838 7.99177C2.39672 11.9301 2.39838 18.0901 6.32172 22.0118L18.5417 34.2318C18.825 34.7301 19.3717 35.0518 20 35.0518C20.258 35.0493 20.5119 34.9863 20.7411 34.8679C20.9704 34.7495 21.1686 34.579 21.32 34.3701L33.6784 22.0118C37.6017 18.0884 37.6017 11.9301 33.675 7.9851C32.7561 7.05963 31.6632 6.32493 30.4593 5.82324C29.2555 5.32155 27.9643 5.06277 26.66 5.06177C24.1931 5.06217 21.8162 5.98889 20 7.65843ZM31.3184 10.3418C33.9234 12.9601 33.925 17.0501 31.3217 19.6551L20 30.9768L8.67838 19.6551C6.07505 17.0501 6.07672 12.9601 8.67505 10.3484C9.94172 9.08843 11.5984 8.3951 13.34 8.3951C15.0817 8.3951 16.7317 9.08843 17.9884 10.3451L18.8217 11.1784C18.9764 11.3333 19.16 11.4562 19.3622 11.5401C19.5644 11.6239 19.7812 11.6671 20 11.6671C20.2189 11.6671 20.4357 11.6239 20.6379 11.5401C20.8401 11.4562 21.0237 11.3333 21.1784 11.1784L22.0117 10.3451C24.5317 7.8301 28.8017 7.83677 31.3184 10.3418Z" fill="#3D3D3D"/>
+//                                     </svg>
+//                                 </button>`
+//                 }
+//                 // post_string += `<button class="yes_button" id="like-btn-${data_post.pk}" value="${like_icon}" onclick="like(${data_post.pk})">
+//                 //                     <img id="heart-img-${data_post.pk}" src="/static/network/images/${like_icon}.jpg" alt="like_image" width="25" >
+//                 //                 </button>   
+//                 //                 <div id="like-count-${data_post.pk}" class="d-inline-block">${result.all_likers_id[cont_posts].length} </div> likes`;
                 
-                post_string += `${like_svg}  
-                                <div id="like-count-${data_post.pk}" class="d-inline-block">${result.all_likers_id[cont_posts].length} </div> likes`;
-                post.innerHTML = post_string;
-                document.querySelector(`#page_${next_page}`).append(post);
-            }
-            cont_posts++;   
-        }
-        var page_buttons = document.createElement("div");
-        page_buttons.id=("id_page_buttons");
-        post_buttons = "";
-        if(next_page!=0){
-            prev_button_next_page =  next_page - 1;
-            post_buttons = `  <button class="page_button" onclick="pages('${ user_log }', ${next_page}, ${prev_button_next_page})">Prev page</button>   `;
-        }
-        for(i_page in result.list_total_pages){
-            page = result.list_total_pages[i_page];
-            if(page == next_page+1){
-                // post_buttons += `  <button id="selected_button" class="no-button">${page}</button>   `;
-                post_buttons += `  <button id="selected_button" class="page_button" >${page}</button>   `;
+//                 post_string += `${like_svg}  
+//                                 <div id="like-count-${data_post.pk}" class="d-inline-block">${result.all_likers_id[cont_posts].length} </div> likes`;
+//                 post.innerHTML = post_string;
+//                 document.querySelector(`#page_${next_page}`).append(post);
+//             }
+//             cont_posts++;   
+//         }
+//         var page_buttons = document.createElement("div");
+//         page_buttons.id=("id_page_buttons");
+//         post_buttons = "";
+//         if(next_page!=0){
+//             prev_button_next_page =  next_page - 1;
+//             post_buttons = `  <button class="page_button" onclick="pages('${ user_log }', ${next_page}, ${prev_button_next_page})">Prev page</button>   `;
+//         }
+//         for(i_page in result.list_total_pages){
+//             page = result.list_total_pages[i_page];
+//             if(page == next_page+1){
+//                 // post_buttons += `  <button id="selected_button" class="no-button">${page}</button>   `;
+//                 post_buttons += `  <button id="selected_button" class="page_button" >${page}</button>   `;
                         
-            }else{
-                post_buttons += `  <button class="page_button" id="not_selected_button" onclick="pages('${ user_log }', ${next_page}, ${page}-1)">${page}</button>   `;    
-            }
-        }
-        if(cont_posts==11){
-            next_button_next_page=  next_page + 1;
-            post_buttons += `  <button class="page_button" onclick="pages('${ user_log }', ${next_page}, ${next_button_next_page})">Next page</button>   `;
-        }
-        page_buttons.innerHTML = post_buttons;
-        document.querySelector(`#page_${next_page}`).append(page_buttons);
-    });
-    // setTimeout(function(){ 
-        console.log(scrollbarVisible(document.querySelector('.body')));
-            //  }, 5000);
+//             }else{
+//                 post_buttons += `  <button class="page_button" id="not_selected_button" onclick="pages('${ user_log }', ${next_page}, ${page}-1)">${page}</button>   `;    
+//             }
+//         }
+//         if(cont_posts==11){
+//             next_button_next_page=  next_page + 1;
+//             post_buttons += `  <button class="page_button" onclick="pages('${ user_log }', ${next_page}, ${next_button_next_page})">Next page</button>   `;
+//         }
+//         page_buttons.innerHTML = post_buttons;
+//         document.querySelector(`#page_${next_page}`).append(page_buttons);
+//     });
+//     // setTimeout(function(){ 
+//         console.log(scrollbarVisible(document.querySelector('.body')));
+//             //  }, 5000);
     
-    return false;
-}
+//     return false;
+// }
 // function close_cover(){
 //     document.querySelector('.cover').style.display="none";
 //     // document.querySelector('#new_post_view').style.display = 'none';
@@ -803,6 +830,34 @@ const scrollbarVisible = (element) => {
     // return element.scrollHeight > element.clientHeight;
     return element.scrollHeight > window.innerWidth;
     // return element.scrollHeight 
-  };
-  
+};
+
+
+
+
       
+
+
+
+// The function Search
+function searching() {
+    datos_buscados = document.getElementById("search").value.toLowerCase();
+    const post = document.querySelectorAll("#email");
+    if (datos_buscados.length== 0){
+      datos_buscados=" ";
+    }
+    let url=window.location.pathname;
+    newurl = url.split('/');
+    newurl[2] = datos_buscados;
+
+
+    // newurl = url.split('/').slice(0,-1).join('/');
+    newurl = newurl.join('/');
+    // console.log(newurl)
+    // console.log(datos_buscados)
+    window.location.href = newurl;
+
+  
+  
+    // return false;
+  }
