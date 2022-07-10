@@ -4,7 +4,18 @@ var rs = getComputedStyle(document.querySelector(":root"));
 // var body = document.querySelector('.body');
 
 document.addEventListener('DOMContentLoaded', function(){
-    document.querySelector("#lookup-form").style.display = "none";
+
+    
+    let url=window.location.pathname;
+    newurl = url.split('/');
+    alert(newurl[2])
+    if(newurl[2] != "%20"){
+        // alert("pepin")
+    document.getElementById('lookup-form').style.display = 'block';
+        document.getElementById("search").value=newurl[2];
+    }
+    else
+        document.querySelector("#lookup-form").style.display = "none";
     // if(document.querySelector('#new_post_view')){
         // document.querySelector('#new_post_view').style.display = 'none';
     // }
@@ -195,6 +206,15 @@ function load_postbox(postbox, user_log){
 
         }
         else{
+
+            let url=window.location.pathname;
+            newurl = url.split('/');
+            // newurl[2] = datos_buscados;
+            console.log(newurl[2])
+            if(newurl[2] != "%20"){
+                // alert("pepin")
+                document.getElementById("search").value=newurl[2];
+            }
             document.getElementById('lookup-form').style.display = 'block';
             document.querySelector(".search-text").focus();
             document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
