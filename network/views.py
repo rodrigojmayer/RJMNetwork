@@ -25,17 +25,23 @@ from .models import User, NewPost, Followers, Likers
 
 # @csrf_exempt
 # @login_required
-def postsbox(request, filter_view, user_id, jump_page):
+def postsbox(request, filter_view, data_search, user_id, jump_page):
+# def postsbox(request, filter_view, user_id, jump_page):
     
 
-    print("user_id")
-    print(user_id)
-    print("filter_view")
-    print(filter_view)
+    # print("user_id")
+    # print(user_id)
+    # print("filter_view")
+    # print(filter_view)
+    print("data_search")
+    print(data_search)
+    if data_search != " ":
+        print("kk")
     if(user_id == 0):
         user_id = request.user.id
 
-    user_poster = User.objects.get(id=user_id)
+    all_users = User.objects.all()
+    user_poster = all_users.get(id=user_id)
 
 
     all_posts = NewPost.objects.select_related('poster')
@@ -83,6 +89,17 @@ def postsbox(request, filter_view, user_id, jump_page):
         return render(request, "network/register.html")
 
 
+    # Searching
+    if data_search != " ":
+        all_users = all_users.filter(username__icontains=data_search)
+        id_users_array = []
+        for u in all_users:
+            id_users_array.append(u.id)
+        
+        all_posts = all_posts.filter(description__icontains=data_search) | all_posts.filter(poster__in = id_users_array)
+    
+
+
     p = Paginator(all_posts, 10)
     list_total_pages = []
     for i in range(1, p.num_pages+1):
@@ -112,7 +129,6 @@ def postsbox(request, filter_view, user_id, jump_page):
     for j in users:
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
-
 
 
 
