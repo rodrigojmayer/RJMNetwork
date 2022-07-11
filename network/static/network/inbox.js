@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     let url=window.location.pathname;
     newurl = url.split('/');
-    alert(newurl[2])
+    // alert(newurl[2])
     if(newurl[2] != "%20"){
         // alert("pepin")
     document.getElementById('lookup-form').style.display = 'block';
@@ -862,20 +862,18 @@ const scrollbarVisible = (element) => {
 // The function Search
 function searching() {
     datos_buscados = document.getElementById("search").value.toLowerCase();
-    const post = document.querySelectorAll("#email");
-    if (datos_buscados.length== 0){
-      datos_buscados=" ";
-    }
+    
+    // const post = document.querySelectorAll("#email");
+    if (datos_buscados.length != 0){
+    //   datos_buscados=" ";
     let url=window.location.pathname;
     newurl = url.split('/');
     newurl[2] = datos_buscados;
-
-
-    // newurl = url.split('/').slice(0,-1).join('/');
     newurl = newurl.join('/');
-    // console.log(newurl)
-    // console.log(datos_buscados)
     window.location.href = newurl;
+
+    }
+    
 
   
   
