@@ -33,8 +33,8 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
     # print(user_id)
     # print("filter_view")
     # print(filter_view)
-    print("data_search")
-    print(data_search)
+    print("jump_page")
+    print(jump_page)
     if data_search != " ":
         print("kk")
     if(user_id == 0):
