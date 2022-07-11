@@ -5,10 +5,14 @@ var rs = getComputedStyle(document.querySelector(":root"));
 
 document.addEventListener('DOMContentLoaded', function(){
     
+
+
+
+
     let url=window.location.pathname;
     newurl = url.split('/');
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-        console.info( "This page is reloaded" );
+        // console.info( "This page is reloaded" );
         newurl[2] = "%20";
         newurl = newurl.join('/');
         window.location.href = newurl;
@@ -19,6 +23,15 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     else
         document.querySelector("#lookup-form").style.display = "none";
+
+    const input = document.getElementById("search");
+    // input.addEventListener("keyup", (event) => {
+    //     // alert("entertener1")
+    //     if (event.key == "Enter") {
+    //         // alert("entertener2")
+    //         console.log('Enter key pressed')
+    //     }
+    // });
     // if(document.querySelector('#new_post_view')){
         // document.querySelector('#new_post_view').style.display = 'none';
     // }
@@ -119,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //   }
       
     //   console.log(scrollbarVisible(p))
-      console.log(scrollbarVisible(document.querySelector('.body')))
+    //   console.log(scrollbarVisible(document.querySelector('.body')))
 
 
 
@@ -217,12 +230,17 @@ function load_postbox(postbox, user_log){
       
             // Searching
             // Search by pressing enter
-            document.getElementById("lookup-form").onsubmit = "searching";
+            // document.getElementById("lookup-form").onsubmit = searching;
+            // document.querySelector("#lookup-form").onsubmit(searching);
+
+            document.getElementById("lookup-form").onsubmit = searching;
+
             // Clean search when the input is empty (when press the x too)
             // document.getElementById("search").addEventListener("input", (e) => {
             //     if (e.currentTarget.value == "") searching();
             // });
             // Search by clicking the magnifying glass icon
+                    
             document.querySelector("#submitSearch").addEventListener("click", searching);
 
         }
@@ -851,6 +869,7 @@ const scrollbarVisible = (element) => {
 
 // The function Search
 function searching() {
+    event.preventDefault();
     datos_buscados = document.getElementById("search").value.toLowerCase();
     
     let url=window.location.pathname;
@@ -860,7 +879,7 @@ function searching() {
     if (datos_buscados.length != 0 || newurl[2] != "%20"){
         if(datos_buscados.length == 0){
             datos_buscados = " ";
-            alert("entra a los dos ifs")
+            // alert("entra a los dos ifs")
         }
         
         //   datos_buscados=" ";
