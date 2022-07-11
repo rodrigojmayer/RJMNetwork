@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // alert(newurl[2])
     if(newurl[2] != "%20"){
         // alert("pepin")
-    document.getElementById('lookup-form').style.display = 'block';
-        document.getElementById("search").value=newurl[2];
+        load_postbox('search bar',null)
     }
     else
         document.querySelector("#lookup-form").style.display = "none";
@@ -194,55 +193,42 @@ function load_postbox(postbox, user_log){
         console.log(document.querySelector('#nav-following svg path').style.fill)
         console.log(document.querySelector('#nav-liked-posts svg path').style.fill)
         console.log(document.querySelector('#nav-home svg path').style.fill)
+        let url=window.location.pathname;
+        newurl = url.split('/');
+        // newurl[2] = datos_buscados;
+        console.log(newurl[2])
+  
 
-        if(document.getElementById('lookup-form').style.display === 'block'){
-            document.getElementById('lookup-form').style.display = 'none';
-            document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-color");
-
-
-
-
-
-
-        }
-        else{
-
-            let url=window.location.pathname;
-            newurl = url.split('/');
-            // newurl[2] = datos_buscados;
-            console.log(newurl[2])
-            if(newurl[2] != "%20"){
-                // alert("pepin")
+        if(document.getElementById('lookup-form').style.display === 'none' || newurl[2] != "%20"){
+            if (newurl[2] != "%20"){
                 document.getElementById("search").value=newurl[2];
             }
+            
             document.getElementById('lookup-form').style.display = 'block';
             document.querySelector(".search-text").focus();
             document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
             // document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
             // document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
             // document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
-
-
-
-            
-                        
+      
             // Searching
             // Search by pressing enter
             document.getElementById("lookup-form").onsubmit = "searching";
             // Clean search when the input is empty (when press the x too)
-            document.getElementById("search").addEventListener("input", (e) => {
-                if (e.currentTarget.value == "") searching();
-            });
+            // document.getElementById("search").addEventListener("input", (e) => {
+            //     if (e.currentTarget.value == "") searching();
+            // });
             // Search by clicking the magnifying glass icon
             document.querySelector("#submitSearch").addEventListener("click", searching);
 
-
-
+        }
+        else{
+            document.getElementById('lookup-form').style.display = 'none';
+            document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-color");
 
 
 
         }
-
 
     }
     if(postbox === 'all posts'){
@@ -863,14 +849,20 @@ const scrollbarVisible = (element) => {
 function searching() {
     datos_buscados = document.getElementById("search").value.toLowerCase();
     
-    // const post = document.querySelectorAll("#email");
-    if (datos_buscados.length != 0){
-    //   datos_buscados=" ";
     let url=window.location.pathname;
     newurl = url.split('/');
-    newurl[2] = datos_buscados;
-    newurl = newurl.join('/');
-    window.location.href = newurl;
+
+    // const post = document.querySelectorAll("#email");
+    if (datos_buscados.length != 0 || newurl[2] != "%20"){
+        if(datos_buscados.length == 0){
+            datos_buscados = " ";
+            alert("entra a los dos ifs")
+        }
+        
+        //   datos_buscados=" ";
+        newurl[2] = datos_buscados;
+        newurl = newurl.join('/');
+        window.location.href = newurl;
 
     }
     
