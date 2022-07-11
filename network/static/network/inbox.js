@@ -4,11 +4,15 @@ var rs = getComputedStyle(document.querySelector(":root"));
 // var body = document.querySelector('.body');
 
 document.addEventListener('DOMContentLoaded', function(){
-
     
     let url=window.location.pathname;
     newurl = url.split('/');
-    // alert(newurl[2])
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        console.info( "This page is reloaded" );
+        newurl[2] = "%20";
+        newurl = newurl.join('/');
+        window.location.href = newurl;
+    }
     if(newurl[2] != "%20"){
         // alert("pepin")
         load_postbox('search bar',null)
