@@ -102,6 +102,11 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
 
     p = Paginator(all_posts, 10)
     list_total_pages = []
+    print(p.num_pages)
+    if(jump_page > p.num_pages):
+        jump_page = p.num_pages
+    if(jump_page < 1):
+        jump_page = 1
     for i in range(1, p.num_pages+1):
         list_total_pages.append(i)
     num_page = jump_page
