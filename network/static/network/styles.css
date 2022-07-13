@@ -749,12 +749,12 @@ body{
 /* body{
     position:relative;
 } */
-/* #body_id{ */
+#body_id{
     /* position: absolute; */
     /* margin:0; */
     /* z-index: 999; */
-    /* margin-top: .5px; */
-/* } */
+    margin-top: 0px;
+}
 #body_id h3{
     margin-top: .7rem;
 }
