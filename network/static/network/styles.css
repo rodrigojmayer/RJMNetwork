@@ -726,8 +726,12 @@ img:not([src]) {
 
 
 body{
-    margin: var(--header-height) 0;
+    /* margin: var(--header-height) 0; */
+    margin: 0;
+    margin-top: 0;
+    margin-bottom: var(--header-height);
     padding: .5rem;
+    padding-top: 0rem;
 }
 
 #posts_style{
@@ -742,8 +746,19 @@ body{
 }
 
 /******************Search******************/
+/* body{
+    position:relative;
+} */
+/* #body_id{ */
+    /* position: absolute; */
+    /* margin:0; */
+    /* z-index: 999; */
+    /* margin-top: .5px; */
+/* } */
+#body_id h3{
+    margin-top: .7rem;
+}
 .search {
-    /* position: fixed; */
     /* top: var(--header-height); */
     /* left: 0; */
     /* right: 0; */
@@ -752,18 +767,20 @@ body{
     height: var(--search-height);
     width: 90vw;
     /* margin: ; */
-    margin: 0 3.2%;
+    margin: .2rem  3.2%;
     /* margin-right: 5px; */
     /* margin-top: 6px; */
-    /* margin-bottom: 16px; */
+    margin-bottom: .5rem;
     /* padding: 27.2px; */
     border-radius: 5px;
-    border: var(--gray-dark-color);
-    border-style: solid;
+    /* border: var(--gray-dark-color); */
+    /* border-style: solid; */
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.3);
     border-width: 1px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+
 }
 .search-text {
     padding: 7px;
