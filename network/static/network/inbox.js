@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function(){
     // if(document.querySelector('#new_post_view')){
         // document.querySelector('#new_post_view').style.display = 'none';
     // }
+    document.getElementById("lookup-form").onsubmit = searching;
+    document.querySelector("#submitSearch").addEventListener("click", searching);
     if(document.querySelector('#new_post'))
         document.querySelector('#new_post').addEventListener('click', () => load_postbox('new post',null));
     if(document.querySelector('#nav-search'))
@@ -256,15 +258,6 @@ function load_postbox(postbox, user_log){
             // document.getElementById("lookup-form").onsubmit = searching;
             // document.querySelector("#lookup-form").onsubmit(searching);
 
-            document.getElementById("lookup-form").onsubmit = searching;
-
-            // Clean search when the input is empty (when press the x too)
-            // document.getElementById("search").addEventListener("input", (e) => {
-            //     if (e.currentTarget.value == "") searching();
-            // });
-            // Search by clicking the magnifying glass icon
-                    
-            document.querySelector("#submitSearch").addEventListener("click", searching);
 
         }
         // }
