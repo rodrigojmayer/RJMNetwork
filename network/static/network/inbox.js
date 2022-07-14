@@ -4,17 +4,17 @@ let elem;
 var pos = 0;
 var id = null;
  
+var url = window.location.pathname;
 // var body = document.querySelector('.body');
 
 document.addEventListener('DOMContentLoaded', function(){
-    
 
     elem = document.getElementById("body_id");  
 
     if(elem.style.marginTop);
         elem.style.marginTop = "0px";
 
-    let url=window.location.pathname;
+    // let url=window.location.pathname;
     newurl = url.split('/');
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
         // console.info( "This page is reloaded" );
@@ -24,11 +24,15 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     if(newurl[2] != "%20"){
         // alert("pepin")
-        load_postbox('search bar',null)
+        document.getElementById("search").value=newurl[2];
+        document.querySelector(".search-text").focus();
+        document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
+        elem.style.marginTop = "80px";
+        load_postbox('search bar',null);
     }
-    // else
+    else{
         // document.querySelector("#lookup-form").style.display = "none";
-
+    }
     const input = document.getElementById("search");
     // input.addEventListener("keyup", (event) => {
     //     // alert("entertener1")
@@ -43,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(document.querySelector('#new_post'))
         document.querySelector('#new_post').addEventListener('click', () => load_postbox('new post',null));
     if(document.querySelector('#nav-search'))
-        document.querySelector('#nav-search').addEventListener('click', () => load_postbox('search bar',null));
+        document.querySelector('#nav-search').addEventListener('click', () => load_postbox('search bar', "button_nav_search"));
     if(document.querySelector('#all_posts_view')){
         // alert("entrando");
         document.querySelector('#all_posts_view').style.display = 'block';
@@ -215,31 +219,38 @@ function load_postbox(postbox, user_log){
         console.log(document.querySelector('#nav-following svg path').style.fill)
         console.log(document.querySelector('#nav-liked-posts svg path').style.fill)
         console.log(document.querySelector('#nav-home svg path').style.fill)
-        let url=window.location.pathname;
+        
         newurl = url.split('/');
         // newurl[2] = datos_buscados;
         console.log(newurl[2])
+        console.log(user_log)
+        // console.log("color icono search")
+        // console.log(document.querySelector('#nav-search svg path').style.fill)
+        // console.log(rs.getPropertyValue("--blue-color"))
   
 
         // if(document.getElementById('lookup-form').style.display === 'none' || newurl[2] != "%20"){
-        if(elem.style.marginTop == "0px" || newurl[2] != "%20"){
-            if (newurl[2] != "%20"){
-                document.getElementById("search").value=newurl[2];
-            }
+        // if (document.querySelector('#nav-search svg path').style.fill != rs.getPropertyValue("--blue-color")){
+        if(elem.style.marginTop == "0px"){
+            pos == 0;
+            // if (newurl[2] != "%20"){
+                // document.getElementById("search").value=newurl[2];
+            // }
             
             // document.getElementById('lookup-form').style.display = 'block';
             document.querySelector(".search-text").focus();
             document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
 
-            // alert(elem.style.marginTop);   
+            // if (elem.style.marginTop == "0px"){
+                // alert(elem.style.marginTop);   
             clearInterval(id);
-            // id = setInterval(frame, 10);
+                // id = setInterval(frame, 10);
             id = setInterval(bajar, 10);
-
+            // }
             // document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
             // document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
             // document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
-      
+    
             // Searching
             // Search by pressing enter
             // document.getElementById("lookup-form").onsubmit = searching;
@@ -256,13 +267,28 @@ function load_postbox(postbox, user_log){
             document.querySelector("#submitSearch").addEventListener("click", searching);
 
         }
+        // }
         else{
-            // document.getElementById('lookup-form').style.display = 'none';
-            // document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-color");
+            pos = 80;
 
-            clearInterval(id);
-            // id = setInterval(frame, 10);
-            id = setInterval(subir, 10);
+            // alert("entra al elseese")
+            // document.getElementById('lookup-form').style.display = 'none';
+            if (newurl[2] == "%20" || user_log == "button_nav_search"){
+                // alert("entra al elseese iffff")
+                document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
+                clearInterval(id);
+                // id = setInterval(frame, 10);
+                id = setInterval(subir, 10);
+
+                // setTimeout( 1000000000000000000);
+                    if (user_log == "button_nav_search" && newurl[2] != "%20"){
+                        document.getElementById("search").value = " ";
+                        
+                        const myTimeout = setTimeout(searching, 5000);
+                    }
+                
+            }
+
 
 
         }
@@ -479,7 +505,7 @@ function pages(user_log, next_page, jump_page){
     next_page = parseInt(next_page) + parseInt(jump_page);
 // alert(next_page)
     // window.location.href = 'http://www.google.com';
-    let url=window.location.pathname;
+    // let url=window.location.pathname;
     // console.log(url.split)
     newurl = url.split('/').slice(0,-1).join('/')+'/'+next_page;
     window.location.href = newurl;
@@ -884,10 +910,12 @@ const scrollbarVisible = (element) => {
 
 // The function Search
 function searching() {
-    event.preventDefault();
+    if(event)
+        event.preventDefault();
+    alert("nose")
     datos_buscados = document.getElementById("search").value.toLowerCase();
     
-    let url=window.location.pathname;
+    // let url=window.location.pathname;
     newurl = url.split('/');
 
     // const post = document.querySelectorAll("#email");
@@ -921,6 +949,8 @@ function searching() {
     }
 }
 function subir() {
+    console.log("esta entrando a la funcion subir")
+    console.log(pos)
     if (pos == 0) {
     clearInterval(id);
     } else {
