@@ -26,15 +26,7 @@ from .models import User, NewPost, Followers, Likers
 # @csrf_exempt
 # @login_required
 def postsbox(request, filter_view, data_search, user_id, jump_page):
-# def postsbox(request, filter_view, user_id, jump_page):
     
-
-    # print("user_id")
-    # print(user_id)
-    # print("filter_view")
-    # print(filter_view)
-    print("jump_page")
-    print(jump_page)
     if data_search != " ":
         print("kk")
     if(user_id == 0):
@@ -88,17 +80,13 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
     else:
         return render(request, "network/register.html")
 
-
     # Searching
     if data_search != " ":
         all_users = all_users.filter(username__icontains=data_search)
         id_users_array = []
         for u in all_users:
             id_users_array.append(u.id)
-        
         all_posts = all_posts.filter(description__icontains=data_search) | all_posts.filter(poster__in = id_users_array)
-    
-
 
     p = Paginator(all_posts, 10)
     list_total_pages = []
@@ -135,15 +123,11 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
 
-
-
-    # return render(request, "network/index.html", {
     return render(request, "network/"+filter_view+".html", {
         "all_posts": all_posts,
         "all_posts_page": page_posts,
         "users": users,
         "list_total_pages": list_total_pages,
-        # "random_number": random_number,
         "user_color": user_color,
         "p_actual": num_page,
         "p_last": p.num_pages,
@@ -152,14 +136,6 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
         "followers":followers,
         "user_following":user_following,
     })
-
-
-
-
-
-
-
-
 
 
 def index(request):
@@ -171,9 +147,6 @@ def index(request):
     for j in users:
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
-    # print(users)
-    # print("estos son los campos - - - ")
-    # print(all_fields)
     total_posts=all_posts.count()
     total_pages=math.ceil(total_posts/10)
     list_total_pages = []
@@ -182,7 +155,6 @@ def index(request):
     all_posts = all_posts.order_by("-date_added")[:10]
     all_likers = Likers.objects.all()
     for post in all_posts:
-        # print(post.poster)
         post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
         post.number_likes=0
         likers = all_likers.filter(post=post.id)
@@ -193,11 +165,6 @@ def index(request):
             for each in each_liker.liker.all():
                 likers_id.append(each.id)
             post.likers_id = likers_id
-        # print(post._meta.fields)
-        # print(post.poster.id)
-        # # print(users.objects.get(id=post.poster.id).randim)
-        # user_color = users.objects.get(id=post.poster.id)
-        # print(user_color.randim)
 
     random_number = randrange(100)
     return render(request, "network/index.html", {
@@ -208,190 +175,8 @@ def index(request):
         "user_color": user_color
     })
 
-
-
-
-# def following(request):
-
-#     if request.user.id:
-#         follows_filter=[]
-#         followers = Followers.objects.filter(follower=request.user.id)
-#         for each_followers_filter in followers:
-#             # print(each_followers_filter.followed.id)
-#             follows_filter.append(each_followers_filter.followed.id)
-#         all_posts = NewPost.objects.all()
-#         all_posts = all_posts.order_by("-date_added")
-#         all_posts2=all_posts.filter(poster__in=follows_filter)
-#         # print(follows_filter)
-#         # print("1--------------")
-#         # print(all_posts)
-#         # print("-2-------------")
-#         # print(all_posts2)
-#         total_posts=all_posts2.count()
-#         all_posts2=all_posts2[:10]
-#         total_pages=math.ceil(total_posts/10)
-#         list_total_pages = []
-#         for i in range(2, total_pages+1):
-#             list_total_pages.append(i)
-#         all_likers = Likers.objects.all()
-    
-#         for post in all_posts2:
-#             post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
-#             post.number_likes=0
-#             likers = all_likers.filter(post=post.id)
-#             likers_id = []
-#             for each_liker in likers:
-#                 post.likers = each_liker.liker.all()
-#                 post.number_likes = each_liker.liker.count()
-#                 for each in each_liker.liker.all():
-#                     likers_id.append(each.id)
-#                 post.likers_id = likers_id
-
-#         users = User.objects.all()
-#         user_color = {}
-#         colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-#         for j in users:
-#             user_color[j.id] = random.choice(colors_list)
-#             colors_list.remove(user_color[j.id])
-#         return render(request, "network/following.html",{
-#             "follows_filter":follows_filter,
-#             "all_posts":all_posts2,
-#             "list_total_pages":list_total_pages,
-#             "user_color": user_color,
-#         })
-#     else:
-#         return render(request, "network/register.html")
-
-
-
-# def liked_posts(request):
-
-#     if request.user.id:
-#         likers_filter=[]
-#         likers = Likers.objects.filter(liker=request.user.id)
-#         for each_likers_filter in likers:
-#             # print(each_likers_filter.followed.id)
-#             # print(each_likers_filter.post.id)
-#             # print(each_likers_filter)
-#             # likers_filter.append(each_likers_filter.followed.id)
-#             likers_filter.append(each_likers_filter.post.id)
-#         all_posts = NewPost.objects.all()
-#         all_posts = all_posts.order_by("-date_added")
-#         # all_posts2=all_posts.filter(poster__in=[15])
-#         all_posts2=all_posts.filter(id__in=likers_filter)
-#         # print(likers_filter)
-#         # print("1--------------")
-#         # print(all_posts)
-#         # print("-2-------------")
-#         # print(all_posts2)
-#         total_posts=all_posts2.count()
-#         all_posts2=all_posts2[:10]
-#         total_pages=math.ceil(total_posts/10)
-#         list_total_pages = []
-#         for i in range(2, total_pages+1):
-#             list_total_pages.append(i)
-#         all_likers = Likers.objects.all()
-    
-#         for post in all_posts2:
-#             post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
-#             post.number_likes=0
-#             likers = all_likers.filter(post=post.id)
-#             likers_id = []
-#             for each_liker in likers:
-#                 post.likers = each_liker.liker.all()
-#                 post.number_likes = each_liker.liker.count()
-#                 for each in each_liker.liker.all():
-#                     likers_id.append(each.id)
-#                 post.likers_id = likers_id
-
-                
-#         users = User.objects.all()
-#         user_color = {}
-#         colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-#         for j in users:
-#             user_color[j.id] = random.choice(colors_list)
-#             colors_list.remove(user_color[j.id])
-            
-#         return render(request, "network/liked_posts.html",{
-#             "likers_filter":likers_filter,
-#             "all_posts":all_posts2,
-#             "list_total_pages":list_total_pages,
-#             "user_color": user_color,
-#         })
-#     else:
-#         return render(request, "network/register.html")
-
-
-# def profile(request, id_poster):
-    
-#     if request.user.id:
-#         user_poster = User.objects.get(id=id_poster)
-#         try:
-#             followed_by = Followers.objects.filter(followed=id_poster)
-#         except Followers.DoesNotExist:
-#             followed_by = None
-        
-#         followers_obj = Followers.objects.filter(follower__id=id_poster)
-#         followers=[]
-#         for follower in followers_obj:
-#             followers.append(follower.followed)
-
-#         profile_posts = NewPost.objects.filter(poster=id_poster)
-#         profile_posts = profile_posts.order_by("-date_added")
-#         id_poster=int(id_poster)
-
-#         total_posts=profile_posts.count()
-#         profile_posts=profile_posts[:10]
-#         total_pages=math.ceil(total_posts/10)
-#         list_total_pages = []
-#         for i in range(2, total_pages+1):
-#             list_total_pages.append(i)
-
-
-#         user_following = followed_by.filter(follower__id=request.user.id)
-#         if(user_following):
-#             user_following="Unfollow"
-#         else:
-#             user_following="Follow"
-        
-#         all_likers = Likers.objects.all()
-    
-#         for post in profile_posts:
-#             post.date_added = (post.date_added.strftime("%b %d, %Y, %H:%M"))
-#             post.number_likes=0
-#             likers = all_likers.filter(post=post.id)
-#             likers_id = []
-#             for each_liker in likers:
-#                 post.likers = each_liker.liker.all()
-#                 post.number_likes = each_liker.liker.count()
-#                 for each in each_liker.liker.all():
-#                     likers_id.append(each.id)
-#                 post.likers_id = likers_id
-#         users = User.objects.all()
-#         user_color = {}
-#         colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-#         for j in users:
-#             user_color[j.id] = random.choice(colors_list)
-#             colors_list.remove(user_color[j.id])
-
-#         return render(request, "network/profile.html", {
-#             "poster":user_poster,
-#             "followed_by":followed_by,
-#             "followers":followers,
-#             "profile_posts":profile_posts,
-#             "user_following":user_following,
-#             "list_total_pages":list_total_pages,
-#             "user_color": user_color
-#         })
-#     else:
-#         return render(request, "network/register.html")
-
-
-
-
 def new_post(request):
     return render(request, "network/new_post.html")
-
 
 def login_view(request):
     if request.method == "POST":
@@ -399,13 +184,7 @@ def login_view(request):
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(request, username=username, password=password) 
-        # users = User.objects.all()
-        # user_color = {}
-        # colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
-        # for j in users:
-            # user_color[j.id] = random.choice(colors_list)
-            # colors_list.remove(user_color[j.id])
+        user = authenticate(request, username=username, password=password)
 
         # Check if authentication successful
         if user is not None:
@@ -414,8 +193,6 @@ def login_view(request):
         else:
             return render(request, "network/login.html", {
                 "message": "Invalid username and/or password.",
-                # "user": user,
-                # "user_color": user_color
             })
     else:
         return render(request, "network/login.html", {
@@ -460,9 +237,6 @@ def register(request):
 @login_required
 def compose_post(request):
     # Composing a new email must be via POST
-    
-    print("request------------------------------")
-    print(request)
 
     if request.method != "POST":
         # Get start and end points
@@ -494,18 +268,6 @@ def compose_post(request):
         return JsonResponse({"message":"Post saved successfully.",
                     "user_log": request.user.id,
                     }, status=201)
-
-
-# @csrf_exempt
-# @login_required
-# def post(request, postbox):
-#     all_posts = NewPost.objects.select_related('poster')
-#     return render(request, "network/index.html", {
-#         "all_posts": all_posts,
-#         "add_post_available": True
-#     })
-
-
 
 @csrf_exempt
 @login_required
@@ -572,8 +334,6 @@ def pagesposts(request):
         likers = all_likers.filter(post=post.id)
         likers_id = []
         users_without_color.insert(int(post.poster.id), int(post.poster.id))
-        print(post.poster.id)
-        print("$#----------------------#$")
         for each_liker in likers:
             post.likers = each_liker.liker.all()
             post.number_likes = each_liker.liker.count()
@@ -582,14 +342,8 @@ def pagesposts(request):
             all_likers_id.append( likers_id)
 
     all_users = User.objects.all()
-    print(users_without_color)
-    print("---------------gdasdg------------------")
-    print(all_posts)
-    print("---------------------------------")
     all_posts_json = serializers.serialize('json', all_posts)
     all_users_json = serializers.serialize('json', all_users)
-    print("------------------------------------------")
-    print(all_posts_json)
 
 
 
@@ -598,9 +352,6 @@ def pagesposts(request):
     user_color = {}
     colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
     for j in users_without_color:
-    # for j in users:
-        # print(j)
-        # print("--------fdsaf")
         user_color[j] = random.choice(colors_list)
         colors_list.remove(user_color[j])
 
@@ -635,55 +386,10 @@ def edit(request):
     else:
         print("This post is not yours")
 
-# @csrf_exempt
-# @login_required
-# def pre_edit_profile(request):
-#     print('---------------change_profile_picture---------------')
-#     # print(request.body[src])
-#     user_999 = User.objects.filter(id=999)
-#     if(user_999):
-#         print(user_999)
-#     else:
-#         print("kkk")
-#         user_999 = User.objects.create(id=999, username="user_999", email="email_user@999.com", password="password_user_999")
-#         user_999.save()
-#     # print(user_999)
-#     data = json.loads(request.body)
-#     src = data.get("src", "")
-#     print(src)
-#     print(request.FILES)
-#     # if(src):
-#         # user_999.header_image = src
-#     # user_999.save()
-
-
-
-    
-#     instance = User(
-#         header_image=UploadedFile(
-#             file=open(src, 'rb')
-#             # file=open('C:/Users/rodri/Downloads/logo1.png', 'rb')
-#         )
-#     )
-#     instance.save()
-
-
-
-
-#     return JsonResponse({"message_username":"holis",})
 
 @csrf_exempt
 @login_required
 def edit_profile(request):
-    # print("adondeestalalibertad")
-    # print(json.loads(request.body))
-    # data = json.loads(request.body)
-    # data_username = data.get("username")
-    # print(request.user.id)
-    # print(request.FILES)
-    # print(data_username)
-    # print("......ANDA O NO ANDA?")
-    # print(request.POST['username'])
     user_logued = User.objects.get(id=request.user.id)
     # print(user_logued.email)
     message_username = ""
