@@ -198,7 +198,6 @@ def login_view(request):
         return render(request, "network/login.html", {
                 "user": 0})
 
-
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
@@ -237,7 +236,6 @@ def register(request):
 @login_required
 def compose_post(request):
     # Composing a new email must be via POST
-
     if request.method != "POST":
         # Get start and end points
         start = int(request.GET.get("start") or 0)
@@ -344,18 +342,12 @@ def pagesposts(request):
     all_users = User.objects.all()
     all_posts_json = serializers.serialize('json', all_posts)
     all_users_json = serializers.serialize('json', all_users)
-
-
-
-            
     users = User.objects.all()
     user_color = {}
     colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
     for j in users_without_color:
         user_color[j] = random.choice(colors_list)
         colors_list.remove(user_color[j])
-
-
     return JsonResponse({"message":"probando",
                         "all_likers_id": all_likers_id,
                         "all_posts_json": all_posts_json,
@@ -367,7 +359,6 @@ def pagesposts(request):
 @csrf_exempt
 @login_required
 def edit(request):
-    
     data = json.loads(request.body)
     id_post = data.get("id_post", "")
     description = data.get("description", "")
@@ -375,7 +366,6 @@ def edit(request):
         post = NewPost.objects.get(id=id_post)
     except Followers.DoesNotExist:
         return JsonResponse({"error": "Follow not found."}, status=404)
-    
     if request.user.id==post.poster.id:
         post.description = description
         post.save()
@@ -386,24 +376,19 @@ def edit(request):
     else:
         print("This post is not yours")
 
-
 @csrf_exempt
 @login_required
 def edit_profile(request):
     user_logued = User.objects.get(id=request.user.id)
-    # print(user_logued.email)
     message_username = ""
     message_emailaddress = ""
     message_password = ""
     message_image = ""
 
     if request.POST['username']:
-    # if(User.objects.get(username=data.get("username"))):
         if User.objects.filter(username=request.POST['username']):
-            print("hay coincidenciaaa")
             message_username = "- Username is already in use.<br>"
         else:
-            print("no coincidióóóóó. Podemos proceder a cambiar el alias")
             message_username = "- Username changed successfully.<br>"
             user_logued.username = request.POST['username']
     if request.POST["emailaddress"]:
@@ -412,141 +397,31 @@ def edit_profile(request):
         else:
             message_emailaddress = "- Email changed successfully.<br>"
             user_logued.email = request.POST["emailaddress"]
-    # user_logued.password = data.get("password")
     if request.POST["password"]:
         if request.POST["password"]==request.POST["confirmpassword"]:
-            # print("...------...")
-            # print("YESIRRR")
-            # print("...------...")
             message_password = "- Password changed successfully.<br>"
             user_logued.set_password(request.POST["password"])
             update_session_auth_hash(request, user_logued)
         else:
             message_password = "- Passwords must match.<br>"
-
-
-    print("-----request.FILES--------")
-    print(request.FILES)
     if(request.FILES):
-        # print(request.FILES['change_profile_picture'])
         user_logued.header_image = request.FILES['change_profile_picture']
         message_image = "- Profile image changed."
 
-
     user_logued.save()
-
-    # print(message_username)
-    # print(message_emailaddress)
-    # print(message_password)
-    # print(message_image)
-
-
-
     return HttpResponseRedirect('/profile/ /%s/1' % user_logued.id)
-
-
-
-
-
-
-
-    # message_username = ""
-    # message_emailaddress = ""
-    # message_password = ""
-    # return JsonResponse({"message_username":message_username,
-    #                         "message_emailaddress":message_emailaddress,
-    #                         "message_password":message_password,
-    #                         "id_post": "id_post",
-    #                         "description": "description",
-    #                         }, status=201)
-    # return render(request, "network/profile.html", {
-    #         "poster":user_logued,
-            # "followed_by":followed_by,
-            # "followers":followers,
-            # "profile_posts":profile_posts,
-            # "user_following":user_following,
-            # "list_total_pages":list_total_pages,
-        # })
-
-    # try:
-    #     user_logued = User.objects.get(id=request.user.id)
-        
-    #     # print(dir(user_logued))
-    #     # print(user_logued.email)
-    #     # print(user_logued.password)
-    #     # print("...asdf...")
-    #     # print(user_logued.username)
-    #     # print("...asdf...")
-    #     message_username = ""
-    #     message_emailaddress = ""
-    #     message_password = ""
-    #     if data.get("username"):
-    #         # if(User.objects.get(username=data.get("username"))):
-    #         if User.objects.filter(username=data.get("username")):
-    #             # print("hay coincidenciaaa")
-    #             message_username = "- Username is already in use.<br>"
-    #         else:
-    #             # print("no coincidióóóóó")
-    #             message_username = "- Username changed successfully.<br>"
-    #             user_logued.username = data.get("username")
-    #     if data.get("emailaddress"):
-    #         if User.objects.filter(email=data.get("emailaddress")):
-    #             message_emailaddress = "- Email is already in use.<br>"
-    #         else:
-    #             message_emailaddress = "- Email changed successfully.<br>"
-    #             user_logued.email = data.get("emailaddress")
-    #     # user_logued.password = data.get("password")
-    #     if data.get("password"):
-    #         if data.get("password")==data.get("confirmpassword"):
-    #             # print("...------...")
-    #             # print("YESIRRR")
-    #             # print("...------...")
-    #             message_password = "- Password changed successfully.<br>"
-    #             user_logued.set_password(data.get("password"))
-    #             update_session_auth_hash(request, user_logued)
-    #         else:
-    #             message_password = "- Passwords must match.<br>"
-            
-    #         # request.user.set_password(form.cleaned_data['password'])
-
-    #     print("  ")
-    #     print(data)
-    #     # print(request.get)
-    #     print("  ")
-    #     if data.get("change_profile_picture"):
-    #         print("  ")
-    #         print(data.get("change_profile_picture"))
-    #         print("  ")
-    #         user_logued.header_image = data.get("change_profile_picture")
-    #         # user_logued.header_image = '\WhatsApp Image 2022-06-06 at 6.23.25 PM.jpeg'
-
-    #     user_logued.save()
-
-    #     return JsonResponse({"message_username":message_username,
-    #                         "message_emailaddress":message_emailaddress,
-    #                         "message_password":message_password,
-    #                         "id_post": "id_post",
-    #                         "description": "description",
-    #                         }, status=201)
-
-    # except Likers.DoesNotExist:
-    #     return JsonResponse({"error": "Liker not found."}, status=404)
 
 @csrf_exempt
 @login_required
 def like(request, id_post):
-
-
     try:
         liked = Likers.objects.get(post=id_post) 
     except Likers.DoesNotExist:
         return JsonResponse({"error": "Liker not found."}, status=404)
-
     data = json.loads(request.body)
     like_action = data.get("like_action", "")
     if(like_action == "heart_empty"):
         liked.liker.add(request.user.id)
-    
     else:
         liked.liker.remove(request.user.id)
     likers_array=[]
@@ -559,14 +434,3 @@ def like(request, id_post):
         "message": "Profile followed successfully."
     }
     , status=201)
-
-
-
-
-
-
-
-
-
-
-
