@@ -6,9 +6,10 @@ var id = null;
  
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
-    elem = document.getElementById("body_id");  
-    if(elem.style.marginTop);
-        elem.style.marginTop = "0px";
+    // elem = document.getElementById("body_id");   
+    elem = document.getElementById("lookup-form");   
+    if(elem.style.top);
+        elem.style.top = "0px";
     newurl = url.split('/');
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
         newurl[2] = "%20";
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
         document.getElementById("search").value=newurl[2];
         document.querySelector(".search-text").focus();
         document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
-        elem.style.marginTop = "80px";
+        elem.style.top = "83px";
         load_postbox('search bar',null);
     }
     else{
@@ -119,7 +120,7 @@ function load_postbox(postbox, user_log){
     }
     if(postbox === 'search bar'){
         newurl = url.split('/');
-        if(elem.style.marginTop == "0px"){
+        if(elem.style.top == "0px"){
             pos == 0;
             document.querySelector(".search-text").focus();
             document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
@@ -127,7 +128,7 @@ function load_postbox(postbox, user_log){
             id = setInterval(bajar, 10);
         }
         else{
-            pos = 80;
+            pos = 83;
             if (newurl[2] == "%20" || user_log == "button_nav_search"){
                 document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
                 clearInterval(id);
@@ -375,11 +376,11 @@ function searching() {
   }
 
 function bajar() {
-    if (pos == 80) {
+    if (pos == 83) {
         clearInterval(id);
     } else {
         pos++; 
-        elem.style.marginTop = pos + 'px'; 
+        elem.style.top = pos + 'px'; 
     }
 }
 
@@ -388,6 +389,6 @@ function subir() {
     clearInterval(id);
     } else {
     pos--; 
-    elem.style.marginTop = pos + 'px'; 
+    elem.style.top = pos + 'px'; 
     }
 }
