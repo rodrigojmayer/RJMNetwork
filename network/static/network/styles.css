@@ -1,3 +1,120 @@
+  /*****************************Reset*****************************/
+  html {
+    box-sizing: border-box;
+    font-family: var(--font);
+    font-size: 1.9rem;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    color: var(--text-color);
+    background-color: var(--gray-light-color);
+}
+
+
+::-webkit-scrollbar {
+    width: 17px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 5px grey;
+    background: var(--gray-blue-2);
+    border-radius: 10px;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all ease-out;
+}
+
+a:hover {
+    opacity: 0.75;  
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.9rem;
+}
+
+h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+h4 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+h5 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+h6 {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+p, input {
+    line-height: 1.6;
+    font-size: 1.3rem;
+}
+
+/* ***********************  New Style  **************************** */
+
+/**************************CustomProperties**********************/
+:root {
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --white-alpha-color: rgba(255, 255, 255, 0.5);
+    --black-alpha-color: rgba(0, 0, 0, 0.3);
+    --black-alpha-color2: rgba(0, 0, 0, 0.5);
+    --gray-color: #ccc;
+    --gray-dark-color: #555;
+    --gray-light-color: #f3f3f3; 
+    --text-color: #222;
+    
+    --gray-blue: #D5DBE1;
+    --gray-blue-2: #E2E8EE;
+    --gray-light-2: #3d509f;
+    --black-logo: #3D3D3D;
+    --pink-color: #DA2D57;
+    --yellow-color: #AAAD00;
+    --blue-color: #0013C2;
+    --green-color: #2B8800;
+    --orange-color: #FF8A00;
+    --pic-user-logued-color: #00BAAF;
+    --link-color: #1E6876;
+    --link-dark-color: #144852;
+    --link-light-color: #2d9cb3;
+    
+    --font: "Ubuntu", sans-serif;
+
+    --max-width: 1200px;
+    --header-height: 2rem;
+    --search-height: 1.3rem;
+}
+  
 #posts-flex-order{
     display: flex;
     flex-direction: row;
@@ -214,122 +331,6 @@
     background-color: var(--gray-dark-color);
 }
 
-/* ***********************  New Style  **************************** */
-
-/**************************CustomProperties**********************/
-:root {
-    --white-color: #ffffff;
-    --black-color: #000000;
-    --white-alpha-color: rgba(255, 255, 255, 0.5);
-    --black-alpha-color: rgba(0, 0, 0, 0.3);
-    --black-alpha-color2: rgba(0, 0, 0, 0.5);
-    --gray-color: #ccc;
-    --gray-dark-color: #555;
-    --gray-light-color: #f3f3f3; 
-    --text-color: #222;
-    
-    --gray-blue: #D5DBE1;
-    --gray-blue-2: #E2E8EE;
-    --gray-light-2: #3d509f;
-    --black-logo: #3D3D3D;
-    --pink-color: #DA2D57;
-    --yellow-color: #AAAD00;
-    --blue-color: #0013C2;
-    --green-color: #2B8800;
-    --orange-color: #FF8A00;
-    --pic-user-logued-color: #00BAAF;
-    --link-color: #1E6876;
-    --link-dark-color: #144852;
-    --link-light-color: #2d9cb3;
-    
-    --font: "Ubuntu", sans-serif;
-
-    --max-width: 1200px;
-    --header-height: 2rem;
-    --search-height: 1.3rem;
-}
-  
-  /*****************************Reset*****************************/
-html {
-    box-sizing: border-box;
-    font-family: var(--font);
-    font-size: 1.9rem;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-}
-
-*,
-*::after,
-*::before {
-    box-sizing: inherit;
-}
-
-body {
-    margin: 0;
-    overflow-x: hidden;
-    color: var(--text-color);
-    background-color: var(--gray-light-color);
-}
-
-
-::-webkit-scrollbar {
-    width: 17px;
-}
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 5px grey;
-    background: var(--gray-blue-2);
-    border-radius: 10px;
-}
-
-a {
-    color: var(--link-color);
-    text-decoration: none;
-    transition: all ease-out;
-}
-
-a:hover {
-    opacity: 0.75;  
-}
-
-h1 {
-    margin: 0;
-    font-size: 2.9rem;
-}
-
-h2 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-h3 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-h4 {
-    margin: 0;
-    font-size: 1.25rem;
-}
-
-h5 {
-    margin: 0;
-    font-size: 1rem;
-}
-
-h6 {
-    margin: 0;
-    font-size: 0.85rem;
-}
-
-p, input {
-    line-height: 1.6;
-    font-size: 1.3rem;
-}
-
 .header{
     position: fixed;
     left: 0;
@@ -463,8 +464,52 @@ body{
 #body_id{
     margin-top: 0px;
     /* padding: 50px; */
+    /* display: flex; */
+    /* justify-content: space-around; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 0 auto;
+}
+body{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* margin: 0 auto; */
+}
+#register_view{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* margin: 0 auto; */
+    /* align-items: center; */
+    /* height: 1130%; */
+    margin-top: 20vh;
+}
+#login_view{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* margin: 0 auto; */
+    /* align-items: center; */
+    /* height: 1130%; */
+    margin-top: 20vh;
 }
 
+#form_register{
+    height: 13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#form_login{
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 #body_id h3{
     padding-top: .8rem;
     padding-bottom: .4rem;
@@ -699,4 +744,13 @@ a.modal-close svg path{
 
 #cancel_message{
     background-color: var(--pink-color);
+}
+
+@media screen and (min-width: 1024px){
+
+
+
+
+
+
 }
