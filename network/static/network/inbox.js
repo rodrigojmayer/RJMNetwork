@@ -11,20 +11,22 @@ document.addEventListener('DOMContentLoaded', function(){
     if(elem.style.top);
         elem.style.top = "0px";
     newurl = url.split('/');
-    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-        newurl[2] = "%20";
-        newurl = newurl.join('/');
-        window.location.href = newurl;
-    }
-    if(newurl[2] != "%20"){
-        document.getElementById("search").value=newurl[2];
-        document.querySelector(".search-text").focus();
-        document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
-        elem.style.top = "83px";
-        load_postbox('search bar',null);
-    }
-    else{
-        // document.querySelector("#lookup-form").style.display = "none";
+    if(newurl[2]){
+        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+            newurl[2] = "%20";
+            newurl = newurl.join('/');
+            window.location.href = newurl;
+        }
+        if(newurl[2] != "%20"){
+            document.getElementById("search").value=newurl[2];
+            document.querySelector(".search-text").focus();
+            document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
+            elem.style.top = "83px";
+            load_postbox('search bar',null);
+        }
+        else{
+            // document.querySelector("#lookup-form").style.display = "none";
+        }
     }
     const input = document.getElementById("search");
     document.getElementById("lookup-form").onsubmit = searching;

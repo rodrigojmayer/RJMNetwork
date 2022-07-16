@@ -27,13 +27,25 @@ from .models import User, NewPost, Followers, Likers
 # @login_required
 def postsbox(request, filter_view, data_search, user_id, jump_page):
     
+    print("user_id")
+    print(user_id)
+    print("filter_view")
+    print(filter_view)
+
     if data_search != " ":
         print("kk")
     if(user_id == 0):
-        user_id = request.user.id
+        user_id = 1
+    # if(user_id == 0 and request.user.id):
+    #     user_id = request.user.id
 
+    print(user_id)
     all_users = User.objects.all()
-    user_poster = all_users.get(id=user_id)
+
+    if(user_id != 0):
+        user_poster = all_users.get(id=user_id)
+    # else:
+        # user_poster = all_users.get(id=1)
 
 
     all_posts = NewPost.objects.select_related('poster')
@@ -77,7 +89,7 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
             else:
                 user_following="Follow"
     
-    else:
+    elif filter_view != "index":
         return render(request, "network/register.html")
 
     # Searching
@@ -90,7 +102,7 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
 
     p = Paginator(all_posts, 10)
     list_total_pages = []
-    print(p.num_pages)
+    # print(p.num_pages)
     if(jump_page > p.num_pages):
         jump_page = p.num_pages
     if(jump_page < 1):
