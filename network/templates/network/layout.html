@@ -51,6 +51,9 @@
 
                         <input id="change_profile_picture" name="change_profile_picture"  type="file" style="visibility:hidden;" accept="image/png, image/jpeg, image/jpg"/>
 
+                        
+        {% if user.is_authenticated %}
+
                         {% if user %}
                             {% if user.header_image %}
                                 
@@ -69,6 +72,7 @@
                         {% endif %}
 
 
+        {% endif %}
 
                         
                         <input id="send_edit_profile" onclick="openOkMessage(this)" class="page_button" value="Edit"/>
