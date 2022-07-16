@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import JsonResponse
 #from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import HttpResponse, HttpResponseRedirect, render
+from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
@@ -201,7 +201,11 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            # return render(request, "network/index.html")
+            # return HttpResponseRedirect(reverse("network/index.html"))
+            # return HttpResponseRedirect(reverse("index"))
+            # return HttpResponseRedirect(reverse("postsbox"))
+            return redirect("/index/%20/0/0")
         else:
             return render(request, "network/login.html", {
                 "message": "Invalid username and/or password.",
