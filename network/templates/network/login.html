@@ -7,7 +7,7 @@
         {% if message %}
             <div>{{ message }}</div>
         {% endif %}
-        <form action="{% url 'login' %}" method="post">
+        <form action="{% url 'login' %}" method="post" id="form_login">
             {% csrf_token %}
             <div class="form-group">
                 <input autofocus class="form-control" type="text" name="username" placeholder="Username">
