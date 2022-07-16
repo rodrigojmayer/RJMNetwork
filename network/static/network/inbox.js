@@ -33,8 +33,10 @@ document.addEventListener('DOMContentLoaded', function(){
     document.querySelector("#submitSearch").addEventListener("click", searching);
     if(document.querySelector('#new_post'))
         document.querySelector('#new_post').addEventListener('click', () => load_postbox('new post',null));
-    if(document.querySelector('#nav-search'))
+    if(document.querySelector('#nav-search') && newurl[2])
         document.querySelector('#nav-search').addEventListener('click', () => load_postbox('search bar', "button_nav_search"));
+    else
+        document.querySelector('#nav-search').style.cursor = "default";
     if(document.querySelector('#all_posts_view')){
         document.querySelector('#all_posts_view').style.display = 'block';
         document.querySelector('#edit_profile_view').style.display = 'none';
