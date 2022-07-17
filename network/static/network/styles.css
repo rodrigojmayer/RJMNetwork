@@ -204,15 +204,21 @@ p, input {
 }
 
 #profile{
-    font-weight:bold;
+    /* font-weight:bold; */
+    font-size: 1.4rem;
 }
 
 .date_post{
-    font-size: 55%;
+    font-size: .7rem;
     color:darkgray;
 }
 .description_post{
     word-wrap: break-word;
+    padding: .5rem;
+    padding-top: .1rem;
+    font-size: 1.2rem;
+    color: var(--gray-dark-color);
+
 }
 
 #edit{
@@ -235,7 +241,18 @@ p, input {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 80%;
+    /* font-size: 80%; */
+    color: var(--black-logo);
+    font-weight:550;
+    font-size: 1.2rem;
+}
+#like_complete :nth-child(2n), #like_complete :nth-child(3n){
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* align-items: center; */
+    padding-top:4px;
+    /* font-size: 80%; */
+    /* font-size: 1rem; */
 }
 
 .yes_button{
@@ -466,7 +483,7 @@ body{
 #posts_style{
     margin: 1rem .3rem;
     margin-top: .3rem;
-    padding: 16px;
+    padding: .5rem;
     background-color: var(--white-color);
     border-radius: 10px;
     box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.3);
@@ -837,5 +854,18 @@ a.modal-close svg path{
         margin: .1rem .3rem;
         margin-bottom: .5rem;
         border-width: 1px;
+    }
+    
+    #profile{
+        font-size: 1.2rem;
+    }
+    .date_post{
+        font-size: .7rem;
+    }
+    .description_post{
+        font-size: 1rem;
+    }
+    #like_complete{
+        font-size: .7rem;
     }
 }
