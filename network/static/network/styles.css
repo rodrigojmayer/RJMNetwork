@@ -1,10 +1,47 @@
-  /*****************************Reset*****************************/
+  
+/* ***********************  New Style  **************************** */
+
+/**************************CustomProperties**********************/
+:root {
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --white-alpha-color: rgba(255, 255, 255, 0.5);
+    --black-alpha-color: rgba(0, 0, 0, 0.3);
+    --black-alpha-color2: rgba(0, 0, 0, 0.5);
+    --gray-color: #ccc;
+    --gray-dark-color: #555;
+    --gray-light-color: #f3f3f3; 
+    --text-color: #222;
+    
+    --gray-blue: #D5DBE1;
+    --gray-blue-2: #E2E8EE;
+    --gray-light-2: #3d509f;
+    --black-logo: #3D3D3D;
+    --pink-color: #DA2D57;
+    --yellow-color: #AAAD00;
+    --blue-color: #0013C2;
+    --green-color: #2B8800;
+    --orange-color: #FF8A00;
+    --pic-user-logued-color: #00BAAF;
+    --link-color: #1E6876;
+    --link-dark-color: #144852;
+    --link-light-color: #2d9cb3;
+    
+    --font: "Ubuntu", sans-serif;
+
+    --max-width: 1200px;
+    --header-height: 3rem;
+    --search-height: 1.7rem;
+}
+  
+
+/*****************************Reset*****************************/
   html {
     box-sizing: border-box;
     font-family: var(--font);
     font-size: 1.9rem;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
+    /* scroll-behavior: smooth; */
+    overflow-y:hidden;
     height: 100%;
 }
 
@@ -24,15 +61,18 @@ body {
 
 ::-webkit-scrollbar {
     width: 17px;
+    margin: var(--header-height) 0;
 }
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
+    /* box-shadow: inset 0 0 5px grey; */
+    /* border-radius: 10px; */
+    margin: var(--header-height) 0;
 }
 ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 5px grey;
+    /* box-shadow: inset 0 0 5px grey; */
     background: var(--gray-blue-2);
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    margin: var(--header-height) 0;
 }
 
 a {
@@ -80,41 +120,6 @@ p, input {
     font-size: 1.3rem;
 }
 
-/* ***********************  New Style  **************************** */
-
-/**************************CustomProperties**********************/
-:root {
-    --white-color: #ffffff;
-    --black-color: #000000;
-    --white-alpha-color: rgba(255, 255, 255, 0.5);
-    --black-alpha-color: rgba(0, 0, 0, 0.3);
-    --black-alpha-color2: rgba(0, 0, 0, 0.5);
-    --gray-color: #ccc;
-    --gray-dark-color: #555;
-    --gray-light-color: #f3f3f3; 
-    --text-color: #222;
-    
-    --gray-blue: #D5DBE1;
-    --gray-blue-2: #E2E8EE;
-    --gray-light-2: #3d509f;
-    --black-logo: #3D3D3D;
-    --pink-color: #DA2D57;
-    --yellow-color: #AAAD00;
-    --blue-color: #0013C2;
-    --green-color: #2B8800;
-    --orange-color: #FF8A00;
-    --pic-user-logued-color: #00BAAF;
-    --link-color: #1E6876;
-    --link-dark-color: #144852;
-    --link-light-color: #2d9cb3;
-    
-    --font: "Ubuntu", sans-serif;
-
-    --max-width: 1200px;
-    --header-height: 2rem;
-    --search-height: 1.3rem;
-}
-  
 #posts-flex-order{
     display: flex;
     flex-direction: row;
@@ -288,18 +293,18 @@ p, input {
 }
 
 .page_button {
-    min-width: 1rem;
-    height: 1.3rem;
+    min-width: 1.5rem;
+    height: 2rem;
     background-color: var(--link-color);
     color: var(--white-color);
     padding: 0 .5rem; 
     margin: 0;
-    font-size: .6rem;
+    font-size: 1rem;
     border:0;
     border-radius: 5px;
     text-align: center;
     box-shadow: inset 0 0 3px white;
-    width: 2rem;
+    width: 4rem;
     box-sizing: content-box;
 }
 
@@ -445,10 +450,17 @@ img[src=""], img:not([src]) {
 
 body{
     margin: 0;
-    margin-top: 0;
-    margin-bottom: var(--header-height);
-    padding: 0 0.5rem;
+    /* margin-top: 0; */
+    /* margin-bottom: var(--header-height); */
+    padding: 0 1rem;
     /* padding-top: 0rem; */
+    height:100%;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* margin: 0 auto; */
+    /* margin-top: 100px; */
 }
 
 #posts_style{
@@ -462,7 +474,6 @@ body{
 
 /******************Search******************/
 #body_id{
-    margin-top: 0px;
     /* padding: 50px; */
     /* display: flex; */
     /* justify-content: space-around; */
@@ -471,16 +482,14 @@ body{
     /* align-items: center; */
     /* justify-content: center; */
     margin: 0 auto;
+    margin-top: 20px;
+    /* margin-bottom: var(--header-height); */
+    padding-bottom: calc(var(--header-height) + .5rem);
+    /* padding-bottom: .5rem; */
     width: 100%;
+    /* margin-top: 35px; */
 }
-body{
-    height:100%;
-    /* width: 100%; */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    /* margin: 0 auto; */
-}
+
 #register_view{
     display: flex;
     flex-direction: column;
@@ -546,7 +555,7 @@ body{
     width: 85%;
     background-color: transparent;
     border: none;
-    font-size: 16px;
+    font-size: .9rem;
 }
 
 .search-text:focus {
@@ -752,9 +761,81 @@ a.modal-close svg path{
 
 @media screen and (min-width: 1024px){
 
+    :root {
+    
+        --max-width: 1200px;
+        --header-height: 2rem;
+        --search-height: 1.3rem;
+    }
+
+    /* body{ */
+        /* margin-bottom: var(--header-height); */
+        /* padding: 0 5rem; */
+        /* padding-top: 0rem; */
+        /* width: 100%; */
+    /* } */
+    #body_id{
+        margin-top: 0px;
+        /* padding: 50px; */
+        /* display: flex; */
+        /* justify-content: space-around; */
+        /* align-items: center; */
+        /* justify-content: center; */
+        /* margin: 0 auto;
+        margin-bottom: var(--header-height); */
+        width: 75%;
+    }
 
 
+    #register_view{
+        /* justify-content: center; */
+        /* margin: 0 auto; */
+        /* align-items: center; */
+        /* height: 1130%; */
+        margin-top: 10vh;
+        width: 60%;
+    }
+    #login_view{
+        /* justify-content: center; */
+        /* margin: 0 auto; */
+        /* align-items: center; */
+        /* height: 1130%; */
+        margin-top: 10vh;
+        width: 60%;
+    }
+    
+    #form_register{
+        height: 11rem;
+    }
+    #form_login{
+        height: 6rem;
+    }
 
+    
+    .page_button {
+        min-width: 1rem;
+        height: 1.3rem;
+        background-color: var(--link-color);
+        color: var(--white-color);
+        padding: 0 .5rem; 
+        margin: 0;
+        font-size: .6rem;
+        border:0;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: inset 0 0 3px white;
+        width: 2.5rem;
+        box-sizing: content-box;
+    }
 
-
+    
+    .search {
+        background-color: var(--white-color);
+        height: var(--search-height);
+        width: 40vw;
+        /* margin: .2rem  3.2%; */
+        margin: .1rem .3rem;
+        margin-bottom: .5rem;
+        border-width: 1px;
+    }
 }
