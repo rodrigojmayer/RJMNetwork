@@ -39,7 +39,7 @@
   html {
     box-sizing: border-box;
     font-family: var(--font);
-    font-size: 1.9rem;
+    font-size: 2rem;
     /* scroll-behavior: smooth; */
     overflow-y:hidden;
     height: 100%;
@@ -278,6 +278,11 @@ p, input {
 
 /* *************** Profile view *************** */
 
+#profile_view{
+    margin-top: 1rem;
+    /* width: 60%; */
+
+}
 #profile-flex-order{
     display: flex;
     flex-direction: row;
@@ -374,6 +379,10 @@ p, input {
     z-index: 990;
 }
 
+.header img{
+    height: 3rem;
+}
+
 .navbar{
     position: fixed;
     left: 0;
@@ -387,6 +396,11 @@ p, input {
     align-items: center;
     box-shadow: 16px 8px 16px 0px rgba(0,0,0,1.2);
     z-index: 990;
+}
+
+.navbar svg{
+    width: 2.5rem;
+    height: 2.5rem;
 }
 #profile_img{
     width: 2.5rem;
@@ -413,9 +427,13 @@ p, input {
 .dropdown-content {
     display: none;
     position: absolute;
-    top:-110px;
+    top:-175px;
+    right:-35px;
     background-color: var(--gray-blue);
-    min-width: 160px;
+    /* min-width: 120px; */
+    width: 7rem;
+    height: 6rem;
+    /* padding: .2rem 0; */
     overflow: auto;
     border-radius: 5px 5px 0 0;
     z-index: 999;
@@ -423,9 +441,10 @@ p, input {
 
 .dropdown-content a {
     color: var(--black-logo);
-    padding: 12px 16px;
+    padding: 15px 16px;
     text-decoration: none;
     display: block;
+    font-size: 1.5rem;
 }
   
 #myDropdown a:hover {
@@ -435,6 +454,8 @@ p, input {
 
 #myDropdown{
     z-index: 990;
+    /* height: 6rem; */
+    /* width: 7rem; */
 }
 
 .dropdown #profile_letter{
@@ -470,9 +491,12 @@ img[src=""], img:not([src]) {
 .new_post_button{
     position: fixed;
     right: 1rem;
-    bottom: 3rem;
+    bottom: 4rem;
     cursor: pointer;
-    height: 50px;
+    height: 3rem;
+}
+.new_post_button svg{
+    height: 3rem;
 }
 
 body{
@@ -794,7 +818,9 @@ a.modal-close svg path{
         --header-height: 2rem;
         --search-height: 1.3rem;
     }
-
+    html {
+        font-size: 1.7rem;
+    }
     /* body{ */
         /* margin-bottom: var(--header-height); */
         /* padding: 0 5rem; */
@@ -814,6 +840,9 @@ a.modal-close svg path{
     }
 
 
+    .header img{
+        height: 2rem;
+    }
     #register_view{
         /* justify-content: center; */
         /* margin: 0 auto; */
@@ -857,7 +886,6 @@ a.modal-close svg path{
 
     
     .search {
-        background-color: var(--white-color);
         height: var(--search-height);
         width: 40vw;
         /* margin: .2rem  3.2%; */
@@ -866,10 +894,59 @@ a.modal-close svg path{
         border-width: 1px;
     }
       
+    .new_post_button{
+        right: 1rem;
+        bottom: 2.5rem;
+        height: 2rem;
+    }
+    .new_post_button svg{
+        height: 2rem;
+    }
+    .navbar svg{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
     #profile_img{
         width: 1.5rem;
         height: 1.5rem;
     }
+    
+    .dropdown-content {
+        top:-95px;
+    }
+
+    
+/* .dropdown-content {
+    display: none;
+    position: absolute;
+    top:-175px;
+    right:-35px;
+    background-color: var(--gray-blue);
+    min-width: 160px;
+    width: 7rem;
+    height: 6rem; */
+    /* padding: .2rem 0; */
+    /* overflow: auto;
+    border-radius: 5px 5px 0 0;
+    z-index: 999;
+} */
+.dropdown-content {
+    top:-53px;
+    right:0;
+    height: 2.4rem;
+    width: 3rem;
+}
+.dropdown-content a {
+    padding: 5px 7px;
+    font-size: .7rem;
+}
+
+#myDropdown{
+    /* height: 3rem; */
+    /* width: 1rem; */
+    padding:0;
+}
 
     #posts-flex-order-child1{
         width: 3rem;
