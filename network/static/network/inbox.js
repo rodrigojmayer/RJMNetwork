@@ -164,7 +164,7 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 document.querySelector('.modal').style.display = 'none';
                 
-                document.querySelector('#edit_profile_view h5').innerHTML = 'Changes to be made: ';
+                document.querySelector('#edit_profile_view h4').innerHTML = 'Changes to be made: ';
                 unLockScroll();
             }
             else{
@@ -176,7 +176,7 @@ function load_postbox(postbox, user_log){
                 document.querySelector('#edit_profile_view').style.display = 'block';
                 document.querySelector('#edit_profile_view #edit_close').style.display = 'block';
                 document.querySelector('#edit_profile_options').style.display = "flex";
-                document.querySelector('#edit_profile_view h5').innerHTML = 'Edit profile ';    
+                document.querySelector('#edit_profile_view h4').innerHTML = 'Edit profile ';    
                 lockScroll();
             }
         }
@@ -338,7 +338,7 @@ function openOkMessage(ths){
     document.querySelector("#alert_modal_message").style.margin = "0";
     let n = 0;
     let message = "";
-    document.querySelector('#edit_profile_view h5').innerHTML = 'Changes to be made:';
+    document.querySelector('#edit_profile_view h4').innerHTML = 'Changes to be made:';
     if(document.querySelector("#username").value){
         message += "- Username.<br>";
     }
