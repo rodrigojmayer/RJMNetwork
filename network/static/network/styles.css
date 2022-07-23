@@ -123,6 +123,7 @@ p, input {
 #posts-flex-order{
     display: flex;
     flex-direction: row;
+    gap:.5rem;
 }
 
 #posts-flex-order-child1{
@@ -148,7 +149,7 @@ p, input {
 }
 
 .posts_profile_picture{
-    margin-right: .5rem;
+    /* margin-right: .5rem; */
     /* height: 1.5rem;
     width: 1.5rem; */
     height: 3rem;
@@ -173,18 +174,16 @@ p, input {
 }
 
 .no_profile_picture_letter{
-  position:absolute;
-  height:30px;
-  width:30px;
-  top: 6.5px;
-  left : 14.5px;
-  z-index: 20;
+    position:absolute;
+    z-index: 20;
 }
 
 .profile_picture_letter{
     position:absolute;
-    height:30px;
-    width:30px;
+    /* height:30px;
+    width:30px; */
+    height: 3rem;
+    width: 3rem;
     top: 6.5px;
     left : 14.5px;
     z-index: 20;
@@ -193,6 +192,7 @@ p, input {
 #profile_profile_picture_letter{
     position:absolute;
     font-size: 3.5rem;
+    /* font-size: 544px; */
     margin: auto;
     top: .5rem;
     left : 1.3rem;
@@ -200,8 +200,10 @@ p, input {
 
 .no_profile_picture_circle{
     position:absolute;
-    height:1.5rem;
-    width:1.5rem;
+    /* height:1.5rem;
+    width:1.5rem; */
+    height: 3rem;
+    width: 3rem;
     z-index: 10;
 }
 
@@ -462,9 +464,16 @@ p, input {
     /* width: 7rem; */
 }
 
-.dropdown #profile_letter{
-    top: 10.5px;
-    left: 5.5px;
+#nav_profile_letter{
+    font-size: 1.5rem;
+    top: .4rem;
+    left: .8rem;
+}
+
+#post_profile_letter{
+    font-size: 2rem;
+    top: .5rem;
+    left: .9rem;
 }
 
 #profile_letter_preview{ 
@@ -963,7 +972,7 @@ a.modal-close svg path{
         width: 3rem;
     }  
     .posts_profile_picture{
-        margin-right: .5rem;
+        /* margin-right: .5rem; */
         height: 2.5rem;
         width: 2.5rem;
         /* height: 3rem;
@@ -994,7 +1003,7 @@ a.modal-close svg path{
         width: 3.4rem;
     }
     #profile-flex-order-child2{
-        gap:.1rem;
+        gap:.4rem;
     }
     .modal_div{
         margin: calc(var(--header-height) + 1rem) auto;
@@ -1016,5 +1025,18 @@ a.modal-close svg path{
     a.modal-close svg{
         margin-left:-34px;
         height: 30px;
+    }
+    #profile_profile_picture_letter{
+        position:absolute;
+        font-size: 3.5rem;
+        /* font-size: 544px; */
+        margin: auto;
+        top: .5rem;
+        left : 1.3rem;
+    }
+    #nav_profile_letter{
+        font-size: 1rem;
+        top: .2rem;
+        left: .45rem;
     }
 }

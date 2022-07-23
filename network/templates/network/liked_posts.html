@@ -18,9 +18,9 @@
                                 {% else %}
                                     <div class="no_profile_picture">
                                         <svg id="dropbtn-profile" class="no_profile_picture_circle" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path id="dropbtn-profile" d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0C31.0457 0 40 8.9543 40 20Z" fill="#{{user_color|keyvalue:post.poster.id}}"/>
+                                            <path id="dropbtn-profile" d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0C31.0457 0 40 8.9543 40 20Z" fill="{{user_color|keyvalue:post.poster.id}}"/>
                                         </svg>
-                                        <div  class="no_profile_picture_letter">
+                                        <div id="post_profile_letter" class="no_profile_picture_letter">
                                             {{ post.poster|make_list|first|capfirst }}
                                         </div>
                                     </div>

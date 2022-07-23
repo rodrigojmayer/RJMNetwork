@@ -130,11 +130,13 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
 
     users=User.objects.filter(id__in=posters_id)
     user_color = {}
-    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+    # colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+    colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
     for j in users:
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
 
+    print("entra a este postbox--------------------------------------------------------")
     return render(request, "network/"+filter_view+".html", {
         "all_posts": all_posts,
         "all_posts_page": page_posts,
@@ -155,7 +157,7 @@ def index(request):
     all_fields= NewPost._meta.fields
     users = User.objects.all()
     user_color = {}
-    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+    colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
     for j in users:
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
@@ -177,7 +179,6 @@ def index(request):
             for each in each_liker.liker.all():
                 likers_id.append(each.id)
             post.likers_id = likers_id
-
     random_number = randrange(100)
     return render(request, "network/index.html", {
         "all_posts": all_posts,
@@ -360,7 +361,7 @@ def pagesposts(request):
     all_users_json = serializers.serialize('json', all_users)
     users = User.objects.all()
     user_color = {}
-    colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
+    colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
     for j in users_without_color:
         user_color[j] = random.choice(colors_list)
         colors_list.remove(user_color[j])

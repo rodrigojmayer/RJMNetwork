@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
     else if(pathArray[1] == "profile"){
-        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-color");
+        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
