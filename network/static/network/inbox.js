@@ -293,7 +293,7 @@ window.onclick = function(event) {
     }
 
     if (!event.target.matches('#dropbtn-profile') && 
-        !event.target.matches('#profile_letter')&& 
+        !event.target.matches('#nav_profile_letter')&& 
         !event.target.matches('#profile_img')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
