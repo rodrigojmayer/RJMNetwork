@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
             document.getElementById("search").value=newurl[2];
             document.querySelector(".search-text").focus();
             document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
-            elem.style.top = "83px";
+            elem.style.top = "90px";
             load_postbox('search bar',null);
         }
         else{
@@ -132,7 +132,7 @@ function load_postbox(postbox, user_log){
             id = setInterval(bajar, 10);
         }
         else{
-            pos = 83;
+            pos = 90;
             if (newurl[2] == "%20" || user_log == "button_nav_search"){
                 document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--black-logo");
                 clearInterval(id);
@@ -380,7 +380,9 @@ function searching() {
   }
 
 function bajar() {
-    if (pos == 83) {
+    elem.style.opacity= "1";
+    // alert(elem.value);
+    if (pos == 90) {
         clearInterval(id);
     } else {
         pos++; 
