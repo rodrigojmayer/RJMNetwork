@@ -319,8 +319,8 @@ p, input {
     height: 2.5rem;
     margin-bottom:-10px;
 }
-#profile-flex-order-child2  h4{
-    /* margin-bottom: .2rem; */
+#profile_poster{
+    margin-top: .2rem;
     /* height: auto; */
 }
 

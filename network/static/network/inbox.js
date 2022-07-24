@@ -82,8 +82,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 img.src = e.target.result;
             }
             reader.readAsDataURL(imageFile);
-            document.getElementById("no_profile_picture_background").style.display="none";
-            document.getElementById("display-image").style.opacity=1;
+            if(document.getElementById("no_profile_picture_background")){
+                document.getElementById("no_profile_picture_background").style.display="none";
+                document.getElementById("display-image").style.opacity=1;
+            }
         }
     });
 })
@@ -317,9 +319,10 @@ function close_window(){
     document.querySelector("#emailaddress").value = null;
     document.querySelector("#password").value = null;
     document.querySelector("#change_profile_picture").value = null;
-    document.getElementById("no_profile_picture_background").style.display="block";
-    document.getElementById("display-image").style.opacity=0;
-
+    if (document.getElementById("no_profile_picture_background")){
+        document.getElementById("no_profile_picture_background").style.display="block";
+        document.getElementById("display-image").style.opacity=0;
+    }
 }
 
 function lockScroll() {
