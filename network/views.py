@@ -14,6 +14,7 @@ from array import array
 from random import randrange
 from django.core.files.uploadedfile import UploadedFile
 from django.core.paginator import Paginator
+from django.core.exceptions import ObjectDoesNotExist
 
 import random
 
@@ -217,7 +218,9 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    # return HttpResponseRedirect(reverse("index"))    
+    return redirect("/index/%20/0/0")
+
 
 
 def register(request):
@@ -431,10 +434,12 @@ def edit_profile(request):
 @csrf_exempt
 @login_required
 def like(request, id_post):
+
     try:
         liked = Likers.objects.get(post=id_post) 
     except Likers.DoesNotExist:
         return JsonResponse({"error": "Liker not found."}, status=404)
+        # return JsonResponse({"queseyo": "Liker not found."}, status=4024)
     data = json.loads(request.body)
     like_action = data.get("like_action", "")
     if(like_action == "heart_empty"):

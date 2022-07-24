@@ -161,10 +161,12 @@ function load_postbox(postbox, user_log){
             if(document.querySelector('#alert_modal_message').style.display === "block"){
                 document.querySelector('#edit_profile_view').style.display = 'none'
                 document.querySelector('#alert_modal_message').style.display = "none";
+                // document.querySelector('#alert_like_unlogged').style.display = "none";
             }
             if(document.querySelector('#edit_profile_view').style.display === 'block'){
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 document.querySelector('.modal').style.display = 'none';
+                // document.querySelector('#alert_like_unlogged').style.display = "none";
                 
                 document.querySelector('#edit_profile_view h4').innerHTML = 'Changes to be made: ';
                 unLockScroll();
@@ -172,8 +174,8 @@ function load_postbox(postbox, user_log){
             else{
                 if(document.getElementById('profile_view_picture').src && (document.getElementById('profile_view_picture').src == document.getElementById('display-image').src)){
                     // console.log("esta entrando aqui porque ya tenia una foto cargada, pero tendria que preguntar si picture no estaba para ser cambiada")
-                    console.log(document.getElementById('display-image').src);
-                    console.log(document.getElementById('profile_view_picture').src);
+                    // console.log(document.getElementById('display-image').src);
+                    // console.log(document.getElementById('profile_view_picture').src);
                     document.getElementById('display-image').src = document.getElementById('profile_view_picture').src;
                 }
                 document.querySelector('.modal').style.display = 'block';
@@ -236,6 +238,7 @@ function like(id_post){
     })
     .then(response => response.json())
     .then(result => {
+        console.log(result)
         setTimeout(function(){ 
             document.querySelector(`#heart-img-${id_post}`).innerHTML = '';
             if(result.prev_status=="heart_empty"){
@@ -249,6 +252,12 @@ function like(id_post){
                 document.querySelector(`#like-count-${id_post}`).firstChild.data = result.likers_array.length;
             }
          }, 200);
+    })
+    .catch((error) => {
+        // alert(error)
+                document.querySelector('.modal').style.display = 'block';
+        document.querySelector('#new_post_view').style.display = 'none';
+        document.querySelector('#alert_like_unlogged').style.opacity = 1;
     });
 }
 function follow(id_poster, user_log, followed_by2){
@@ -318,16 +327,20 @@ function close_window(){
     document.querySelector('#edit_profile_view').style.display = 'none';
     document.querySelector('.modal').style.display = 'none';
     document.querySelector('#alert_modal_message').style.display = "none";
+    document.querySelector('#alert_like_unlogged').style.opacity = 0;
     document.querySelector("#username").value = null;
     document.querySelector("#emailaddress").value = null;
     document.querySelector("#password").value = null;
     document.querySelector("#change_profile_picture").value = null;
-    if(document.getElementById('profile_view_picture').src)
+    // if(document.getElementById('profile_view_picture')){
+        if(document.getElementById('profile_view_picture').src)
         document.getElementById('display-image').src = document.getElementById('profile_view_picture').src;
+    // }
     if (document.getElementById("no_profile_picture_background")){
         document.getElementById("no_profile_picture_background").style.display="block";
         document.getElementById("display-image").style.opacity=0;
     }
+    // lockScroll();
 }
 
 function lockScroll() {
@@ -338,6 +351,7 @@ function lockScroll() {
 function unLockScroll() {
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
+
 }
 
 function openOkMessage(ths){

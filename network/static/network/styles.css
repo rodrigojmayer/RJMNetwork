@@ -729,6 +729,9 @@ body.modal {
     resize: none;
 }
 
+#alert_like_unlogged{
+    opacity: 0;
+}
 #edit_profile_view{
     /* background-color: var(--gray-light-color); */
     /* margin: calc(var(--header-height) + 8px) auto; */
@@ -816,11 +819,11 @@ a.modal-close svg path{
 }
 
 .lock-scroll {
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .un-lock-scroll {
-    overflow: visible;
+    overflow-y: visible ;
 }
 
 #alert_modal_message{
