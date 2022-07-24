@@ -170,8 +170,11 @@ function load_postbox(postbox, user_log){
                 unLockScroll();
             }
             else{
-                if(document.querySelector('#profile_view_picture').src){
-                    document.querySelector('#display-image').src = document.querySelector('#profile_view_picture').src;
+                if(document.getElementById('profile_view_picture').src && (document.getElementById('profile_view_picture').src == document.getElementById('display-image').src)){
+                    // console.log("esta entrando aqui porque ya tenia una foto cargada, pero tendria que preguntar si picture no estaba para ser cambiada")
+                    console.log(document.getElementById('display-image').src);
+                    console.log(document.getElementById('profile_view_picture').src);
+                    document.getElementById('display-image').src = document.getElementById('profile_view_picture').src;
                 }
                 document.querySelector('.modal').style.display = 'block';
                 document.querySelector('#new_post_view').style.display = 'none';
@@ -319,6 +322,8 @@ function close_window(){
     document.querySelector("#emailaddress").value = null;
     document.querySelector("#password").value = null;
     document.querySelector("#change_profile_picture").value = null;
+    if(document.getElementById('profile_view_picture').src)
+        document.getElementById('display-image').src = document.getElementById('profile_view_picture').src;
     if (document.getElementById("no_profile_picture_background")){
         document.getElementById("no_profile_picture_background").style.display="block";
         document.getElementById("display-image").style.opacity=0;
