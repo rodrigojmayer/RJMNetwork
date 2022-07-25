@@ -128,8 +128,16 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
             for each in each_liker.liker.all():
                 likers_id.append(each.id)
             post.likers_id = likers_id
+    # if request.user.id not in posters_id and  request.user.header_image is None:
+    if request.user.id:
+        if not(request.user.header_image) and  request.user.id not in posters_id:
+            # print("loquiyopiyo")
+            posters_id.append(request.user.id)
+
 
     users=User.objects.filter(id__in=posters_id)
+    # users=User.objects.all()
+    # users = users.filter(id__in=posters_id) | users.filter(id__in = request.user.id)
     user_color = {}
     # colors_list = ["C37D7D", "FC792F", "4950F8", "EBFC2F", "15A2F1", "58FC2F", "36F9E1", "2ECF65", "B549F8", "FF83EB", "FCCF2F"]
     colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
@@ -137,7 +145,9 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
 
-    print("entra a este postbox--------------------------------------------------------")
+    # print("entra a este postbox de pakotiya y estos son los colores de usuario--------------------------------------------------------")
+    # if request.user.id:
+        # print(bool(request.user.header_image))
     return render(request, "network/"+filter_view+".html", {
         "all_posts": all_posts,
         "all_posts_page": page_posts,
