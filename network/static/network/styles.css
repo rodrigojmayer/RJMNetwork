@@ -841,11 +841,20 @@ a.modal-close svg path{
     overflow-x: hidden; */
 }
 
-#alert_modal_message #messages{
-    margin-left: .9rem;
-    margin-bottom: .5rem;
+#alert_modal_message #messages, #exception_alert_unlogged{
+    /* margin-left: .9rem; */
+    /* margin-bottom: .5rem; */
+    padding: 0.1rem .9rem;
+    /* display:flex ;
+    flex-direction: column; */
 }
-
+#accept{
+    /* width: auto; */
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  /* margin-bottom: 9rem; */
+}
 .flex_order_buttons{
     display: flex;
     flex-direction: row;
