@@ -9,24 +9,37 @@ document.addEventListener('DOMContentLoaded', function(){
     // console.log(document.body.classList)
     // elem = document.getElementById("body_id");   
     elem = document.getElementById("lookup-form");   
-    if(elem.style.top);
+    // alert(elem.style.top);
+    // if(elem.style.top);
         elem.style.top = "0px";
     newurl = url.split('/');
+    // alert(newurl[2]);
+    
+    // if(newurl[2] == "%20")
+    //     alert("son iguales")
+    // else
+    //     alert("son distintos")
+    // window.addEventListener('load', (event) => {
+    //     console.log('page is fully loaded');
+    //   });
+    // console.log(performance.getEntriesByType("navigation")[0].type);
+
     if(newurl[2]){
-        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        // if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        if (performance.getEntriesByType("navigation")[0].type == "reload") {
             newurl[2] = "%20";
             newurl = newurl.join('/');
             window.location.href = newurl;
-        }
-        if(newurl[2] != "%20"){
-            document.getElementById("search").value=newurl[2];
-            document.querySelector(".search-text").focus();
-            document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
-            elem.style.top = "90px";
-            load_postbox('search bar',null);
-        }
-        else{
-            // document.querySelector("#lookup-form").style.display = "none";
+        }else{
+            if(newurl[2] != "%20"){
+                // alert("relaka")
+                document.getElementById("search").value=newurl[2];
+                document.querySelector(".search-text").focus();
+                document.querySelector('#nav-search svg path').style.fill = rs.getPropertyValue("--blue-color");
+                elem.style.top = "90px";
+                elem.style.opacity = 1;
+                load_postbox('search bar',null);
+            }
         }
     }
     const input = document.getElementById("search");
