@@ -666,6 +666,31 @@ body{
     cursor: pointer;
 }
 
+#nav-home svg:active {
+    width: 50px;
+    height: 50px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+#nav-search svg:active {
+    width: 50px;
+    height: 50px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+#nav-following svg:active {
+    width: 50px;
+    height: 50px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+#nav-liked-posts svg:active {
+    width: 50px;
+    height: 50px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
 /* ***************** Modal ***************** */
 
 .modal {
@@ -710,7 +735,7 @@ body.modal {
     margin: 1rem 0;
 }
 
-#new_post_view{
+/* #new_post_view{ */
     /* position: relative; */
     /* z-index: 999; */
     /* margin: calc(var(--header-height) + 8px) auto; */
@@ -721,7 +746,7 @@ body.modal {
     /* border-width: 1px; */
     /* box-shadow: 4px 4px rgba(0, 0, 0, 0.2); */
     /* font-size: smaller; */
-}
+/* } */
 
 #new_post_view #compose-body{
     height: 10rem;
@@ -740,7 +765,7 @@ body.modal {
 #alert_like_unlogged{
     opacity: 0;
 }
-#edit_profile_view{
+/* #edit_profile_view{ */
     /* background-color: var(--gray-light-color); */
     /* margin: calc(var(--header-height) + 8px) auto; */
     /* width: 15rem; */
@@ -752,7 +777,7 @@ body.modal {
     /* font-size: smaller; */
     /* overflow-y: hidden;
     overflow-x: hidden; */
-}
+/* } */
 
 a.modal-close{
     height: 50px;
