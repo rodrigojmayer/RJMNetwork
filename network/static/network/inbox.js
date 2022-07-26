@@ -6,6 +6,7 @@ var id = null;
  
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
+    console.log(document.body.classList)
     // elem = document.getElementById("body_id");   
     elem = document.getElementById("lookup-form");   
     if(elem.style.top);
@@ -332,10 +333,10 @@ function close_window(){
     document.querySelector("#emailaddress").value = null;
     document.querySelector("#password").value = null;
     document.querySelector("#change_profile_picture").value = null;
-    // if(document.getElementById('profile_view_picture')){
+    if(document.getElementById('profile_view_picture')){
         if(document.getElementById('profile_view_picture').src)
         document.getElementById('display-image').src = document.getElementById('profile_view_picture').src;
-    // }
+    }
     if (document.getElementById("no_profile_picture_background")){
         document.getElementById("no_profile_picture_background").style.display="block";
         document.getElementById("display-image").style.opacity=0;
@@ -346,11 +347,18 @@ function close_window(){
 function lockScroll() {
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
+    // document.body.style.paddingRight = "44.2px";
+    // document.body.style.paddingRight = "0";
+
 }
 
 function unLockScroll() {
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
+    // document.body.style.paddingRight = "27.2px";
+    // document.body.style.paddingRight = "0";
+    // document.body.style.paddingRight = "17px";
+
 
 }
 
@@ -384,6 +392,9 @@ function openOkMessage(ths){
 const scrollbarVisible = (element) => {
     return element.scrollHeight > window.innerWidth;
 }
+// alert(document.getElementById("body_id").style.height)
+// alert(window.innerWidth)
+// alert(scrollbarVisible(document.documentElement.scrollHeight))
 
 // The function Search
 function searching() {
