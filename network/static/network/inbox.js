@@ -6,7 +6,7 @@ var id = null;
  
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
-    console.log(document.body.classList)
+    // console.log(document.body.classList)
     // elem = document.getElementById("body_id");   
     elem = document.getElementById("lookup-form");   
     if(elem.style.top);
@@ -239,7 +239,7 @@ function like(id_post){
     })
     .then(response => response.json())
     .then(result => {
-        console.log(result)
+        // console.log(result)
         setTimeout(function(){ 
             document.querySelector(`#heart-img-${id_post}`).innerHTML = '';
             if(result.prev_status=="heart_empty"){

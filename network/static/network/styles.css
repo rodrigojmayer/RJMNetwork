@@ -826,8 +826,8 @@ a.modal-close svg path{
 }
 
 .un-lock-scroll {
-    overflow-y: visible ;
-    /* overflow-y: scroll ; */
+    /* overflow-y: visible ; */
+    overflow-y: overlay ;
 }
 
 #alert_modal_message{
