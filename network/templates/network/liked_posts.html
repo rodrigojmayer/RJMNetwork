@@ -99,7 +99,7 @@
                     {% if list_total_pages %}
                         {% if p_actual == 1 %}
                         {% else %}
-                            <button class="page_button" onclick="pages('{{user.id}}', '{{p_actual}}', -1)">Prev page</button>
+                            <button class="page_button page_button_large" onclick="pages('{{user.id}}', '{{p_actual}}', -1)">Prev page</button>
                         {% endif %}
                         {% for page in list_total_pages %} 
                             {% if page == p_actual %}
@@ -110,7 +110,7 @@
                         {% endfor %}
                         {% if p_actual == p_last %}
                         {% else %}
-                            <button class="page_button" onclick="pages('{{user.id}}', '{{p_actual}}', +1)">Next page</button>   
+                            <button class="page_button page_button_large" onclick="pages('{{user.id}}', '{{p_actual}}', +1)">Next page</button>   
                         {% endif %}        
                     {% endif %}  
                 </div>

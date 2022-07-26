@@ -350,6 +350,11 @@ p, input {
     box-sizing: content-box;
 }
 
+.page_button_large{
+    padding-left: .5rem !important;
+    padding-right: .5rem !important;
+}
+
 #edit-profile-btn{
     width: 5rem;
 }
