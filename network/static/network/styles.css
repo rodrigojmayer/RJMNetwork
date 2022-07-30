@@ -666,27 +666,9 @@ body{
     cursor: pointer;
 }
 
-#nav-home svg:active {
-    width: 50px;
-    height: 50px;
-    margin-left: -5px;
-    margin-right: -5px;
-}
-#nav-search svg:active {
-    width: 50px;
-    height: 50px;
-    margin-left: -5px;
-    margin-right: -5px;
-}
-#nav-following svg:active {
-    width: 50px;
-    height: 50px;
-    margin-left: -5px;
-    margin-right: -5px;
-}
-#nav-liked-posts svg:active {
-    width: 50px;
-    height: 50px;
+#nav-home svg:active, #nav-search svg:active,  #nav-following svg:active, #nav-liked-posts svg:active{
+    width: 90px;
+    height: 90px;
     margin-left: -5px;
     margin-right: -5px;
 }
@@ -1104,5 +1086,11 @@ a.modal-close svg path{
         /* height: 200px; */
         top: .7rem;
         left: 2.2rem;
+    }
+    #nav-home svg:active, #nav-search svg:active,  #nav-following svg:active, #nav-liked-posts svg:active{
+        width: 50px;
+        height: 50px;
+        margin-left: -5px;
+        margin-right: -5px;
     }
 }
