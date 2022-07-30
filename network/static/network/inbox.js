@@ -59,9 +59,12 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
     else if(pathArray[1] == "profile"){
-        document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
-        document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
-        document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
+        if(document.querySelector('#nav-following svg path'))
+            document.querySelector('#nav-following svg path').style.fill = rs.getPropertyValue("--black-logo");
+        if(document.querySelector('#nav-liked-posts svg path'))
+            document.querySelector('#nav-liked-posts svg path').style.fill = rs.getPropertyValue("--black-logo");
+        if(document.querySelector('#nav-home svg path'))
+            document.querySelector('#nav-home svg path').style.fill = rs.getPropertyValue("--black-logo");
     }
     const image_input = document.querySelector("#change_profile_picture");
     image_input.addEventListener("change", function(e) {
@@ -255,10 +258,8 @@ function like(id_post){
          }, 200);
     })
     .catch((error) => {
-        // alert(error)
-                document.querySelector('.modal').style.display = 'block';
-        document.querySelector('#new_post_view').style.display = 'none';
-        document.querySelector('#alert_like_unlogged').style.opacity = 1;
+        // alert(error).
+        modal_error();
     });
 }
 function follow(id_poster, user_log, followed_by2){
@@ -267,7 +268,7 @@ function follow(id_poster, user_log, followed_by2){
         method: 'PUT',
         body: JSON.stringify({
             follower: user_log,
-            follow_action:user_following.value 
+            follow_action: user_following.value 
         })
     })
     .then(response => response.json())
@@ -300,6 +301,13 @@ function myFunction() {
 
 var cont=0;
 window.onclick = function(event) {
+    // alert(event.target.matches)
+    // console.log(event)
+    
+    // if (event.target.matches('#profile')) {
+    
+        // alert("pwpep")
+    // }
     if (event.target.matches('#open_profile')) {
         // alert("open_profile");
     }
@@ -430,4 +438,10 @@ function subir() {
     pos--; 
     elem.style.top = pos + 'px'; 
     }
+}
+
+function modal_error(){
+    document.querySelector('.modal').style.display = 'block';
+    document.querySelector('#new_post_view').style.display = 'none';
+    document.querySelector('#alert_like_unlogged').style.opacity = 1;
 }

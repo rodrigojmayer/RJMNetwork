@@ -30,8 +30,12 @@
                             </div>
                             <div id="posts-flex-order-child2">
                                 <div id="posts-first-line">
-                                    
-                                    <a id="profile"  href="{% url 'postsbox' 'profile' ' ' post.poster.id 1  %}">{{ post.poster }}</a>
+                                    {% if user.is_authenticated %}
+                                        <a id="profile"  href="{% url 'postsbox' 'profile' ' ' post.poster.id 1  %}">
+                                    {% else %}
+                                        <a id="profile" onclick="modal_error()">
+                                    {% endif %}
+                                    {{ post.poster }}</a>
                                     <div id="post-{{post.date_added}}" class="date_post"> {{ post.date_added }}</div>
                                 </div>
                                 <div id="post-description-{{post.id}}" class="description_post"> {{ post.description }} </div>
