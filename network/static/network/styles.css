@@ -1109,3 +1109,7 @@ a.modal-close svg path{
 .incorrect{
     color: red;
 }
+#winner{
+    font-size: 72px;
+    color: green;
+}
