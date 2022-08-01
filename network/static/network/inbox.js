@@ -3,9 +3,13 @@ var rs = getComputedStyle(document.querySelector(":root"));
 let elem;
 var pos = 0;
 var id = null;
- 
+
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
+
+
+
+
     // console.log(document.body.classList)
     // elem = document.getElementById("body_id");   
     elem = document.getElementById("lookup-form");   

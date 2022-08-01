@@ -6,7 +6,10 @@
         <title>{% block title %}Social Network{% endblock %}</title>
         <link href="{% static 'network/styles.css' %}" rel="stylesheet">  
         <link rel="shortcut icon" href="#">
-        <script src="{% static 'network/inbox.js' %}"></script>
+        <script src="{% static 'network/inbox.js' %}"></script> 
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     </head>
     <body>
     
@@ -15,6 +18,68 @@
             
         </header>
        
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div id="app"></div>
+        
+        <script type="text/babel">
+
+
+
+            function App(){
+
+                const [state, setState] = React.useState({
+                    num1: 2,
+                    num2: 4,
+                    response: "",
+                    score: 0
+                })
+
+                function updateResponse(event){
+                    setState({
+                        ...state,
+                        response: event.target.value
+                    })
+                }
+
+                function inputKeyPress(event){
+                    if (event.key === "Enter") {
+                        const answer = parseInt(state.response);
+                        if (state.num1 + state.num2 === answer){
+                            // User got the question right
+                            setState({
+                            ...state,
+                            num1: Math.ceil(Math.random() * 10),
+                            num2: Math.ceil(Math.random() * 10),
+                            score: state.score + 1
+                            })
+                        }
+                        else{
+                            // User got the question wrong
+                            setState({
+                                ...state,
+                                score: state.score - 1
+                            })
+                        }
+                    }
+                }
+                return(
+                    <div>
+                        <div>{state.num1} + {state.num2}</div>
+                        <input onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
+                        <div>Score: {state.score}</div>
+                    </div>
+                )
+            }
+
+            ReactDOM.render(<App />, document.querySelector("#app"));
+        </script>
+        
+        
+        
         
         <div class="modal" display="none">
             <div class="modal_div" id="new_post_view">
@@ -161,7 +226,6 @@
             {% endif %}
         </nav>
         
-
         {% if user.is_authenticated %}
 
         {% endif %}

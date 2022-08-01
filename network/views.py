@@ -228,11 +228,28 @@ def logout_view(request):
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
+        if not(username):
+            return render(request, "network/register.html", {
+                "message": "Pone usuario loco"
+            })
         email = request.POST["email"]
+        if not(email):
+            return render(request, "network/register.html", {
+                "username_reloaded": username,
+                "username_reloaded": username,
+                "password_reloaded": password,
+                "username_reloaded": username,
+                "message": "Enter "
+            })
 
-        # Ensure password matches confirmation
+
         password = request.POST["password"]
+        if not(password):
+            return render(request, "network/register.html", {
+                "message": "Pone clave loco"
+            })
         confirmation = request.POST["confirmation"]
+        # Ensure password matches confirmation
         if password != confirmation:
             return render(request, "network/register.html", {
                 "message": "Passwords must match."
@@ -248,6 +265,7 @@ def register(request):
             return render(request, "network/register.html", {
                 "message": "Username already taken."
             })
+
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
