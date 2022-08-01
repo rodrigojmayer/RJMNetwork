@@ -1102,3 +1102,10 @@ a.modal-close svg path{
     text-align: center;
     font-family: sans-serif;
 }
+#problem{
+    font-size: 72px
+}
+
+.incorrect{
+    color: red;
+}
