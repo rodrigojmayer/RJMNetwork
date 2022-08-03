@@ -228,32 +228,32 @@ def logout_view(request):
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
-        if not(username):
-            return render(request, "network/register.html", {
-                "message": "Pone usuario loco"
-            })
         email = request.POST["email"]
-        if not(email):
-            return render(request, "network/register.html", {
-                "username_reloaded": username,
-                "username_reloaded": username,
-                "password_reloaded": password,
-                "username_reloaded": username,
-                "message": "Enter "
-            })
-
-
         password = request.POST["password"]
-        if not(password):
-            return render(request, "network/register.html", {
-                "message": "Pone clave loco"
-            })
         confirmation = request.POST["confirmation"]
+        message = ""
         # Ensure password matches confirmation
         if password != confirmation:
+            message = "Passwords must match."
+        if not(confirmation):
+            message = "You must enter a password confirmation"
+        if not(password):
+            message = "You must enter a password"
+        if not(email):
+            message = "You must enter email address"
+        if not(username):
+            message = "You must enter username"
+
+
+        if message:
             return render(request, "network/register.html", {
-                "message": "Passwords must match."
+                "username_reloaded": username,
+                "email_reloaded": email,
+                "password_reloaded": password,
+                "confirmation_reloaded": confirmation,
+                "message": message
             })
+
 
         # Attempt to create new user
         try:
