@@ -10,10 +10,10 @@
         <form action="{% url 'login' %}" method="post" id="form_login">
             {% csrf_token %}
             <div class="form-group">
-                <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                <input autofocus class="form-control" type="text" name="username" placeholder="Username" value="{{ username_reloaded }}">
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password">
+                <input class="form-control" type="password" name="password" placeholder="Password" value="{{ password_reloaded }}">
             </div>
             <input class="page_button" type="submit" value="Login">
         </form>

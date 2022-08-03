@@ -212,6 +212,8 @@ def login_view(request):
             return redirect("/index/%20/0/0")
         else:
             return render(request, "network/login.html", {
+                "username_reloaded": username,
+                "password_reloaded": password,
                 "message": "Invalid username and/or password.",
             })
     else:
@@ -263,6 +265,10 @@ def register(request):
             followers.save()
         except IntegrityError:
             return render(request, "network/register.html", {
+                "username_reloaded": username,
+                "email_reloaded": email,
+                "password_reloaded": password,
+                "confirmation_reloaded": confirmation,
                 "message": "Username already taken."
             })
 
