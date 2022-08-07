@@ -2,12 +2,44 @@ let id_post_global = -1;
 var rs = getComputedStyle(document.querySelector(":root"));
 let elem;
 var pos = 0;
+var pos_profile_dropdown;
+var start_pos_profile_dropdown;
+var pos_up_profile_dropdown;
+// var pos_up_profile_dropdown = rs.getPropertyValue("--top-up-dropdown-profile-height");
+// console.log(pos_up_profile_dropdown);
+
+// --top-up-dropdown-profile-height
+    // var pos_profile_dropdown = document.getElementById("myDropdown").offsetTop;
+    // console.log(pos_profile_dropdown);
+    // var element = document.getElementById('myDropdown');
+    // style = window.getComputedStyle(element);
+    // top = style.getPropertyValue('top');
+    // console.log(top);
+// var pos_profile_dropdown = 852;
 var id = null;
+var id2 = null;
 
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
 
+    var myDropdown_element = document.getElementById('myDropdown');
+    var myDropdown_style = window.getComputedStyle ? window.getComputedStyle(myDropdown_element) : myDropdown_element.currentStyle;
+    // alert("Top : " + myDropdown_style["top"]);
+    pos_profile_dropdown = myDropdown_style["top"].replace('px','');
+    
+    start_pos_profile_dropdown = pos_profile_dropdown;
 
+    var myDropdown_element_up = document.getElementById('pos_up_profile_dropdown');
+    var myDropdown_style_up = window.getComputedStyle ? window.getComputedStyle(myDropdown_element_up) : myDropdown_element_up.currentStyle;
+    // alert("Top : " + myDropdown_style["top"]);
+    pos_up_profile_dropdown = myDropdown_style_up["top"].replace('px','');
+    // alert(pos_profile_dropdown);
+    // var pos_profile_dropdown = myDropdown_style["top"];
+    // top = style.getPropertyValue('top');
+    // console.log(element.style);
+
+    // pos_profile_dropdown = pos_profile_dropdown * 16;
+    // alert(pos_profile_dropdown);
 
 
     // console.log(document.body.classList)
@@ -300,7 +332,19 @@ function pages(user_log, next_page, jump_page){
 }
 
 function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    // document.getElementById("myDropdown").classList.toggle("show");
+    // document.getElementById("myDropdown").style.top = "0px";
+
+    if( pos_profile_dropdown == start_pos_profile_dropdown ){
+     clearInterval(id2);
+        id2 = setInterval(subir_profile, 10);
+    }
+    else{
+        
+    clearInterval(id2);
+    id2 = setInterval(bajar_profile, 10);
+    }
+    
 }
 
 var cont=0;
@@ -424,7 +468,7 @@ function searching() {
     }
   }
 
-function bajar() {
+  function bajar() {
     elem.style.opacity= "1";
     // alert(elem.value);
     if (pos == 90) {
@@ -441,6 +485,34 @@ function subir() {
     } else {
     pos--; 
     elem.style.top = pos + 'px'; 
+    }
+}
+
+function bajar_profile() {
+    // elem.style.opacity= "1";
+    // alert(elem.value);
+    actual_pos_profile_dropdown=0;
+    if (pos_profile_dropdown == start_pos_profile_dropdown) {
+        clearInterval(id2);
+    } else {
+        pos_profile_dropdown++; 
+        document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
+    }
+}
+
+function subir_profile() {
+    // console.log("ta entrando aca 1 ?"+id2)
+    // console.log("ta entrando aca 2 ?"+pos_profile_dropdown)
+    actual_pos_profile_dropdown=1;
+    // if (pos_profile_dropdown <= 835) {
+    if (pos_profile_dropdown <= pos_up_profile_dropdown) {
+        
+        clearInterval(id2);
+    } else {
+    pos_profile_dropdown--; 
+    // elem.style.top = pos + 'px'; 
+    document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
+    // document.getElementById("myDropdown").style.top = "0px";
     }
 }
 

@@ -149,6 +149,10 @@
                             </div>
                         {% endif %}
                     </button>
+                    <div id="myDropdown" class="dropdown-content"  onchange="location = this.value;">
+                        <a id="open_profile" href="{% url 'postsbox' 'profile' ' ' user.id 1 %}">Profile</a>
+                        <a id="log_out" href="{% url 'logout' %}">Log out</a>
+                    </div>
                 </div>
 
 
@@ -158,6 +162,9 @@
             {% endif %}
         </nav>
         
+        {% if user.is_authenticated %}
+
+        {% endif %}
         <div class="body" id="body_id">            
             <form id="lookup-form" >
                 <div class="search">
@@ -174,12 +181,5 @@
             {% block body %}
             {% endblock %}
         </div>
-        {% if user.is_authenticated %}
-            <div id="myDropdown" class="dropdown-content"  onchange="location = this.value;">
-                <a id="open_profile" href="{% url 'postsbox' 'profile' ' ' user.id 1 %}">Profile</a>
-                <a id="log_out" href="{% url 'logout' %}">Log out</a>
-            </div>
-        {% endif %}
-        <div id="pos_up_profile_dropdown"></div>
     </body>
 </html>
