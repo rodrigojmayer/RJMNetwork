@@ -51,14 +51,11 @@
                     {% if followed_by %}
                         {% for follow in followed_by %}
                             <div><span id="profile_followers_count" class="no-button">{{ follow.follower.all.count }}</span> Followers</div>
-                                
-                            {% if not follow.follower.all  %}
-                                <!-- <div id="profile_followers_list" class="no-button" style="display:none"> </div> -->
-                            {% else %}
-                            {% endif %}
+ 
                         {% endfor %}
-                        <!-- {% else %} -->
-                        <!-- 0 Followersddddddddddddddddd -->
+                    {% else %}
+                    
+                        <div><span id="profile_followers_count" class="no-button">0</span> Followers</div>
                     {% endif %}
                     <!-- &emsp;&emsp; -->
                     {% if followers %}
