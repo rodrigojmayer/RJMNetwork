@@ -1,5 +1,6 @@
 {% extends "network/layout.html" %}
 {% load static %}
+{% static "" as baseUrl %}
 {% load network_extras %}
 {% block body %}
     <div id="profile_view">
@@ -8,7 +9,10 @@
                 <!-- <div> -->
                 {% if poster.header_image %}
                     <!-- <img id="profile_view_picture"  alt="Image not found" src=""> -->
-                    <img id="profile_view_picture"  alt="Image not found" src="/media/{{ poster.header_image }}">
+                        <img id="profile_view_picture"  alt="Image not found" src="{{ baseUrl }}/media/{{poster.header_image}}">
+                   
+
+                    
                 {% else %}
                     <div id="profile_view_picture" class="no_profile_picture">
                         <svg id="big-dropbtn-profile"  width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
