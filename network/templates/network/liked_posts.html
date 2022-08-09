@@ -14,7 +14,7 @@
                         <div id="posts-flex-order">
                             <div id="posts-flex-order-child1">
                                 {% if post.poster.header_image %}
-                                    <img class="posts_profile_picture" alt="Image not found" src="/media/{{ post.poster.header_image }}">
+                                <img class="posts_profile_picture" alt="Image not found" src="{{post.poster.header_image.url }}">
                                 {% else %}
                                     <div class="no_profile_picture">
                                         <svg id="dropbtn-profile" class="no_profile_picture_circle" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

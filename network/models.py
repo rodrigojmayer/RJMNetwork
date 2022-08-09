@@ -1,9 +1,11 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 
 class User(AbstractUser):
-    header_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    # header_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    header_image = CloudinaryField('image')
     pass
 
 class NewPost(models.Model): 

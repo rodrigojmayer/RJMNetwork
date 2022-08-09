@@ -137,7 +137,8 @@
                     <button onclick="myFunction()" class="dropbtn" id="dropbtn-profile" >
                         
                         {% if user.header_image %}
-                            <img id="profile_img" class="posts_profile_picture" alt="Image not found" src="/media/{{ user.header_image }}">
+                            <!-- <img id="profile_img" class="posts_profile_picture" alt="Image not found" src="/media/{{ user.header_image }}"> -->
+                            <img id="profile_img" class="posts_profile_picture" alt="Image not found" src="{{poster.header_image.url }}">
                         {% else %}
                             <div class="no_profile_picture">
                                 <svg id="dropbtn-profile" class="no_profile_picture" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
