@@ -64,6 +64,7 @@ body {
     color: var(--text-color);
     background-color: var(--gray-light-color);
     overflow-y:overlay;
+    height: 100%;
     /* scroll-behavior: smooth; */
 }
 
