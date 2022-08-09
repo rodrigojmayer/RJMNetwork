@@ -34,7 +34,8 @@
     --search-height: 1.7rem;
     
     --top-dropdown-profile-height: calc(100vh - (var(--header-height)));
-    --top-up-dropdown-profile-height: calc((var(--top-dropdown-profile-height)) - (var(--header-height)));
+    /* --top-up-dropdown-profile-height: calc((var(--top-dropdown-profile-height)) - (var(--header-height))); */
+    --top-up-dropdown-profile-height: calc((var(--top-dropdown-profile-height)) - 500px);
     
 
 }

@@ -22,8 +22,11 @@ var id2 = null;
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
 
-    var myDropdown_element = document.getElementById('myDropdown');
-    var myDropdown_style = window.getComputedStyle ? window.getComputedStyle(myDropdown_element) : myDropdown_element.currentStyle;
+    // if(document.getElementById('myDropdown')){
+        // alert("pepin")
+        var myDropdown_element = document.getElementById('myDropdown');
+        var myDropdown_style = window.getComputedStyle ? window.getComputedStyle(myDropdown_element) : myDropdown_element.currentStyle;
+    // }
     // alert("Top : " + myDropdown_style["top"]);
     pos_profile_dropdown = myDropdown_style["top"].replace('px','');
     
