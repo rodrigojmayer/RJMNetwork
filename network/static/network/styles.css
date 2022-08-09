@@ -787,7 +787,10 @@ body.modal {
     /* padding: 8rem; */
     resize: none;
 }
+#edit_profile_view{
+    display: none;
 
+}
 #alert_like_unlogged{
     opacity: 0;
 }
