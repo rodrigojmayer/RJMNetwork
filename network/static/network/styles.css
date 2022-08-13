@@ -525,7 +525,7 @@ p, input {
 .hide{
     /* max-height: -5000px; */
     opacity: 0;
-    margin-top:-55px;
+    margin-top:-120px;
     z-index:0;
     pointer-events: none
 }
@@ -1049,9 +1049,9 @@ a.modal-close svg path{
         width: 1.5rem;
         height: 1.5rem;
     }
-    .dropdown-content {
+    /* .dropdown-content { */
         /* top:-95px;                               ver si esto no sirve para nada*/       
-    }
+    /* } */
     /* .dropdown-content {
         display: none;
         position: absolute;
@@ -1090,6 +1090,11 @@ a.modal-close svg path{
         /* width: 1rem; */
         padding:0;
     }
+
+    .hide{
+        margin-top:-55px;
+    }
+
     #posts-flex-order-child1{
         width: 3.3rem;
     }  
