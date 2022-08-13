@@ -470,13 +470,15 @@ p, input {
     /* display: none; */
     position: absolute;
     /* top:-175px; */
-    right:-2vw;
+    /* right:-2vw; *//**************************************/
+    right:-7vw;
     background-color: var(--gray-blue);
     /* min-width: 120px; */
     width: 7rem;
     /* height: 0px; */
     max-height: 4.05rem;
-    margin-top: -60px;
+    /* margin-top: -60px; *//***************************************************/
+    margin-top: -155px;
     /* height: var(--header-height); */
     /* padding: .2rem 0; */
     /* overflow: auto; */
@@ -1062,6 +1064,8 @@ a.modal-close svg path{
         width: 3rem;
         /* padding-bottom: 50px; */
         /* gap: 50px; */
+        right:-2vw; 
+        margin-top: -60px;
     }
     .dropdown-content a {
         padding: 0 7px;
