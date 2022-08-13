@@ -2,9 +2,9 @@ let id_post_global = -1;
 var rs = getComputedStyle(document.querySelector(":root"));
 let elem;
 var pos = 0;
-var pos_profile_dropdown;
-var start_pos_profile_dropdown;
-var pos_up_profile_dropdown;
+// var pos_profile_dropdown;
+// var start_pos_profile_dropdown;
+// var pos_up_profile_dropdown;
 // var pos_up_profile_dropdown = rs.getPropertyValue("--top-up-dropdown-profile-height");
 // console.log(pos_up_profile_dropdown);
 
@@ -17,25 +17,25 @@ var pos_up_profile_dropdown;
     // console.log(top);
 // var pos_profile_dropdown = 852;
 var id = null;
-var id2 = null;
+// var id2 = null;
 
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
 
     // if(document.getElementById('myDropdown')){
         // alert("pepin")
-        var myDropdown_element = document.getElementById('myDropdown');
-        var myDropdown_style = window.getComputedStyle ? window.getComputedStyle(myDropdown_element) : myDropdown_element.currentStyle;
+        // var myDropdown_element = document.getElementById('myDropdown');
+        // var myDropdown_style = window.getComputedStyle ? window.getComputedStyle(myDropdown_element) : myDropdown_element.currentStyle;
+        
+        // alert("Top : " + myDropdown_style["top"]);
+        // pos_profile_dropdown = myDropdown_style["top"].replace('px','');
     // }
-    // alert("Top : " + myDropdown_style["top"]);
-    pos_profile_dropdown = myDropdown_style["top"].replace('px','');
-    
-    start_pos_profile_dropdown = pos_profile_dropdown;
+    // start_pos_profile_dropdown = pos_profile_dropdown;
 
-    var myDropdown_element_up = document.getElementById('pos_up_profile_dropdown');
-    var myDropdown_style_up = window.getComputedStyle ? window.getComputedStyle(myDropdown_element_up) : myDropdown_element_up.currentStyle;
+    // var myDropdown_element_up = document.getElementById('pos_up_profile_dropdown');
+    // var myDropdown_style_up = window.getComputedStyle ? window.getComputedStyle(myDropdown_element_up) : myDropdown_element_up.currentStyle;
     // alert("Top : " + myDropdown_style["top"]);
-    pos_up_profile_dropdown = myDropdown_style_up["top"].replace('px','');
+    // pos_up_profile_dropdown = myDropdown_style_up["top"].replace('px','');
     // alert(pos_profile_dropdown);
     // var pos_profile_dropdown = myDropdown_style["top"];
     // top = style.getPropertyValue('top');
@@ -52,7 +52,15 @@ document.addEventListener('DOMContentLoaded', function(){
     // if(elem.style.top);
     elem.style.top = "0px";
     newurl = url.split('/');
-    if(newurl[2]){
+    if(!newurl[1]){
+        // alert("mochi")
+        
+        newurl = "index/%20/0/1";
+        // newurl = newurl.join('/');
+        window.location.href += newurl;
+    }
+    else if(newurl[2]){
+        // alert("mochi1")
         if (performance.getEntriesByType("navigation")[0].type == "reload") {
             newurl[2] = "%20";
             newurl = newurl.join('/');
@@ -498,33 +506,26 @@ function subir() {
     }
 }
 
-function bajar_profile() {
-    // elem.style.opacity= "1";
-    // alert(elem.value);
-    actual_pos_profile_dropdown=0;
-    if (pos_profile_dropdown == start_pos_profile_dropdown) {
-        clearInterval(id2);
-    } else {
-        pos_profile_dropdown++; 
-        document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
-    }
-}
+// function bajar_profile() {
+//     actual_pos_profile_dropdown=0;
+//     if (pos_profile_dropdown == start_pos_profile_dropdown) {
+//         clearInterval(id2);
+//     } else {
+//         pos_profile_dropdown++; 
+//         document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
+//     }
+// }
 
-function subir_profile() {
-    // console.log("ta entrando aca 1 ?"+id2)
-    // console.log("ta entrando aca 2 ?"+pos_profile_dropdown)
-    actual_pos_profile_dropdown=1;
-    // if (pos_profile_dropdown <= 835) {
-    if (pos_profile_dropdown <= pos_up_profile_dropdown) {
+// function subir_profile() {
+//     actual_pos_profile_dropdown=1;
+//     if (pos_profile_dropdown <= pos_up_profile_dropdown) {
         
-        clearInterval(id2);
-    } else {
-    pos_profile_dropdown--; 
-    // elem.style.top = pos + 'px'; 
-    document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
-    // document.getElementById("myDropdown").style.top = "0px";
-    }
-}
+//         clearInterval(id2);
+//     } else {
+//     pos_profile_dropdown--; 
+//     document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
+//     }
+// }
 
 function modal_error(){
     document.querySelector('.modal').style.display = 'block';
