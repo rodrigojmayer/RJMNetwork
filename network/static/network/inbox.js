@@ -367,32 +367,14 @@ function myFunction() {
 
 var cont=0;
 window.onclick = function(event) {
-    // alert(event.target.matches)
-    // console.log(event)
-    
-    // if (event.target.matches('#profile')) {
-    
-        // alert("pwpep")
-    // }
-    if (event.target.matches('#open_profile')) {
-        // alert("open_profile");
-    }
-    else if(event.target.matches('#log_out')){
-        // alert("log_out");
-    }
 
-    if (!event.target.matches('#dropbtn-profile') && 
+    // When the profile drop down list is open and you click anything else than the options in the dropdown, 
+    // then the dropdown closes
+    if (!document.querySelector(".hide") && !event.target.matches('#dropbtn-profile') &&  
+        !event.target.matches('#open_profile') && !event.target.matches('#log_out') && 
         !event.target.matches('#nav_profile_letter')&& 
-        !event.target.matches('#profile_img')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-
+        !event.target.matches('#profile_img')){
+           myFunction()
     }
 }
    
