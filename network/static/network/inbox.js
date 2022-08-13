@@ -337,16 +337,23 @@ function pages(user_log, next_page, jump_page){
 function myFunction() {
     // document.getElementById("myDropdown").classList.toggle("show");
     // document.getElementById("myDropdown").style.top = "0px";
+    // alert("monchito")
+    // console.log(document.querySelector(".childs"))
+    // document.querySelector(".hide").style.display = "block";
+    document.querySelector(".dropdown-content").classList.toggle("hide");
+    // document.querySelector(".parent").style.overflow = "visible";
+    // document.querySelector("#navbar").style.opacity = 0.5 ;
+    
 
-    if( pos_profile_dropdown == start_pos_profile_dropdown ){
-     clearInterval(id2);
-        id2 = setInterval(subir_profile, 10);
-    }
-    else{
+    // if( pos_profile_dropdown == start_pos_profile_dropdown ){
+    //  clearInterval(id2);
+    //     id2 = setInterval(subir_profile, 10);
+    // }
+    // else{
         
-    clearInterval(id2);
-    id2 = setInterval(bajar_profile, 10);
-    }
+    // clearInterval(id2);
+    // id2 = setInterval(bajar_profile, 10);
+    // }
     
 }
 

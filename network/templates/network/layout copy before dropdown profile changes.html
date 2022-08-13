@@ -137,7 +137,7 @@
                     <button onclick="myFunction()" class="dropbtn" id="dropbtn-profile" >
                         
                         {% if user.header_image %}
-                            <img id="profile_img" class="posts_profile_picture" alt="Image not found" src="/media/{{ user.header_image }}">
+                            <img id="profile_img" class="posts_profile_picture" alt="Image not found" src="{{user.header_image.url }}">
                         {% else %}
                             <div class="no_profile_picture">
                                 <svg id="dropbtn-profile" class="no_profile_picture" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,10 +149,6 @@
                             </div>
                         {% endif %}
                     </button>
-                    <div id="myDropdown" class="dropdown-content"  onchange="location = this.value;">
-                        <a id="open_profile" href="{% url 'postsbox' 'profile' ' ' user.id 1 %}">Profile</a>
-                        <a id="log_out" href="{% url 'logout' %}">Log out</a>
-                    </div>
                 </div>
 
 
@@ -162,9 +158,6 @@
             {% endif %}
         </nav>
         
-        {% if user.is_authenticated %}
-
-        {% endif %}
         <div class="body" id="body_id">            
             <form id="lookup-form" >
                 <div class="search">
@@ -181,5 +174,12 @@
             {% block body %}
             {% endblock %}
         </div>
+        {% if user.is_authenticated %}
+            <div id="myDropdown" class="dropdown-content"  onchange="location = this.value;">
+                <a id="open_profile" href="{% url 'postsbox' 'profile' ' ' user.id 1 %}">Profile</a>
+                <a id="log_out" href="{% url 'logout' %}">Log out</a>
+            </div>
+        {% endif %}
+        <div id="pos_up_profile_dropdown"></div>
     </body>
 </html>
