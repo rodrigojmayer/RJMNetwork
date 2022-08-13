@@ -241,8 +241,10 @@ p, input {
 
 #edit{
     align-self:flex-end;
-    font-size: 75%;
+    font-size: 90%;
     width:40px;
+    margin-right: .7rem;
+    /* width:3rem; */
     color: var(--link-color); 
 }
 
