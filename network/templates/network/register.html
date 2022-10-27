@@ -11,16 +11,16 @@
         <form action="{% url 'register' %}" method="post" id="form_register">
             {% csrf_token %}
             <div class="form-group">
-                <input class="form-control" autofocus type="text" name="username" placeholder="Username" value= "{{ username_reloaded }}">
+                <input class="form-control" autofocus type="text" name="username" placeholder="Username" value= "{{ username_reloaded }}" autocomplete=off>
             </div>
             <div class="form-group">
-                <input class="form-control" type="email" name="email" placeholder="Email Address" value= "{{ email_reloaded }}">
+                <input class="form-control" type="email" name="email" placeholder="Email Address" value= "{{ email_reloaded }}" autocomplete=off>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password" value= "{{ password_reloaded }}">
+                <input class="form-control" type="password" name="password" placeholder="Password" value= "{{ password_reloaded }}" autocomplete=off>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" value= "{{ confirmation_reloaded }}">
+                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" value= "{{ confirmation_reloaded }}" autocomplete=off>
             </div>
             <input class="page_button" type="submit" value="Register">
         </form>
