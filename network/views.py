@@ -132,7 +132,6 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
         if not(request.user.header_image) and  request.user.id not in posters_id:
             posters_id.append(request.user.id)
 
-
     users=User.objects.filter(id__in=posters_id)
     user_color = {}
     colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
@@ -155,18 +154,17 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
     })
 
 
+# @csrf_exempt
 def index(request):
     all_posts = NewPost.objects.select_related('poster')
     all_fields= NewPost._meta.fields
     users = User.objects.all()
-    user_color = {}
-    colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
-    for j in users:
-        user_color[j.id] = random.choice(colors_list)
-        colors_list.remove(user_color[j.id])
+
     total_posts=all_posts.count()
     total_pages=math.ceil(total_posts/10)
     list_total_pages = []
+    # users_without_img = {}
+    posters_id = []
     for i in range(2, total_pages+1):
         list_total_pages.append(i)
     all_posts = all_posts.order_by("-date_added")[:10]
@@ -176,6 +174,10 @@ def index(request):
         post.number_likes=0
         likers = all_likers.filter(post=post.id)
         likers_id = []
+        
+        if not(post.poster.header_image):
+            # users_without_img = {'id':int(post.poster.id), 'username':post.poster.username}
+            posters_id.append(post.poster.id)
         for each_liker in likers:
             post.likers = each_liker.liker.all()
             post.number_likes = each_liker.liker.count()
@@ -183,6 +185,21 @@ def index(request):
                 likers_id.append(each.id)
             post.likers_id = likers_id
     random_number = randrange(100)
+    
+    if not(request.user.header_image) and  request.user.id not in posters_id:
+        posters_id.append(request.user.id)
+    users_without_img = User.objects.filter(id__in=posters_id)
+    print("---users without img---")
+    print(users_without_img)
+    print(users)
+    user_color = {}
+    colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
+    for j in users_without_img:
+        print(j)
+        # print(j['id'])
+        user_color[j.id] = random.choice(colors_list)
+        colors_list.remove(user_color[j.id])
+    
     return render(request, "network/index.html", {
         "all_posts": all_posts,
         "users": users,

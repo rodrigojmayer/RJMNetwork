@@ -50,6 +50,7 @@
     /* overflow-y:hidden; */
     overflow-y:overlay;
     height: 100%;
+    -webkit-tap-highlight-color:transparent;
 }
 
 *,

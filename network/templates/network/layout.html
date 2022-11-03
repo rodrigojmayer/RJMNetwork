@@ -56,7 +56,7 @@
                         {% if user.is_authenticated %}
                                         {% if user %}
                                             {% if user.header_image %}
-                                                <img id="display-image" src="/media/{{ user.header_image }}"></img>
+                                                <img id="display-image" src="{{ user.header_image.url }}"></img>
                                             {% else %}
                                                 <div class="no_profile_picture">
                                                     <img id="display-image" >
