@@ -186,8 +186,11 @@ def index(request):
             post.likers_id = likers_id
     random_number = randrange(100)
     
-    if not(request.user.header_image) and  request.user.id not in posters_id:
-        posters_id.append(request.user.id)
+    try:
+        if not(request.user.header_image) and  request.user.id not in posters_id:
+            posters_id.append(request.user.id)
+    except:
+        print("except")
     users_without_img = User.objects.filter(id__in=posters_id)
     print("---users without img---")
     print(users_without_img)
