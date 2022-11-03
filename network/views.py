@@ -24,29 +24,15 @@ import time
 from .models import User, NewPost, Followers, Likers
 
 
-# @csrf_exempt
-# @login_required
 def postsbox(request, filter_view, data_search, user_id, jump_page):
     
-    print("user_id")
-    print(user_id)
-    print("filter_view")
-    print(filter_view)
-
-    if data_search != " ":
-        print("kk")
     if(user_id == 0):
         user_id = 1
-    # if(user_id == 0 and request.user.id):
-    #     user_id = request.user.id
 
-    print(user_id)
     all_users = User.objects.all()
 
     if(user_id != 0):
         user_poster = all_users.get(id=user_id)
-    # else:
-        # user_poster = all_users.get(id=1)
 
 
     all_posts = NewPost.objects.select_related('poster')
@@ -103,7 +89,6 @@ def postsbox(request, filter_view, data_search, user_id, jump_page):
 
     p = Paginator(all_posts, 10)
     list_total_pages = []
-    # print(p.num_pages)
     if(jump_page > p.num_pages):
         jump_page = p.num_pages
     if(jump_page < 1):
@@ -163,7 +148,6 @@ def index(request):
     total_posts=all_posts.count()
     total_pages=math.ceil(total_posts/10)
     list_total_pages = []
-    # users_without_img = {}
     posters_id = []
     for i in range(2, total_pages+1):
         list_total_pages.append(i)
@@ -176,7 +160,6 @@ def index(request):
         likers_id = []
         
         if not(post.poster.header_image):
-            # users_without_img = {'id':int(post.poster.id), 'username':post.poster.username}
             posters_id.append(post.poster.id)
         for each_liker in likers:
             post.likers = each_liker.liker.all()
@@ -192,14 +175,9 @@ def index(request):
     except:
         print("except")
     users_without_img = User.objects.filter(id__in=posters_id)
-    print("---users without img---")
-    print(users_without_img)
-    print(users)
     user_color = {}
     colors_list = ["#C37D7D", "#FC792F", "#4950F8", "#EBFC2F", "#15A2F1", "#58FC2F", "#36F9E1", "#2ECF65", "#B549F8", "#FF83EB", "#FCCF2F"]
     for j in users_without_img:
-        print(j)
-        # print(j['id'])
         user_color[j.id] = random.choice(colors_list)
         colors_list.remove(user_color[j.id])
     
@@ -225,10 +203,6 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            # return render(request, "network/index.html")
-            # return HttpResponseRedirect(reverse("network/index.html"))
-            # return HttpResponseRedirect(reverse("index"))
-            # return HttpResponseRedirect(reverse("postsbox"))
             return redirect("/index/%20/0/0")
         else:
             return render(request, "network/login.html", {
@@ -241,8 +215,7 @@ def login_view(request):
                 "user": 0})
 
 def logout_view(request):
-    logout(request)
-    # return HttpResponseRedirect(reverse("index"))    
+    logout(request)   
     return redirect("/index/%20/0/0")
 
 
@@ -265,7 +238,6 @@ def register(request):
             message = "You must enter email address"
         if not(username):
             message = "You must enter username"
-
 
         if message:
             return render(request, "network/register.html", {
@@ -485,7 +457,6 @@ def like(request, id_post):
         liked = Likers.objects.get(post=id_post) 
     except Likers.DoesNotExist:
         return JsonResponse({"error": "Liker not found."}, status=404)
-        # return JsonResponse({"queseyo": "Liker not found."}, status=4024)
     data = json.loads(request.body)
     like_action = data.get("like_action", "")
     if(like_action == "heart_empty"):

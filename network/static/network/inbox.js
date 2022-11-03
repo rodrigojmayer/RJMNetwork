@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if(document.querySelector('#nav-search') && newurl[2])
         document.querySelector('#nav-search').addEventListener('click', () => load_postbox('search bar', "button_nav_search"));
     else{
-        // document.querySelector('#nav-search').style.cursor = "default";
-        // document.querySelector('#nav-search').style.cursor = "default";
         document.querySelector("#nav-search").classList.toggle("hide");
     }
     if(document.querySelector('#all_posts_view')){
@@ -81,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 img.onload = function (event) {
                     // Dynamically create a canvas element
                     var canvas = document.createElement("canvas");
-                    // var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext("2d");
                     // Actual resizing
                     ctx.drawImage(img, 0, 0, 300, 160);
@@ -170,21 +167,16 @@ function load_postbox(postbox, user_log){
             if(document.querySelector('#alert_modal_message').style.display === "block"){
                 document.querySelector('#edit_profile_view').style.display = 'none'
                 document.querySelector('#alert_modal_message').style.display = "none";
-                // document.querySelector('#alert_like_unlogged').style.display = "none";
             }
             if(document.querySelector('#edit_profile_view').style.display === 'block'){
                 document.querySelector('#edit_profile_view').style.display = 'none';
                 document.querySelector('.modal').style.display = 'none';
-                // document.querySelector('#alert_like_unlogged').style.display = "none";
                 
                 document.querySelector('#edit_profile_view h4').innerHTML = 'Changes to be made: ';
                 unLockScroll();
             }
             else{
                 if(document.getElementById('profile_view_picture').src && (document.getElementById('profile_view_picture').src == document.getElementById('display-image').src)){
-                    // console.log("esta entrando aqui porque ya tenia una foto cargada, pero tendria que preguntar si picture no estaba para ser cambiada")
-                    // console.log(document.getElementById('display-image').src);
-                    // console.log(document.getElementById('profile_view_picture').src);
                     document.getElementById('display-image').src = document.getElementById('profile_view_picture').src;
                 }
                 document.querySelector('.modal').style.display = 'block';
@@ -247,7 +239,6 @@ function like(id_post){
     })
     .then(response => response.json())
     .then(result => {
-        // console.log(result)
         setTimeout(function(){ 
             document.querySelector(`#heart-img-${id_post}`).innerHTML = '';
             if(result.prev_status=="heart_empty"){
@@ -263,7 +254,6 @@ function like(id_post){
          }, 200);
     })
     .catch((error) => {
-        // alert(error).
         modal_error();
     });
 }
@@ -301,31 +291,11 @@ function pages(user_log, next_page, jump_page){
 }
 
 function myFunction() {
-    // document.getElementById("myDropdown").classList.toggle("show");
-    // document.getElementById("myDropdown").style.top = "0px";
-    // alert("monchito")
-    // console.log(document.querySelector(".childs"))
-    // document.querySelector(".hide").style.display = "block";
     document.querySelector(".dropdown-content").classList.toggle("hide");
-    // document.querySelector(".parent").style.overflow = "visible";
-    // document.querySelector("#navbar").style.opacity = 0.5 ;
-    
-
-    // if( pos_profile_dropdown == start_pos_profile_dropdown ){
-    //  clearInterval(id2);
-    //     id2 = setInterval(subir_profile, 10);
-    // }
-    // else{
-        
-    // clearInterval(id2);
-    // id2 = setInterval(bajar_profile, 10);
-    // }
-    
 }
 
 var cont=0;
 window.onclick = function(event) {
-
     // When the profile drop down list is open and you click anything else than the options in the dropdown, 
     // then the dropdown closes
     if (!document.querySelector(".hide") && !event.target.matches('#dropbtn-profile') &&  
@@ -355,25 +325,17 @@ function close_window(){
         document.getElementById("no_profile_picture_background").style.display="block";
         document.getElementById("display-image").style.opacity=0;
     }
-    // lockScroll();
 }
 
 function lockScroll() {
     document.body.classList.add("lock-scroll");
     document.body.classList.remove("un-lock-scroll");
-    // document.body.style.paddingRight = "44.2px";
-    // document.body.style.paddingRight = "0";
 
 }
 
 function unLockScroll() {
     document.body.classList.remove("lock-scroll");
     document.body.classList.add("un-lock-scroll");
-    // document.body.style.paddingRight = "27.2px";
-    // document.body.style.paddingRight = "0";
-    // document.body.style.paddingRight = "17px";
-
-
 }
 
 function openOkMessage(ths){
@@ -406,11 +368,7 @@ function openOkMessage(ths){
 const scrollbarVisible = (element) => {
     return element.scrollHeight > window.innerWidth;
 }
-// alert(document.getElementById("body_id").style.height)
-// alert(window.innerWidth)
-// alert(scrollbarVisible(document.documentElement.scrollHeight))
 
-// The function Search
 function searching() {
     if(event)
         event.preventDefault();
@@ -428,7 +386,6 @@ function searching() {
 
   function bajar() {
     elem.style.opacity= "1";
-    // alert(elem.value);
     if (pos == 90) {
         clearInterval(id);
     } else {
@@ -439,33 +396,12 @@ function searching() {
 
 function subir() {
     if (pos == 0) {
-    clearInterval(id);
+        clearInterval(id);
     } else {
-    pos--; 
-    elem.style.top = pos + 'px'; 
+        pos--; 
+        elem.style.top = pos + 'px'; 
     }
 }
-
-// function bajar_profile() {
-//     actual_pos_profile_dropdown=0;
-//     if (pos_profile_dropdown == start_pos_profile_dropdown) {
-//         clearInterval(id2);
-//     } else {
-//         pos_profile_dropdown++; 
-//         document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
-//     }
-// }
-
-// function subir_profile() {
-//     actual_pos_profile_dropdown=1;
-//     if (pos_profile_dropdown <= pos_up_profile_dropdown) {
-        
-//         clearInterval(id2);
-//     } else {
-//     pos_profile_dropdown--; 
-//     document.getElementById("myDropdown").style.top = pos_profile_dropdown + 'px'; 
-//     }
-// }
 
 function modal_error(){
     document.querySelector('.modal').style.display = 'block';

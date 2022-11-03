@@ -4,7 +4,6 @@ from cloudinary.models import CloudinaryField
 
 
 class User(AbstractUser):
-    # header_image = models.ImageField(null=True, blank=True, upload_to="images/")
     header_image = CloudinaryField('image')
     pass
 
