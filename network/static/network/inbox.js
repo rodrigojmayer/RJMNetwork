@@ -2,65 +2,20 @@ let id_post_global = -1;
 var rs = getComputedStyle(document.querySelector(":root"));
 let elem;
 var pos = 0;
-// var pos_profile_dropdown;
-// var start_pos_profile_dropdown;
-// var pos_up_profile_dropdown;
-// var pos_up_profile_dropdown = rs.getPropertyValue("--top-up-dropdown-profile-height");
-// console.log(pos_up_profile_dropdown);
-
-// --top-up-dropdown-profile-height
-    // var pos_profile_dropdown = document.getElementById("myDropdown").offsetTop;
-    // console.log(pos_profile_dropdown);
-    // var element = document.getElementById('myDropdown');
-    // style = window.getComputedStyle(element);
-    // top = style.getPropertyValue('top');
-    // console.log(top);
-// var pos_profile_dropdown = 852;
 var id = null;
-// var id2 = null;
 
 var url = window.location.pathname;
 document.addEventListener('DOMContentLoaded', function(){
-
-    // if(document.getElementById('myDropdown')){
-        // alert("pepin")
-        // var myDropdown_element = document.getElementById('myDropdown');
-        // var myDropdown_style = window.getComputedStyle ? window.getComputedStyle(myDropdown_element) : myDropdown_element.currentStyle;
-        
-        // alert("Top : " + myDropdown_style["top"]);
-        // pos_profile_dropdown = myDropdown_style["top"].replace('px','');
-    // }
-    // start_pos_profile_dropdown = pos_profile_dropdown;
-
-    // var myDropdown_element_up = document.getElementById('pos_up_profile_dropdown');
-    // var myDropdown_style_up = window.getComputedStyle ? window.getComputedStyle(myDropdown_element_up) : myDropdown_element_up.currentStyle;
-    // alert("Top : " + myDropdown_style["top"]);
-    // pos_up_profile_dropdown = myDropdown_style_up["top"].replace('px','');
-    // alert(pos_profile_dropdown);
-    // var pos_profile_dropdown = myDropdown_style["top"];
-    // top = style.getPropertyValue('top');
-    // console.log(element.style);
-
-    // pos_profile_dropdown = pos_profile_dropdown * 16;
-    // alert(pos_profile_dropdown);
-
-
-    // console.log(document.body.classList)
-    // elem = document.getElementById("body_id");   
-    elem = document.getElementById("lookup-form");   
-    // alert(elem.style.top);
-    // if(elem.style.top);
+  
+    elem = document.getElementById("lookup-form");  
     elem.style.top = "0px";
     newurl = url.split('/');
     if(!newurl[1]){
-        // alert("mochi")
         
         newurl = "index/%20/0/1";
-        // newurl = newurl.join('/');
         window.location.href += newurl;
     }
     else if(newurl[2]){
-        // alert("mochi1")
         if (performance.getEntriesByType("navigation")[0].type == "reload") {
             newurl[2] = "%20";
             newurl = newurl.join('/');
@@ -83,8 +38,11 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#new_post').addEventListener('click', () => load_postbox('new post',null));
     if(document.querySelector('#nav-search') && newurl[2])
         document.querySelector('#nav-search').addEventListener('click', () => load_postbox('search bar', "button_nav_search"));
-    else
-        document.querySelector('#nav-search').style.cursor = "default";
+    else{
+        // document.querySelector('#nav-search').style.cursor = "default";
+        // document.querySelector('#nav-search').style.cursor = "default";
+        document.querySelector("#nav-search").classList.toggle("hide");
+    }
     if(document.querySelector('#all_posts_view')){
         document.querySelector('#all_posts_view').style.display = 'block';
         document.querySelector('#edit_profile_view').style.display = 'none';
