@@ -3,10 +3,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}Social Network{% endblock %}</title>
+        <title>{% block title %}Network{% endblock %}</title>
         <link href="{% static 'network/styles.css' %}" rel="stylesheet">  
         <link rel="shortcut icon" href="#">
         <script src="{% static 'network/inbox.js' %}"></script> 
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{% static '/media/images/Frame.png' %}" type="image/x-icon" />
+        <meta name="description" content="Design of a Wikipedia-like online encyclopedia that anyone can edit.">
+        <link rel="canonical" href="https://rodrigojmayer.pythonanywhere.com/">
+        <link rel="favicon" href="{% static '/media/images/Frame.png' %}">
+        <link rel="apple-touch-icon" href="{% static '/media/images/Frame.png' %}">
+        <!-- <meta name="theme-color" content="#FFDB15"> -->
+        <meta name="twitter:card" content="summary">
+        <meta property="og:type" content="website">
+        <meta property="og:title" name="twitter:title" content="Wiki RJM">
+        <!-- <meta property="og:image" name="twitter:image"
+            content="https://rjmauctions.pythonanywhere.com/media/Frame 43.png"> -->
+        <meta property="og:url" name="twitter:url" content="https://rodrigojmayer.pythonanywhere.com/">
+        <meta property="og:description" name="twitter:description"
+            content="Design of a Wikipedia-like online encyclopedia that anyone can edit.">
+
     </head>
     <body>
         <header class="header">
