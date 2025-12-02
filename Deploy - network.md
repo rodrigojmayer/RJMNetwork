@@ -65,3 +65,5 @@ from django.contrib.staticfiles.handlers import StaticFilesHandler
 application = StaticFilesHandler(get_wsgi_application())
 
 ```
+
+THE SECRET KEY AND CLOUDINARY .ENV CONFIGURATION IN PROJECTS FILE SERVERS GOOGLE SPREADSHEET
