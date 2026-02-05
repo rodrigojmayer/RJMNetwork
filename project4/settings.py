@@ -14,8 +14,6 @@ from dotenv import load_dotenv
 import os
 
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 load_dotenv()
 
@@ -164,7 +162,7 @@ cloudinary.config(
   cloud_name = CLOUDINARY_CLOUD_NAME, 
   api_key = CLOUDINARY_API_KEY, 
   api_secret = CLOUDINARY_API_SECRET, 
-  api_proxy = 'http://proxy.server:3128'
+  #api_proxy = 'http://proxy.server:3128' # para pythonanywhere
 )
 
 import cloudinary.uploader
